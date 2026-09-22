@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>メガネの相談会＆下取りCP｜アイメガネ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-side: #A6CDE6; /* 淡いブルー：ページ全体ではなく、今後カード等の差し色として使用予定 */
+    --text: #232323;
+    --main: #395CA3; /* CTA等のメインカラー：紺 */
+    --main-deep: #26437A; /* 今だけ特典セクションのグラデーション下側用の濃い紺 */
+    --accent: #FFE100; /* アクセントカラー：黄色 */
+    --gold: #C9960C; /* 割引額の強調文字用（--accentの黄色そのままだと白背景で読みにくいため濃いめに調整） */
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── 社内レビュー用パスワードゲート(簡易・本番公開時は削除すること) ── */
+  .preview-gate {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--bg-side);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .preview-gate-box {
+    background: #fff; border: 2px solid var(--main); border-radius: 12px;
+    padding: clamp(24px, 5vw, 40px); width: 100%; max-width: 340px;
+    text-align: center;
+  }
+  .preview-gate-title { font-weight: 900; font-size: 18px; color: var(--text); margin: 0 0 8px; }
+  .preview-gate-desc { font-size: 14px; color: #555; margin: 0 0 16px; }
+  .preview-gate-input {
+    width: 100%; box-sizing: border-box; font-size: 16px;
+    padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; margin: 0 0 12px;
+  }
+  .preview-gate-button {
+    width: 100%; font-size: 15px; font-weight: 700; color: var(--text);
+    background: var(--accent); border: none; border-radius: 8px; padding: 10px 12px;
+    cursor: pointer;
+  }
+  .preview-gate-error { color: #c0392b; font-size: 13px; margin: 12px 0 0; }
+  body.preview-locked > *:not(.preview-gate) { display: none; }
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  body {
+    background: #fff;
+    color: var(--text);
+    font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    background: #fff;
+  }
+
+  .fv {
+    padding: 16px 24px 40px;
+  }
+
+  .fv-logo {
+    width: 180px;
+    margin: 0 auto 16px;
+  }
+  .fv-logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* FVのビジュアルはAffinityで作った1枚の画像(img/fv-composite.png)をそのまま使用。
+     見出し文言を直す時はこの画像自体をAffinityで作り直す必要がある */
+  .fv-visual {
+    position: relative;
+    width: calc(100% + 48px);
+    margin: 0 -24px;
+  }
+  .fv-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .cta-icon-img {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    display: block;
+  }
+  /* ボタン内の▶マーク。テキストのすぐ右に添えて、全体を中央に見せる */
+  .cta-arrow {
+    font-size: 0.7em;
+  }
+  .fv-cta-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    max-width: 280px;
+    margin: 24px auto 0;
+    padding: 14px;
+    border-radius: 10px;
+    background: var(--accent);
+    text-align: center;
+    color: var(--text);
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  .fv-ribbon {
+    position: absolute;
+    top: 16px;
+    left: -12px;
+    width: calc(100% + 24px);
+    background: var(--main);
+    color: #fff;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    padding: 8px 0;
+    transform: rotate(-3deg);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .fv-date-badge {
+    position: absolute;
+    right: 6%;
+    bottom: 6%;
+    width: 20%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: var(--main);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 1.3;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .fv-sub {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+  }
+
+  .nayami-section {
+    background: var(--bg-side);
+  }
+  .nayami-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  /* 各カード画像は内部の余白(上下の青い部分)がバラバラなため、
+     カード間の見た目の間隔を揃えるために調整。
+     %指定は幅基準(=画像の拡大縮小と同じ基準)で効くので、画面幅が変わっても比率が崩れない。
+     カード2→カード3の間隔が広すぎたため、カード3側を引き上げて他のカード間と揃えている */
+  .nayami-card:nth-of-type(4) {
+    margin-top: -12.4%;
+  }
+
+  /* FV画像下端(色がバラバラ)と悩みカード画像上端(単色の青)の境目を隠すための波形仕切り。
+     色は悩みカードの背景色(163,192,224 / #A3C0E0、カード2枚目以降で採用)に合わせている。上にはみ出させてFV側に重ねる */
+  .wave-divider {
+    position: relative;
+    z-index: 2;
+    margin-top: -30px;
+    line-height: 0;
+  }
+  .wave-divider svg {
+    display: block;
+    width: 100%;
+    height: 40px;
+  }
+
+  .section-placeholder {
+    padding: 60px 24px;
+    text-align: center;
+    border-top: 1px dashed #ddd;
+    color: #999;
+    font-size: 14px;
+  }
+
+  /* 今だけ特典セクション。悩みカードの淡い水色とはっきり区別がつくよう、紺のグラデーション背景にした */
+  .tokuten-section {
+    background: linear-gradient(180deg, var(--main) 0%, var(--main-deep) 100%);
+    padding: 40px 20px 40px;
+  }
+  .tokuten-title {
+    text-align: center;
+    margin: 0 0 20px;
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+  .tokuten-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .tokuten-campaign-name {
+    width: 100%;
+    margin: 0 0 18px;
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .tokuten-campaign-name-sub {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .tokuten-offer-lead { margin: 0 0 2px; font-size: 14px; color: #666; }
+  .tokuten-offer-amount {
+    margin: 0 0 20px;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1.1;
+  }
+  .tokuten-offer-amount small,
+  .tokuten-offer2-amount small { font-size: 15px; font-weight: 700; }
+
+  /* 古いメガネ→新しいメガネ の下取りイラスト */
+  .tokuten-trade-illust {
+    width: 100%;
+    margin-bottom: 18px;
+  }
+  .tokuten-trade-illust img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .tokuten-reassure {
+    width: 100%;
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .tokuten-divider {
+    width: 100%;
+    height: 1px;
+    background: #e6e6e6;
+    margin: 20px 0 18px;
+  }
+  .tokuten-offer2-tag { margin: 0 0 2px; font-size: 12px; color: #888; }
+  .tokuten-offer2-lead { margin: 0 0 6px; font-size: 14px; color: #666; display: flex; align-items: center; justify-content: center; gap: 6px; }
+  .tokuten-line-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: #06C755;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .tokuten-offer2-amount {
+    margin: 0;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1.1;
+  }
+  .tokuten-total-label {
+    margin: 0 0 2px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #888;
+  }
+  .tokuten-total-amount {
+    margin: 0;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 46px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1.1;
+  }
+  .tokuten-period {
+    margin-top: 22px;
+    text-align: center;
+  }
+  .tokuten-period p { margin: 0; }
+  .tokuten-period .cap { font-size: 12.5px; color: #fff; opacity: 0.85; margin-bottom: 4px; }
+  .tokuten-period .range { font-size: 16px; font-weight: 700; color: #fff; }
+  .tokuten-closing {
+    margin: 18px 0 0;
+    text-align: center;
+    font-size: 13px;
+    color: #fff;
+    opacity: 0.9;
+    line-height: 1.8;
+  }
+
+  /* 店舗検索(THE SALE LPの仕組みをこのLPの配色・フォントに合わせて移植) */
+  .store-section { padding: 48px 20px 56px; text-align: center; }
+  .store-title {
+    font-size: clamp(28px, 7.8vw, 34px); font-weight: 900; color: var(--main);
+    text-align: center; margin: 0 0 14px;
+  }
+  .shop-intro {
+    font-size: 14px; color: #555; line-height: 1.8; margin-bottom: 6px;
+  }
+  .shop-intro-note {
+    font-size: 12px; color: var(--text); margin-bottom: 22px;
+  }
+  .shop-search-box {
+    background: #F7F7F5; border-radius: 16px;
+    max-width: 420px; margin: 0 auto 28px;
+    padding: 22px 18px;
+  }
+  .shop-filter-accordion {
+    max-width: 420px; margin: 0 auto 20px; text-align: left;
+    background: #fff; border: 1.5px solid #ddd; border-radius: 14px;
+    overflow: hidden; transition: border-color .2s;
+  }
+  .shop-filter-toggle {
+    display: flex; align-items: center; gap: 10px; width: 100%;
+    background: none; border: none; padding: 14px 18px;
+    font-size: 14px; font-weight: 700; color: var(--text); text-align: left;
+    cursor: pointer; font-family: inherit;
+  }
+  .shop-filter-toggle-icon { color: var(--main); width: 18px; height: 18px; flex-shrink: 0; display: flex; }
+  .shop-filter-toggle-label { flex: 1; }
+  .shop-filter-toggle-chevron { color: #999; font-size: 12px; transition: transform .25s; }
+  .shop-filter-accordion.open .shop-filter-toggle-chevron { transform: rotate(180deg); }
+  .shop-filter-panel {
+    max-height: 0; overflow: hidden;
+    border-top: 0 solid #eee; transition: max-height .3s ease;
+  }
+  .shop-filter-accordion.open .shop-filter-panel { max-height: 900px; border-top-width: 1px; }
+  .shop-filter-panel-inner { padding: 18px 16px; }
+  .shop-filter-group { margin-bottom: 18px; }
+  .shop-filter-group:last-child { margin-bottom: 0; }
+  .shop-filter-group-title { margin: 0 0 10px; font-size: 13px; font-weight: 900; color: var(--text); }
+  .shop-filter-checks { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .shop-filter-check {
+    display: flex; align-items: center; gap: 10px;
+    border: 1.5px solid #e2e2e2; border-radius: 10px; padding: 12px 14px;
+    font-size: 13.5px; color: #333; cursor: pointer; user-select: none;
+    transition: border-color .2s;
+  }
+  .shop-filter-check:hover { border-color: var(--main); }
+  .shop-filter-check input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--main); cursor: pointer; flex-shrink: 0; }
+  .shop-pref-tabs {
+    display: flex; flex-wrap: nowrap; justify-content: flex-start; gap: 8px;
+    max-width: 100%; margin: 0 auto 20px;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    padding: 0 4px 4px;
+  }
+  .shop-pref-tab {
+    display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0;
+    padding: 7px 13px; border: 1.5px solid #ddd; border-radius: 999px;
+    background: #fff; color: #555; font-size: 12px; font-weight: 700;
+    cursor: pointer; transition: all .2s; font-family: inherit; white-space: nowrap;
+  }
+  .shop-pref-tab:hover { border-color: var(--main); color: var(--main); }
+  .shop-pref-tab.active { background: var(--main); border-color: var(--main); color: #fff; }
+  .shop-pref-count {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 20px; height: 20px; padding: 0 4px;
+    background: rgba(0,0,0,0.08); border-radius: 999px; font-size: 11px;
+  }
+  .shop-pref-tab.active .shop-pref-count { background: rgba(255,255,255,0.25); }
+
+  .shop-geo-wrap { max-width: 340px; margin: 0 auto; }
+  .shop-geo-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
+    padding: 15px 18px; background: var(--main); color: #fff;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 15px; font-weight: 700; border: none; border-radius: 999px;
+    cursor: pointer; transition: background .2s;
+  }
+  .shop-geo-btn:hover { background: #2C4680; }
+  .shop-geo-btn:disabled { opacity: .6; cursor: default; }
+  .shop-geo-icon { width: 16px; height: 16px; flex-shrink: 0; }
+  .shop-divider { display: flex; align-items: center; gap: 12px; margin: 16px 0; color: #999; font-size: 13px; }
+  .shop-divider::before, .shop-divider::after { content: ''; flex: 1; height: 1px; background: #e0e0e0; }
+  .shop-search-form {
+    display: flex; align-items: center; justify-content: center;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .shop-zip-label { font-size: 17px; font-weight: 700; color: var(--text); }
+  .shop-zip-input {
+    width: 74px; padding: 11px 14px;
+    font-size: 17px; font-weight: 700; text-align: center;
+    border: 2px solid #e0e0e0; border-radius: 8px;
+    font-family: inherit; color: var(--text);
+    transition: border-color .2s;
+  }
+  .shop-zip-input-lg { width: 92px; }
+  .shop-zip-input:focus { outline: none; border-color: var(--main); }
+  .shop-zip-sep { font-size: 17px; font-weight: 700; color: #888; }
+  .shop-search-btn {
+    padding: 11px 24px;
+    background: var(--main); color: #fff;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 15px; font-weight: 700;
+    border: none; border-radius: 999px; cursor: pointer;
+    transition: background .2s;
+  }
+  .shop-search-btn:hover { background: #2C4680; }
+  .shop-count { font-size: 14px; font-weight: 700; color: #555; margin-bottom: 14px; }
+  .shop-count-zip { font-weight: 900; color: var(--main); }
+  .shop-count-note { display: inline-block; margin-top: 4px; font-size: 11px; color: #888; }
+  .shop-results { text-align: left; margin-bottom: 8px; }
+  .shop-initial, .shop-more-list { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  .shop-more-list { display: none; margin-top: 14px; }
+  .shop-more-list.open { display: grid; }
+  .shop-more-wrap { position: relative; text-align: center; }
+  .shop-more-list-outer { display: none; position: relative; margin-top: 14px; }
+  .shop-more-list-outer.open { display: block; }
+  .shop-more-list-outer .shop-more-list { display: grid !important; grid-template-columns: 1fr; gap: 14px; }
+  .shop-more-btn {
+    display: inline-block; margin: 20px auto 0; padding: 4px 2px;
+    background: none; border: none; color: var(--main);
+    font-size: 14px; font-weight: 700; letter-spacing: .04em; cursor: pointer;
+    transition: opacity .2s; text-decoration: underline; text-underline-offset: 4px;
+  }
+  .shop-more-btn:hover { opacity: .7; }
+  .shop-more-btn-text::after { content: ' \25bc'; font-size: 1.2em; margin-left: 6px; text-decoration: none; display: inline-block; }
+  .shop-more-btn.open .shop-more-btn-text::after { content: ' \25b2'; }
+  .shop-back-rail { display: none; }
+  .shop-card {
+    border: 1px solid #e0e0e0; border-radius: 12px; padding: 18px 20px; background: #fff;
+    transition: box-shadow .2s ease, border-color .2s ease;
+  }
+  .shop-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); border-color: rgba(57,92,163,0.35); }
+  .shop-card-name { font-size: 16px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+  .shop-card-addr { font-size: 12.5px; color: #888; margin-bottom: 12px; }
+  .shop-card-distance { font-size: 12.5px; color: var(--main); font-weight: 700; margin-bottom: 12px; }
+  .shop-card-distance strong { font-weight: 900; }
+  .shop-card-btns { display: flex; gap: 8px; }
+  .shop-btn-web, .shop-btn-tel { flex: 1; padding: 8px 0; text-align: center; font-size: 13.5px; font-weight: 900; border-radius: 6px; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all .2s; font-family: "Zen Maru Gothic", sans-serif; }
+  .shop-btn-web { background: var(--accent); color: var(--text); border: none; }
+  .shop-btn-web:hover { background: #e6c900; }
+  .shop-btn-tel { background: #fff; color: var(--main); border: 2px solid var(--main); }
+  .shop-btn-tel:hover { background: var(--main); color: #fff; }
+  .shop-btn-tel-num { font-size: 11px; font-weight: 700; }
+  .shop-hero-card {
+    background: #fff; border: 2.5px solid var(--main); border-radius: 12px; overflow: hidden;
+    display: flex; flex-direction: column; margin-bottom: 20px; box-shadow: 0 6px 20px rgba(57,92,163,0.12);
+  }
+  .shop-hero-photo { width: 100%; flex-shrink: 0; background: #f5f5f5; position: relative; overflow: hidden; min-height: 180px; }
+  .shop-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .shop-hero-photo-ph {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #e8e8e8 0%, #f5f5f5 100%); color: #999; font-size: 14px; letter-spacing: .1em;
+  }
+  .shop-hero-body { flex: 1; padding: 22px 20px; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+  .shop-hero-badge { color: var(--main); font-weight: 700; font-size: 13px; letter-spacing: .06em; margin-bottom: 8px; }
+  .shop-hero-name { font-size: 19px; font-weight: 900; color: var(--text); line-height: 1.3; margin-bottom: 12px; }
+  .shop-hero-addr { font-size: 13px; color: var(--text); margin-bottom: 10px; line-height: 1.6; }
+  .shop-hero-distance { font-size: 14px; color: var(--main); font-weight: 700; margin-bottom: 18px; }
+  .shop-hero-distance strong { font-size: 1.15em; font-weight: 900; }
+  .shop-hero-btns { display: flex; gap: 10px; }
+  .shop-hero-btn { flex: 1; padding: 12px 8px; text-align: center; font-size: 14px; font-weight: 900; text-decoration: none; border-radius: 6px; transition: all .2s; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: "Zen Maru Gothic", sans-serif; }
+  .shop-hero-btn-web { background: var(--accent); color: var(--text); border: 2px solid var(--accent); }
+  .shop-hero-btn-web:hover { background: #e6c900; border-color: #e6c900; }
+  .shop-hero-btn-tel { background: #fff; color: var(--main); border: 2px solid var(--main); }
+  .shop-hero-btn-tel:hover { background: var(--main); color: #fff; }
+  .shop-hero-btn-tel-num { font-size: 0.7em; font-weight: 700; }
+  .shop-others-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 14px; }
+  .shop-empty { text-align: center; color: #888; padding: 20px 16px; font-size: 14px; line-height: 1.7; }
+
+  /* 店舗検索: フローティング絞り込みバー */
+  .shop-filter-bar {
+    position: fixed; left: 50%; bottom: 16px; z-index: 900;
+    transform: translateX(-50%) translateY(14px);
+    opacity: 0; pointer-events: none;
+    transition: opacity .8s ease, transform .8s ease;
+    width: min(480px, 94vw);
+  }
+  .shop-filter-bar.visible { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+  .shop-filter-card {
+    background: #fff; border-radius: 18px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+    padding: 12px 16px;
+    display: flex; flex-direction: column; align-items: stretch; gap: 8px;
+  }
+  .shop-filter-count-row { display: flex; align-items: baseline; gap: 5px; flex-shrink: 0; white-space: nowrap; }
+  .shop-filter-count-num { font-family: "Zen Maru Gothic", sans-serif; font-size: 22px; font-weight: 900; color: var(--main); line-height: 1; }
+  .shop-filter-count-label { font-size: 12px; font-weight: 700; color: #555; }
+  .shop-filter-total { font-size: 11px; color: #999; }
+  .shop-filter-divider { display: none; }
+  .shop-filter-cond-wrap { flex: none; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+  .shop-filter-cond-label { font-size: 12px; color: #888; white-space: nowrap; flex-shrink: 0; }
+  .shop-filter-cond-empty { font-size: 12px; color: #888; }
+  .shop-filter-pills { display: flex; flex-wrap: wrap; gap: 6px 8px; }
+  .shop-filter-pill {
+    display: inline-flex; align-items: center; gap: 3px;
+    background: #f2f2f2; color: #333; font-size: 12px; font-weight: 700;
+    padding: 5px 5px 5px 12px; border-radius: 999px; white-space: nowrap;
+  }
+  .shop-filter-pill-x {
+    background: none; border: none; color: #999; font-size: 15px; line-height: 1;
+    cursor: pointer; padding: 3px 6px; font-family: inherit;
+  }
+  .shop-filter-pill-x:hover { color: var(--main); }
+  .shop-filter-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; width: 100%; }
+  .shop-filter-add-btn {
+    flex: 1;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #fff; color: var(--main); border: 2px solid var(--main);
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 12.5px; font-weight: 700; padding: 9px 16px; border-radius: 999px;
+    white-space: nowrap; transition: background .2s; cursor: pointer;
+  }
+  .shop-filter-add-btn:hover { background: #EAF0FA; }
+  .shop-filter-apply-btn {
+    flex: 1;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #2C4680; color: #fff; border: 2px solid #2C4680;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 12.5px; font-weight: 700; padding: 9px 16px; border-radius: 999px;
+    white-space: nowrap; text-decoration: none; transition: background .2s;
+  }
+  .shop-filter-apply-btn:hover { background: #1f3665; }
+  .shop-filter-clear-btn {
+    background: none; border: none; flex-shrink: 0; align-self: center; margin-top: 2px;
+    color: var(--main); font-size: 11.5px; text-decoration: underline; cursor: pointer;
+    font-family: inherit; text-underline-offset: 3px; white-space: nowrap;
+  }
+
+  /* 最終CTA */
+  .finalcta-section {
+    background: #fff;
+    padding: 56px 24px 64px;
+    text-align: center;
+  }
+  .finalcta-title {
+    margin: 0 0 16px;
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--main);
+    line-height: 1.5;
+  }
+  .finalcta-sub {
+    margin: 0 0 8px;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .finalcta-note {
+    margin: 0 0 28px;
+    font-size: 12.5px;
+    color: #888;
+  }
+  .finalcta-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .finalcta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    max-width: 280px;
+    padding: 15px;
+    border-radius: 999px;
+    text-align: center;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .finalcta-btn-primary { background: var(--accent); color: var(--text); }
+  .finalcta-btn-secondary { background: #fff; color: var(--main); border: 2px solid var(--main); }
+
+  /* フッター。最終CTAの白背景と地続きにして、境目の線が目立たないようにしている */
+  .page-footer {
+    background: #fff;
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .page-footer-logo {
+    display: inline-block;
+    width: 120px;
+    margin-bottom: 16px;
+  }
+  .page-footer-logo img { width: 100%; height: auto; display: block; }
+  .page-footer-company {
+    margin: 0 0 12px;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.9;
+  }
+  .page-footer-company a { color: #666; }
+  .page-footer-copyright {
+    margin: 0;
+    font-size: 11px;
+    color: #999;
+  }
+
+  /* PC版：固定サイドナビ・固定ロゴ */
+  .side-nav {
+    display: none;
+  }
+  .side-logo {
+    display: none;
+  }
+  .side-promo {
+    display: none;
+  }
+  .side-left-panel {
+    display: none;
+  }
+
+  @media (min-width: 600px) {
+    .page { max-width: 600px; }
+  }
+
+  @media (min-width: 1024px) {
+    body {
+      background: rgba(166, 205, 230, 0.2);
+    }
+    .side-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: fixed;
+      top: 50%;
+      right: calc((100vw - 390px) / 4 - 100px);
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 200px;
+    }
+    .side-nav a {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .side-nav a:hover {
+      color: var(--main);
+    }
+    .side-nav .side-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: "Zen Maru Gothic", sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+      text-align: center;
+      padding: 16px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .side-nav .side-cta:hover {
+      transform: translateY(-2px);
+    }
+    .side-nav .side-cta-secondary {
+      margin-top: 10px;
+      background: #fff;
+      color: var(--main);
+      border: 2px solid var(--main);
+      box-shadow: 0 6px 14px rgba(57,92,163,0.18);
+    }
+    .side-nav .side-cta-secondary:hover {
+      box-shadow: 0 10px 18px rgba(57,92,163,0.24);
+    }
+    .side-nav .side-cta-primary {
+      background: var(--accent);
+      color: var(--text);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    }
+    .side-nav .side-cta-primary:hover {
+      box-shadow: 0 6px 14px rgba(0,0,0,0.16);
+    }
+
+    /* 右側に固定CTAがあるため、FV内のCTA仮置きは非表示 */
+    .fv-cta-placeholder {
+      display: none;
+    }
+
+    /* 中央カラムを仕切り線で区切り、ロゴは左に固定表示。参考LP(眼鏡市場、実測389px)に合わせて幅を狭める */
+    .page {
+      max-width: 390px;
+      border-left: 1px solid #E3E6EA;
+      border-right: 1px solid #E3E6EA;
+    }
+    /* 左側の帯全体をこのコンテナで固定表示し、中の要素はflexで水平中央に揃える
+       (以前は要素ごとにleftの位置を計算していたが、画像サイズを変えるたびにズレる方式だったため撤廃) */
+    .side-left-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: calc((100vw - 390px) / 2);
+      z-index: 5;
+    }
+    .side-logo {
+      display: block;
+      margin-top: 300px;
+      /* ロゴ画像は左右に透明な余白があり、下のバッジ(ほぼ余白なし)と並べると
+         同じwidthでも見た目のロゴマークが小さく見えるため、幅を広げて実寸を揃えている */
+      width: 286px;
+    }
+    .side-logo a {
+      display: block;
+    }
+    .side-logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .fv-logo {
+      display: none;
+    }
+    .fv {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    /* 左側の帯に置く、下取りキャンペーンの小さい正方形バッジ */
+    .side-promo {
+      display: block;
+      margin-top: 43px;
+      width: 240px;
+    }
+    .side-promo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    /* 絞り込みバーの横幅を中央カラム(.page、この幅で固定)と揃える */
+    .shop-filter-bar {
+      width: 390px;
+    }
+  }
+</style>
+</head>
+<body class="preview-locked">
+
+  <div id="preview-gate" class="preview-gate">
+    <form id="preview-gate-form" class="preview-gate-box">
+      <p class="preview-gate-title">社内レビュー用プレビュー</p>
+      <p class="preview-gate-desc">パスワードを入力してください</p>
+      <input type="password" id="preview-gate-input" class="preview-gate-input" autocomplete="off">
+      <button type="submit" class="preview-gate-button">開く</button>
+      <p id="preview-gate-error" class="preview-gate-error" style="display:none;">パスワードが違います</p>
+    </form>
+  </div>
+
+  <script>
+  // 社内レビュー用パスワードゲート(簡易・本番公開時は削除すること)
+  (function () {
+    var PASSWORD = 'TORIUKE2026';
+    var STORAGE_KEY = 'toriukepreview_unlocked';
+    var gate = document.getElementById('preview-gate');
+    var form = document.getElementById('preview-gate-form');
+    var input = document.getElementById('preview-gate-input');
+    var error = document.getElementById('preview-gate-error');
+
+    function unlock() {
+      document.body.classList.remove('preview-locked');
+      gate.style.display = 'none';
+    }
+
+    if (sessionStorage.getItem(STORAGE_KEY) === 'true') {
+      unlock();
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (input.value === PASSWORD) {
+        sessionStorage.setItem(STORAGE_KEY, 'true');
+        unlock();
+      } else {
+        error.style.display = 'block';
+        input.value = '';
+        input.focus();
+      }
+    });
+  })();
+  </script>
+
+  <!-- PC版：左固定パネル（ロゴ＋下取りキャンペーンバッジ、水平中央揃え） -->
+  <div class="side-left-panel">
+    <div class="side-logo">
+      <a href="https://www.aimegane.com/" target="_blank" rel="noopener">
+        <img src="img/aimegane_logo.png" alt="アイメガネ">
+      </a>
+    </div>
+
+    <div class="side-promo">
+      <img src="img/promo-badge.png" alt="メガネの下取りキャンペーン実施中 11/12(木)まで">
+    </div>
+  </div>
+
+  <!-- PC版：右側固定ナビ＋CTA（各セクション未作成のため仮リンク） -->
+  <nav class="side-nav">
+    <a href="#sec-fv">TOP</a>
+    <a href="#sec-nayami">こんなお悩みありませんか?</a>
+    <a href="#sec-tokuten">今だけ特典</a>
+    <a href="#sec-store">お近くの店舗</a>
+    <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="side-cta side-cta-secondary">
+      店舗一覧へ<span class="cta-arrow">▶</span>
+    </a>
+    <a href="#sec-store" class="side-cta side-cta-primary">無料相談はこちら<span class="cta-arrow">▶</span></a>
+  </nav>
+
+  <div class="page">
+
+    <section class="fv" id="sec-fv">
+
+      <!-- モバイル版：ロゴはヘッダーとして中央上部に表示（PC版は左固定ロゴを使用） -->
+      <div class="fv-logo">
+        <a href="https://www.aimegane.com/" target="_blank" rel="noopener">
+          <img src="img/aimegane_logo.png" alt="アイメガネ">
+        </a>
+      </div>
+
+      <div class="fv-visual">
+        <h1 class="sr-only">その疲れ、お使いのメガネが原因かも？</h1>
+        <img src="img/fv-composite.png" alt="メガネの不調に悩む男女のイラスト">
+      </div>
+
+      <a href="#sec-store" class="fv-cta-placeholder">無料相談はこちら<span class="cta-arrow">▶</span></a>
+    </section>
+
+    <section class="nayami-section" id="sec-nayami">
+      <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+          <path d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,50 L1440,100 L0,100 Z" fill="#A3C0E0"></path>
+        </svg>
+      </div>
+      <div class="nayami-card">
+        <img src="img/nayami-card-1.png" alt="こんなこと、ありませんか？ スマホやパソコンを長時間使用すると、目の疲れを感じる。アイメガネなら目のストレスを無料でチェック。調節機能解析装置「アコモレフ」を元に目の調節力やストレス度まで数値化し、楽に見えるメガネをご提案します。">
+      </div>
+      <div class="nayami-card">
+        <img src="img/nayami-card-2.png" alt="メガネがズレる、かけ心地が悪い。アイメガネなら眼鏡作製技能士がかけ心地を調整。お客様のお顔に合わせて、快適な装用感をサポートします。">
+      </div>
+      <div class="nayami-card">
+        <img src="img/nayami-card-3.png" alt="スマホや新聞など細かい文字が見にくい。アイメガネなら15項目の診断で、ぴったりの見え方に。普段よく見るもの・過ごし方をヒアリング。生活スタイルに合ったレンズ・度数をご提案します。">
+      </div>
+    </section>
+    <section class="tokuten-section" id="sec-tokuten">
+      <p class="tokuten-title">今だけ特典</p>
+
+      <div class="tokuten-card">
+        <p class="tokuten-campaign-name">メガネの下取り<span class="tokuten-campaign-name-sub">キャンペーン</span></p>
+
+        <p class="tokuten-offer-lead">メガネ一式ご購入で</p>
+        <p class="tokuten-offer-amount">1,100<small>円OFF</small></p>
+
+        <div class="tokuten-trade-illust">
+          <img src="img/tokuten-trade.png" alt="今お使いのメガネを下取りに出して、新しいメガネへ">
+        </div>
+
+        <p class="tokuten-reassure">家に眠っているメガネはありませんか？<br>古いメガネも、壊れていても大丈夫。<br>他店で購入したメガネも下取りできます。</p>
+
+        <div class="tokuten-divider"></div>
+
+        <p class="tokuten-offer2-tag">さらに</p>
+        <p class="tokuten-offer2-lead"><span class="tokuten-line-badge">LINE</span>お友だち登録で</p>
+        <p class="tokuten-offer2-amount">1,100<small>円OFF</small></p>
+
+        <div class="tokuten-divider"></div>
+
+        <p class="tokuten-total-label">最大</p>
+        <p class="tokuten-total-amount">2,200円OFF</p>
+      </div>
+
+      <div class="tokuten-period">
+        <p class="cap">キャンペーン期間</p>
+        <p class="range">2026年10月13日(火)〜11月12日(木)</p>
+      </div>
+
+      <p class="tokuten-closing">ご相談は無料です。<br>まずは今の見え方、一緒に解決しましょう。</p>
+    </section>
+
+    <section class="store-section" id="sec-store">
+      <h2 class="store-title">お近くの店舗を探す</h2>
+      <p class="shop-intro">現在地、または郵便番号(上3桁)で<br>お近くの店舗を探せます</p>
+      <p class="shop-intro-note">※WEB予約は、本日から3日後以降の日程でお取りいただけます。お急ぎの場合はお電話にてお問い合わせください。</p>
+
+      <div class="shop-search-box">
+        <div class="shop-geo-wrap">
+          <button type="button" class="shop-geo-btn" id="shopGeoBtn" onclick="searchByLocation()"><svg class="shop-geo-icon" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M256,0C139.563,0,45.172,94.406,45.172,210.828S210.875,512,256,512c45.109,0,210.828-184.75,210.828-301.172S372.438,0,256,0z M256,307.594c-53.453,0-96.766-43.328-96.766-96.766c0-53.453,43.313-96.766,96.766-96.766c53.438,0,96.766,43.313,96.766,96.766C352.766,264.266,309.438,307.594,256,307.594z"/></svg> 現在地から探す</button>
+          <div class="shop-divider"><span>または</span></div>
+        </div>
+
+        <div class="shop-search-form">
+          <span class="shop-zip-label">〒</span>
+          <input type="text" id="zip1" maxlength="3" placeholder="330" class="shop-zip-input" inputmode="numeric" autocomplete="off" aria-label="郵便番号の前3桁">
+          <span class="shop-zip-sep">-</span>
+          <input type="text" id="zip2" maxlength="4" placeholder="0846" class="shop-zip-input shop-zip-input-lg" inputmode="numeric" autocomplete="off" aria-label="郵便番号の後4桁(任意)">
+          <button type="button" class="shop-search-btn" onclick="searchShop()">検索</button>
+        </div>
+      </div>
+
+      <div class="shop-pref-tabs" id="shopPrefTabs"></div>
+
+      <div class="shop-filter-accordion" id="shopFilterAccordion">
+        <button type="button" class="shop-filter-toggle" id="shopFilterToggleBtn" onclick="toggleFilterAccordion()" aria-expanded="false">
+          <span class="shop-filter-toggle-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 12 22l-9-9V4a1 1 0 0 1 1-1h9l9 9a1 1 0 0 1 0 1.41Z"></path><circle cx="7" cy="7" r="1.2" fill="currentColor" stroke="none"></circle></svg></span>
+          <span class="shop-filter-toggle-label">取扱・資格・設備で絞り込む</span>
+          <span class="shop-filter-toggle-chevron">&#9660;</span>
+        </button>
+        <div class="shop-filter-panel" id="shopFilterPanel">
+          <div class="shop-filter-panel-inner">
+            <div class="shop-filter-group">
+              <p class="shop-filter-group-title">取扱商材</p>
+              <div class="shop-filter-checks">
+                <label class="shop-filter-check"><input type="checkbox" data-cat="products" value="コンタクト" onchange="toggleFilterCheck(this)">コンタクトレンズ取扱店</label>
+                <label class="shop-filter-check"><input type="checkbox" data-cat="products" value="補聴器" onchange="toggleFilterCheck(this)">補聴器取扱店</label>
+              </div>
+            </div>
+            <div class="shop-filter-group">
+              <p class="shop-filter-group-title">資格者在籍</p>
+              <div class="shop-filter-checks">
+                <label class="shop-filter-check"><input type="checkbox" data-cat="qualifications" value="1級眼鏡作製技能士" onchange="toggleFilterCheck(this)">1級眼鏡作製技能士</label>
+                <label class="shop-filter-check"><input type="checkbox" data-cat="qualifications" value="眼鏡作製技能士" onchange="toggleFilterCheck(this)">眼鏡作製技能士</label>
+                <label class="shop-filter-check"><input type="checkbox" data-cat="qualifications" value="認定補聴器技能者" onchange="toggleFilterCheck(this)">認定補聴器技能者</label>
+              </div>
+            </div>
+            <div class="shop-filter-group">
+              <p class="shop-filter-group-title">設備</p>
+              <div class="shop-filter-checks">
+                <label class="shop-filter-check"><input type="checkbox" data-cat="facilities" value="アコモレフ" onchange="toggleFilterCheck(this)">調節機能解析装置(アコモレフ)常設店</label>
+                <label class="shop-filter-check"><input type="checkbox" data-cat="facilities" value="AIフィッティングミラー" onchange="toggleFilterCheck(this)">AIフィッティングミラー</label>
+                <label class="shop-filter-check"><input type="checkbox" data-cat="facilities" value="深視力測定" onchange="toggleFilterCheck(this)">深視力測定</label>
+                <label class="shop-filter-check"><input type="checkbox" data-cat="facilities" value="防音室完備" onchange="toggleFilterCheck(this)">防音室完備</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p id="shop-count" class="shop-count" style="display:none;" role="status" aria-live="polite"></p>
+      <div id="shop-results" class="shop-results"></div>
+    </section>
+
+    <div class="shop-filter-bar" id="shopFilterBar">
+      <div class="shop-filter-card">
+        <div class="shop-filter-count-row" id="shopFilterCountRow"></div>
+        <div class="shop-filter-divider"></div>
+        <div class="shop-filter-cond-wrap" id="shopFilterCondWrap"></div>
+        <div class="shop-filter-actions">
+          <button type="button" class="shop-filter-add-btn" id="shopFilterAddBtn" onclick="toggleFilterPanel()">条件を追加</button>
+          <a href="#shop-results" class="shop-filter-apply-btn" id="shopFilterApplyBtn" style="display:none;">絞り込む</a>
+        </div>
+        <button type="button" class="shop-filter-clear-btn" id="shopFilterClearBtn" onclick="clearAllFilters()" style="display:none;">すべて解除</button>
+      </div>
+    </div>
+
+    <section class="finalcta-section" id="sec-cta">
+      <p class="finalcta-title">そのメガネ、<br>そのままにしていませんか？</p>
+      <p class="finalcta-sub">まずは無料相談で、<br>今のお悩みを一緒に解決しましょう。</p>
+      <p class="finalcta-note">メガネ下取り2,200円OFFキャンペーンは11/12(木)まで</p>
+      <div class="finalcta-btns">
+        <a href="#sec-store" class="finalcta-btn finalcta-btn-primary">無料相談はこちら<span class="cta-arrow">▶</span></a>
+        <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="finalcta-btn finalcta-btn-secondary">店舗一覧へ<span class="cta-arrow">▶</span></a>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <a href="https://www.aimegane.com/" target="_blank" rel="noopener" class="page-footer-logo">
+        <img src="img/aimegane_logo.png" alt="アイメガネ">
+      </a>
+      <p class="page-footer-company">
+        アイジャパン株式会社<br>
+        〒331-0812 埼玉県さいたま市北区宮原町1丁目505番地1<br>
+        お客様相談室:<a href="tel:0120210110">0120-21-0110</a>(受付10時〜18時、土日祝休)
+      </p>
+      <p class="page-footer-copyright">&copy; 2026 アイジャパン株式会社</p>
+    </footer>
+
+  </div>
+
+<script>
+// 店舗検索(THE SALE LPの仕組みをそのまま移植。アイメガネ全店・公式サイトで確認済みの確定データ)
+const SHOPS = [
+  { name:'アイメガネ本店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/01_honten.webp', zip:'331', addr:'〒331-8760 埼玉県さいたま市北区宮原町1-505-1', web:'https://www.aimegane.com/qualification/6395/', tel:'048-668-0001', lat:35.937226, lng:139.613603, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・深視力測定', },
+  { name:'アイメガネ与野イオン店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/02_yono_aeon.webp', zip:'338', addr:'〒338-0004 埼玉県さいたま市中央区本町西5-2-9', web:'https://www.aimegane.com/qualification/6938/', tel:'048-851-0001', lat:35.890863, lng:139.612513, products:'メガネ・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・防音室完備', },
+  { name:'アイメガネ与野本町店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/04_yonohonmachi.webp', zip:'338', addr:'〒338-0003 埼玉県さいたま市中央区本町東1-6-3', web:'https://www.aimegane.com/qualification/7355/', tel:'048-852-0001', lat:35.878821, lng:139.622358, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・防音室完備', },
+  { name:'アイメガネ南浦和店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/1-南浦和外観修正.jpg', zip:'336', addr:'〒336-0017 埼玉県さいたま市南区南浦和3-2-5', web:'https://www.aimegane.com/qualification/6340/', tel:'048-885-0001', lat:35.846721, lng:139.669621, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・防音室完備', },
+  { name:'アイメガネ岩槻駅前通り店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/岩槻店舗外観写真.jpg', zip:'339', addr:'〒339-0055 埼玉県さいたま市岩槻区東町1-12', web:'https://www.aimegane.com/qualification/7356/', tel:'048-757-0001', lat:35.947905, lng:139.695562, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・深視力測定', },
+  { name:'アイメガネ上尾東口駅前店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/06_ageo.webp', zip:'362', addr:'〒362-0036 埼玉県上尾市宮本町4-18', web:'https://www.aimegane.com/qualification/7153/', tel:'048-773-0001', lat:35.97386, lng:139.587324, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー', },
+  { name:'アイメガネ鴻巣東駅通り店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/IMG_0363.jpg', zip:'365', addr:'〒365-0039 埼玉県鴻巣市東2-6-2', web:'https://www.aimegane.com/qualification/6939/', tel:'048-542-0001', lat:36.0637, lng:139.5241, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・深視力測定・防音室完備', },
+  { name:'アイメガネ鴻巣ウニクス店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/25_kounosu_uniqus.webp', zip:'369', addr:'〒369-0116 埼玉県鴻巣市北新宿225-1', web:'https://www.aimegane.com/qualification/7358/', tel:'048-547-0001', lat:36.112509, lng:139.436912, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー', },
+  { name:'アイメガネ熊谷ティアラ店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/08_kumgaya.webp', zip:'360', addr:'〒360-0037 埼玉県熊谷市筑波3-202', web:'https://www.aimegane.com/qualification/7359/', tel:'048-525-0001', lat:36.139479, lng:139.389063, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー', },
+  { name:'アイメガネ深谷上柴西店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/202506改装深谷上芝.jpg', zip:'366', addr:'〒366-0052 埼玉県深谷市上柴町西3-7-9', web:'https://www.aimegane.com/qualification/6681/', tel:'048-572-0001', lat:36.18414, lng:139.300285, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・深視力測定・防音室完備', },
+  { name:'アイメガネ富士見鶴馬店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/14_fujimi.webp', zip:'354', addr:'〒354-0021 埼玉県富士見市鶴馬1-25-1', web:'https://www.aimegane.com/qualification/7158/', tel:'049-251-0001', lat:35.851697, lng:139.541735, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・深視力測定', },
+  { name:'アイメガネ川越的場店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/kawagoematoba-1.jpg', zip:'350', addr:'〒350-1101 埼玉県川越市的場823-1', web:'https://www.aimegane.com/qualification/7159/', tel:'049-233-0001', lat:35.914154, lng:139.42809, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・深視力測定', },
+  { name:'アイメガネ坂戸にっさい店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/IMG_7521.jpg', zip:'350', addr:'〒350-0269 埼玉県坂戸市にっさい花みず木3-11-2', web:'https://www.aimegane.com/qualification/6940/', tel:'049-280-0001', lat:35.969359, lng:139.368666, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー', },
+  { name:'アイメガネ東松山松本町店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/東松山2026.jpg', zip:'355', addr:'〒355-0014 埼玉県東松山市松本町2-7-1', web:'https://www.aimegane.com/qualification/7361/', tel:'0493-27-0001', lat:36.039377, lng:139.41351, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー', },
+  { name:'アイメガネ嵐山バイパス店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/19_ranzan.webp', zip:'355', addr:'〒355-0215 埼玉県比企郡嵐山町平澤2610', web:'https://www.aimegane.com/qualification/7362/', tel:'0493-61-0001', lat:36.044584, lng:139.314798, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・深視力測定', },
+  { name:'アイメガネ小川大塚店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/21_ogawa.webp', zip:'355', addr:'〒355-0328 埼玉県比企郡小川町大塚541-1', web:'https://www.aimegane.com/qualification/7363/', tel:'0493-73-0001', lat:36.058609, lng:139.254464, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'AIフィッティングミラー', },
+  { name:'アイメガネ寄居店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/22_yorii.webp', zip:'369', addr:'〒369-1203 埼玉県大里郡寄居町寄居1615-1', web:'https://www.aimegane.com/qualification/7364/', tel:'048-580-0001', lat:36.120921, lng:139.186708, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・防音室完備', },
+  { name:'アイメガネ日高店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/16_hidaka.webp', zip:'350', addr:'〒350-1231 埼玉県日高市鹿山301-6', web:'https://www.aimegane.com/qualification/5078/', tel:'042-986-0001', lat:35.896285, lng:139.337031, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・防音室完備', },
+  { name:'アイメガネイオンタウン毛呂山店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/26_aeontown_moroyama.webp', zip:'350', addr:'〒350-0436 埼玉県入間郡毛呂山町川角58-3', web:'https://www.aimegane.com/qualification/6941/', tel:'049-293-0001', lat:35.946429, lng:139.311799, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・防音室完備', },
+  { name:'アイメガネ秩父中宮地店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/23_chichibu.webp', zip:'368', addr:'〒368-0022 埼玉県秩父市中宮地町5-7', web:'https://www.aimegane.com/qualification/6682/', tel:'0494-21-0001', lat:36.0043, lng:139.08865, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・深視力測定・防音室完備', },
+  { name:'アイメガネ川口赤井店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A-3.jpg', zip:'334', addr:'〒334-0073 埼玉県川口市赤井4-16-19', web:'https://www.aimegane.com/qualification/7154/', tel:'048-280-0001', lat:35.829315, lng:139.738067, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー', },
+  { name:'アイメガネエキア谷塚店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/28_ekiayatuka.webp', zip:'340', addr:'〒340-0028 埼玉県草加市谷塚1-1-23', web:'https://www.aimegane.com/qualification/7156/', tel:'048-924-0001', lat:35.81447, lng:139.799081, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・深視力測定・防音室完備', },
+  { name:'アイメガネ三郷南口駅前通り店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/11_misato_minamiguchi.webp', zip:'341', addr:'〒341-0024 埼玉県三郷市三郷1-27-7', web:'https://www.aimegane.com/qualification/7360/', tel:'048-949-0002', lat:35.841637, lng:139.881253, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー', },
+  { name:'アイメガネ新越谷店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/27_shinkosigaya.webp', zip:'343', addr:'〒343-0857 埼玉県越谷市新越谷1-70-1', web:'https://www.aimegane.com/qualification/6133/', tel:'048-990-0001', lat:35.872129, lng:139.781357, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・防音室完備', },
+  { name:'アイメガネ蓮田関山店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/05_hasuda.webp', zip:'349', addr:'〒349-0121 埼玉県蓮田市関山2-6-13', web:'https://www.aimegane.com/qualification/7152/', tel:'048-764-0001', lat:35.989131, lng:139.646368, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー', },
+  { name:'アイメガネ幸手エムズタウン店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/12_satte.webp', zip:'340', addr:'〒340-0155 埼玉県幸手市上高野824', web:'https://www.aimegane.com/qualification/7157/', tel:'0480-44-0001', lat:36.066043, lng:139.71615, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・防音室完備', },
+  { name:'アイメガネ羽生店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/13_hanyu.webp', zip:'348', addr:'〒348-0053 埼玉県羽生市南7-1-1', web:'https://www.aimegane.com/qualification/6937/', tel:'048-563-0001', lat:36.166224, lng:139.537497, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー', },
+  { name:'アイメガネ小平小川町店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/kodaira.png', zip:'187', addr:'〒187-0032 東京都小平市小川町2-1328', web:'https://www.aimegane.com/qualification/6683/', tel:'042-347-6877', lat:35.73041, lng:139.473441, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー', },
+  { name:'アイメガネザ・マーケットプレイス東大和店', photo:'https://www.aimegane.com/wp-content/uploads/2024/10/IMG_7097-修正.jpg', zip:'207', addr:'〒207-0021 東京都東大和市立野3-1344-1', web:'https://www.aimegane.com/qualification/6684/', tel:'042-843-7011', lat:35.751, lng:139.442, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・防音室完備', },
+  { name:'アイメガネ町田木曽店', photo:'https://www.aimegane.com/wp-content/uploads/2025/12/町田木曽外観.jpg', zip:'194', addr:'〒194-0036 東京都町田市木曽東3-8-1', web:'https://www.aimegane.com/qualification/7679/', tel:'042-724-0201', lat:35.561476, lng:139.425796, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・防音室完備', },
+  { name:'アイメガネおもちゃのまち西口店', photo:'https://www.aimegane.com/wp-content/uploads/2025/10/omocha-2-1.jpg', zip:'321', addr:'〒321-0206 栃木県下都賀郡壬生町あけぼの町5-5', web:'https://www.aimegane.com/qualification/7678/', tel:'0282-85-0001', lat:36.47107, lng:139.825802, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・防音室完備', },
+  { name:'アイメガネ宇都宮錦店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/31_utunomiyanisiki.webp', zip:'321', addr:'〒321-0967 栃木県宇都宮市錦3-9-11', web:'https://www.aimegane.com/qualification/7433/', tel:'028-627-0001', lat:36.574698, lng:139.89493, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・防音室完備', },
+  { name:'アイメガネ今市センショープラザ店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/32_imaichi.webp', zip:'321', addr:'〒321-2405 栃木県日光市芹沼1448-1', web:'https://www.aimegane.com/qualification/6680/', tel:'0288-23-0001', lat:36.741119, lng:139.70774, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー', },
+  { name:'アイメガネ八千代台ユアエルム店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/35_yachiyodai.webp', zip:'276', addr:'〒276-0032 千葉県八千代市八千代台東1-1-10', web:'https://www.aimegane.com/qualification/7365/', tel:'047-485-0001', lat:35.700303, lng:140.073005, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・防音室完備', },
+  { name:'アイメガネ古河イオン店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/36_kogaaeon.webp', zip:'306', addr:'〒306-0012 茨城県古河市旭町1-2-17', web:'https://www.aimegane.com/qualification/7366/', tel:'0280-33-0001', lat:36.197244, lng:139.716929, products:'メガネ・コンタクト・補聴器', qualifications:'1級眼鏡作製技能士・眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー', },
+  { name:'アイメガネ藤岡店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/fujioka-2.jpg', zip:'375', addr:'〒375-0024 群馬県藤岡市藤岡937-1', web:'https://www.aimegane.com/qualification/7367/', tel:'0274-22-0001', lat:36.253775, lng:139.074382, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー', },
+  { name:'アイメガネ焼津石津店', photo:'https://www.aimegane.com/wp-content/uploads/2024/03/38_yaizu.webp', zip:'425', addr:'〒425-0041 静岡県焼津市石津3-19-16', web:'https://www.aimegane.com/qualification/7369/', tel:'054-656-0001', lat:34.843318, lng:138.31291, products:'メガネ・コンタクト・補聴器', qualifications:'眼鏡作製技能士・認定補聴器技能者', facilities:'調節機能解析装置(アコモレフ)常設店・AIフィッティングミラー・深視力測定', },
+];
+
+// 郵便番号3桁プレフィックス→[緯度,経度]概算マップ(ユーザー入力位置の推定用)
+const ZIP_CENTERS = {
+  '100':[35.685,139.753],'101':[35.698,139.770],'102':[35.689,139.744],'103':[35.685,139.781],'104':[35.669,139.769],'105':[35.658,139.751],'106':[35.655,139.730],'107':[35.663,139.729],'108':[35.642,139.750],'110':[35.712,139.777],'111':[35.710,139.800],'112':[35.721,139.745],'113':[35.720,139.762],'114':[35.751,139.733],'115':[35.775,139.720],'116':[35.736,139.762],'120':[35.776,139.804],'121':[35.786,139.822],'130':[35.703,139.814],'131':[35.711,139.821],'132':[35.708,139.878],'133':[35.709,139.868],'134':[35.677,139.875],'135':[35.652,139.819],'136':[35.669,139.826],'140':[35.609,139.731],'141':[35.625,139.729],'142':[35.611,139.715],'143':[35.605,139.729],'144':[35.561,139.716],'145':[35.587,139.688],'146':[35.562,139.675],'150':[35.658,139.702],'151':[35.677,139.701],'152':[35.633,139.699],'153':[35.640,139.693],'154':[35.648,139.670],'155':[35.659,139.659],'156':[35.641,139.643],'157':[35.653,139.629],'158':[35.608,139.643],'160':[35.694,139.703],'161':[35.708,139.715],'162':[35.699,139.725],'163':[35.690,139.692],'164':[35.694,139.666],'165':[35.706,139.665],'166':[35.700,139.640],'167':[35.705,139.622],'168':[35.684,139.634],'169':[35.704,139.702],'170':[35.733,139.712],'171':[35.728,139.714],'173':[35.751,139.709],'174':[35.752,139.686],'175':[35.777,139.686],'176':[35.736,139.652],'177':[35.734,139.627],'178':[35.731,139.605],'179':[35.757,139.616],'180':[35.705,139.580],'181':[35.684,139.568],'182':[35.651,139.545],'183':[35.680,139.479],'184':[35.698,139.481],'185':[35.702,139.464],'186':[35.738,139.438],'187':[35.729,139.478],'188':[35.722,139.455],'189':[35.763,139.477],'190':[35.696,139.414],'191':[35.659,139.339],'192':[35.663,139.338],'193':[35.640,139.339],'194':[35.559,139.437],'195':[35.635,139.441],'196':[35.800,139.386],'197':[35.795,139.348],'198':[35.799,139.210],'201':[35.697,139.546],'202':[35.714,139.548],'203':[35.756,139.544],'204':[35.799,139.478],'205':[35.785,139.391],'206':[35.650,139.442],'207':[35.754,139.436],'208':[35.717,139.407],'211':[35.571,139.664],'212':[35.538,139.697],'213':[35.606,139.577],'214':[35.592,139.556],'215':[35.559,139.563],'216':[35.579,139.542],'220':[35.453,139.634],'221':[35.485,139.605],'222':[35.504,139.627],'223':[35.539,139.635],'224':[35.537,139.592],'225':[35.531,139.545],'226':[35.515,139.522],'227':[35.544,139.495],'230':[35.521,139.702],'231':[35.442,139.642],'232':[35.430,139.620],'233':[35.393,139.586],'234':[35.398,139.553],'235':[35.384,139.615],'236':[35.365,139.638],'237':[35.339,139.657],'238':[35.275,139.661],'239':[35.281,139.678],'240':[35.451,139.582],'241':[35.493,139.508],'243':[35.438,139.343],'245':[35.475,139.527],'250':[35.265,139.154],'252':[35.530,139.387],'253':[35.331,139.406],'254':[35.322,139.341],'257':[35.301,139.148],'270':[35.771,139.918],'271':[35.781,139.901],'272':[35.724,139.932],'273':[35.697,139.983],'274':[35.697,140.027],'275':[35.687,140.027],'276':[35.722,140.101],'277':[35.864,139.962],'278':[35.820,139.912],'279':[35.642,139.900],'290':[35.495,140.124],'295':[35.082,140.111],'296':[35.168,140.166],'298':[35.134,140.283],'299':[35.519,140.222],'300':[35.976,140.140],'301':[35.908,140.027],'302':[35.931,139.989],'305':[36.103,140.117],'306':[36.178,139.698],'307':[36.193,139.742],'308':[36.177,139.997],'309':[36.108,140.136],'310':[36.343,140.448],'311':[36.373,140.408],'312':[36.384,140.478],'313':[36.385,140.540],'314':[36.028,140.487],'315':[36.118,140.407],'316':[36.383,140.564],'317':[36.517,140.663],'318':[36.569,140.651],'319':[36.394,140.443],'320':[36.553,139.876],'321':[36.554,139.889],'322':[36.726,139.853],'323':[36.370,139.731],'324':[36.962,139.910],'325':[36.979,139.919],'326':[36.380,139.605],'327':[36.333,139.569],'328':[36.381,139.671],'329':[36.575,139.799],'330':[35.903,139.665],'331':[35.942,139.623],'332':[35.828,139.743],'333':[35.861,139.748],'334':[35.823,139.765],'335':[35.796,139.685],'336':[35.847,139.671],'337':[35.924,139.701],'338':[35.883,139.635],'339':[35.949,139.686],'340':[35.813,139.803],'341':[35.819,139.866],'342':[35.987,139.799],'343':[35.875,139.795],'344':[35.899,139.716],'345':[36.075,139.741],'346':[36.080,139.657],'347':[36.140,139.600],'348':[36.171,139.549],'349':[35.994,139.674],'350':[35.931,139.471],'351':[35.795,139.591],'352':[35.796,139.570],'353':[35.814,139.578],'354':[35.846,139.543],'355':[36.032,139.408],'356':[35.869,139.557],'357':[35.850,139.317],'358':[35.878,139.534],'359':[35.784,139.432],'360':[36.139,139.395],'361':[36.056,139.497],'362':[35.974,139.596],'363':[36.008,139.566],'364':[35.994,139.554],'365':[36.066,139.522],'366':[36.185,139.288],'367':[36.248,139.199],'368':[36.007,139.085],'369':[36.117,139.203],'370':[36.322,139.006],'371':[36.390,139.061],'372':[36.311,139.325],'373':[36.302,139.371],'374':[36.256,139.192],'375':[36.256,139.077],'376':[36.402,139.333],'377':[36.480,138.996],'378':[36.644,139.061],'379':[36.467,138.879],'380':[36.649,138.195],'381':[36.605,138.195],'400':[35.664,138.568],'410':[35.119,138.906],'411':[35.117,138.907],'412':[35.240,138.937],'413':[34.975,138.934],'414':[34.968,139.099],'415':[34.761,138.946],'416':[35.121,138.685],'417':[35.172,138.610],'418':[35.216,138.612],'419':[35.315,138.252],'420':[34.975,138.383],'421':[34.866,138.274],'422':[34.944,138.425],'423':[34.974,138.485],'424':[35.012,138.488],'425':[34.863,138.318],'426':[34.897,138.260],'427':[34.816,138.232],'428':[34.987,138.149],'429':[34.761,137.961],'430':[34.710,137.727],'431':[34.712,137.721],'432':[34.710,137.714],'433':[34.760,137.751],'434':[34.776,137.811],'435':[34.720,137.775],'436':[34.801,137.999],'437':[34.786,138.039],'438':[34.728,137.852],'439':[34.790,138.012],'440':[34.773,137.389]
+};
+
+// 都道府県による絞り込み(住所テキストから都道府県名を判定)
+const shopState = {
+  pref:'', products:new Set(), qualifications:new Set(), facilities:new Set(),
+  mode:'initial', lastLat:null, lastLng:null, lastLabel:''
+};
+const FILTER_LABELS = {
+  'コンタクト':'コンタクトレンズ取扱店', '補聴器':'補聴器取扱店',
+  'アコモレフ':'調節機能解析装置(アコモレフ)常設店'
+};
+function getPref(s){
+  const m = s.addr.match(/(北海道|東京都|京都府|大阪府|[一-龠]{2,3}県)/);
+  return m ? m[0] : '';
+}
+function filteredShops(){
+  return SHOPS.filter(s=>{
+    if(shopState.pref && getPref(s)!==shopState.pref) return false;
+    if(shopState.products.size && ![...shopState.products].some(v=>s.products.includes(v))) return false;
+    if(shopState.qualifications.size && ![...shopState.qualifications].some(v=>s.qualifications.includes(v))) return false;
+    if(shopState.facilities.size && ![...shopState.facilities].some(v=>s.facilities.includes(v))) return false;
+    return true;
+  });
+}
+function toggleFilterCheck(el){
+  const cat=el.dataset.cat;
+  if(el.checked) shopState[cat].add(el.value);
+  else shopState[cat].delete(el.value);
+  refreshResults();
+}
+function getActiveConditions(){
+  const conds=[];
+  if(shopState.pref) conds.push({cat:'pref', value:shopState.pref, label:shopState.pref});
+  ['products','qualifications','facilities'].forEach(cat=>{
+    shopState[cat].forEach(v=>conds.push({cat, value:v, label:FILTER_LABELS[v]||v}));
+  });
+  return conds;
+}
+function removeCondition(cat,value){
+  if(cat==='pref'){
+    shopState.pref='';
+    renderPrefTabs();
+  } else {
+    shopState[cat].delete(value);
+    const cb=document.querySelector(`.shop-filter-check input[data-cat="${cat}"][value="${value}"]`);
+    if(cb) cb.checked=false;
+  }
+  refreshResults();
+}
+function clearAllFilters(){
+  shopState.pref='';
+  shopState.products.clear();
+  shopState.qualifications.clear();
+  shopState.facilities.clear();
+  renderPrefTabs();
+  document.querySelectorAll('.shop-filter-check input[type="checkbox"]').forEach(cb=>cb.checked=false);
+  refreshResults();
+}
+function renderPrefTabs(){
+  const wrap=document.getElementById('shopPrefTabs');
+  if(!wrap)return;
+  const order=[];
+  const counts={};
+  SHOPS.forEach(s=>{
+    const p=getPref(s);
+    if(!(p in counts)){ counts[p]=0; order.push(p); }
+    counts[p]++;
+  });
+  let html=`<button type="button" class="shop-pref-tab${shopState.pref===''?' active':''}" onclick="selectPref('')">すべて<span class="shop-pref-count">${SHOPS.length}</span></button>`;
+  order.forEach(p=>{
+    html+=`<button type="button" class="shop-pref-tab${shopState.pref===p?' active':''}" onclick="selectPref('${p}')">${p}<span class="shop-pref-count">${counts[p]}</span></button>`;
+  });
+  wrap.innerHTML=html;
+}
+function selectPref(p){
+  shopState.pref=p;
+  renderPrefTabs();
+  refreshResults();
+}
+function toggleFilterAccordion(forceOpen){
+  const acc=document.getElementById('shopFilterAccordion');
+  const btn=document.getElementById('shopFilterToggleBtn');
+  if(!acc)return;
+  const open = forceOpen===true ? true : !acc.classList.contains('open');
+  acc.classList.toggle('open', open);
+  if(btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+function toggleFilterPanel(){
+  toggleFilterAccordion(true);
+  document.getElementById('shopFilterAccordion').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function refreshResults(){
+  if(shopState.mode==='search' && shopState.lastLat!=null){
+    renderSearchResult(shopState.lastLat, shopState.lastLng, shopState.lastLabel);
+  } else {
+    showInitialShops();
+  }
+}
+function updateFloatingBar(){
+  const countRow=document.getElementById('shopFilterCountRow');
+  const condWrap=document.getElementById('shopFilterCondWrap');
+  const applyBtn=document.getElementById('shopFilterApplyBtn');
+  const clearBtn=document.getElementById('shopFilterClearBtn');
+  const conds=getActiveConditions();
+  const matched=filteredShops().length;
+  if(countRow){
+    countRow.innerHTML = conds.length
+      ? `<span class="shop-filter-count-num">${matched}</span><span class="shop-filter-count-label">店舗該当</span><span class="shop-filter-total">/ 全${SHOPS.length}店舗</span>`
+      : `<span class="shop-filter-count-num">${SHOPS.length}</span><span class="shop-filter-count-label">店舗</span><span class="shop-filter-total">全${SHOPS.length}店舗を表示中</span>`;
+  }
+  if(condWrap){
+    condWrap.innerHTML = conds.length
+      ? `<span class="shop-filter-cond-label">検索条件:</span><div class="shop-filter-pills">${conds.map(c=>`<span class="shop-filter-pill">${c.label}<button type="button" class="shop-filter-pill-x" onclick="removeCondition('${c.cat}','${c.value}')" aria-label="絞り込みを解除">×</button></span>`).join('')}</div>`
+      : '<span class="shop-filter-cond-empty">絞り込み条件なし。</span>';
+  }
+  if(applyBtn) applyBtn.style.display = conds.length ? 'inline-flex' : 'none';
+  if(clearBtn) clearBtn.style.display = conds.length ? 'inline-block' : 'none';
+}
+function setupShopFilterBarVisibility(){
+  const bar=document.getElementById('shopFilterBar');
+  // 検索フォーム(現在地/郵便番号)の上にバーが重なって出てしまわないよう、
+  // セクション全体ではなく「店舗一覧」が見え始めてから表示する。
+  // また、次の最終CTAセクションがある程度画面に入ってきたら消す
+  // (最終CTAが短く店舗検索のすぐ下に続くため、店舗検索セクションの下端だけでは
+  //  最後までスクロールしてもバーが消えないケースがあり、CTA側の位置も見て判定する)。
+  const resultsEl=document.getElementById('shop-results');
+  const ctaSection=document.getElementById('sec-cta');
+  if(!bar||!resultsEl||!ctaSection)return;
+  function check(){
+    const r=resultsEl.getBoundingClientRect();
+    const ctaR=ctaSection.getBoundingClientRect();
+    const visible = r.top < window.innerHeight*0.85 && r.bottom > 80 && ctaR.top > window.innerHeight*0.45;
+    bar.classList.toggle('visible', visible);
+  }
+  window.addEventListener('scroll', check, {passive:true});
+  window.addEventListener('resize', check);
+  window.addEventListener('load', check);
+  check();
+  setTimeout(check, 800);
+}
+
+function haversineKm(lat1,lng1,lat2,lng2){
+  const toRad=d=>d*Math.PI/180;
+  const R=6371;
+  const dLat=toRad(lat2-lat1);
+  const dLng=toRad(lng2-lng1);
+  const a=Math.sin(dLat/2)**2+Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;
+  return 2*R*Math.asin(Math.sqrt(a));
+}
+function renderShops(list){
+  return list.map(s=>`
+    <div class="shop-card">
+      <p class="shop-card-name">${s.name}</p>
+      <p class="shop-card-addr">${s.addr}</p>
+      ${s.distanceKm!=null?`<p class="shop-card-distance">お住まいから約 <strong>${s.distanceKm.toFixed(1)} km</strong></p>`:''}
+      <div class="shop-card-btns">
+        <a href="${s.web}" target="_blank" rel="noopener" class="shop-btn-web">WEB予約</a>
+        <a href="tel:${s.tel.replace(/-/g,'')}" class="shop-btn-tel">電話予約<br><span class="shop-btn-tel-num">${s.tel}</span></a>
+      </div>
+    </div>
+  `).join('');
+}
+function renderHeroShop(s){
+  return `
+    <div class="shop-hero-card">
+      <div class="shop-hero-photo">${s.photo?`<img src="${s.photo}" alt="${s.name}" loading="lazy">`:`<div class="shop-hero-photo-ph"><span>📷 店舗写真</span></div>`}</div>
+      <div class="shop-hero-body">
+        <p class="shop-hero-badge">お客様に最も近い店舗</p>
+        <h3 class="shop-hero-name">${s.name}</h3>
+        <p class="shop-hero-addr">${s.addr}</p>
+        ${s.distanceKm!=null?`<p class="shop-hero-distance">お住まいから約 <strong>${s.distanceKm.toFixed(1)} km</strong></p>`:''}
+        <div class="shop-hero-btns">
+          <a href="${s.web}" target="_blank" rel="noopener" class="shop-hero-btn shop-hero-btn-web">WEB予約</a>
+          <a href="tel:${s.tel.replace(/-/g,'')}" class="shop-hero-btn shop-hero-btn-tel">電話予約<br><span class="shop-hero-btn-tel-num">${s.tel}</span></a>
+        </div>
+      </div>
+    </div>
+  `;
+}
+function showInitialShops(){
+  shopState.mode='initial';
+  const resEl=document.getElementById('shop-results');
+  const countEl=document.getElementById('shop-count');
+  const shops=filteredShops();
+  const initial=shops.slice(0,4);
+  const rest=shops.slice(4);
+  countEl.style.display='none';
+  resEl.innerHTML = shops.length===0 ? `
+    <p class="shop-empty">選択した都道府県に店舗がありません。</p>
+  ` : `
+    <div class="shop-initial">${renderShops(initial)}</div>
+    ${rest.length>0?`
+    <div class="shop-more-wrap">
+      <div class="shop-more-list-outer">
+        <div class="shop-more-list" id="shopMoreList">${renderShops(rest)}</div>
+        <div class="shop-back-rail" id="shopBackRail"><a href="#sec-store" class="shop-back-top"><span class="shop-back-arrows">«</span>検索に戻る</a></div>
+      </div>
+      <button type="button" class="shop-more-btn" id="shopMoreBtn" onclick="toggleMoreShops()">
+        <span class="shop-more-btn-text">もっと見る</span>
+      </button>
+    </div>
+    `:''}
+  `;
+  updateFloatingBar();
+}
+function toggleMoreShops(){
+  const list=document.getElementById('shopMoreList');
+  const outer=list.closest('.shop-more-list-outer');
+  const btn=document.getElementById('shopMoreBtn');
+  const textEl=btn.querySelector('.shop-more-btn-text');
+  const isOpen=outer.classList.toggle('open');
+  list.classList.toggle('open',isOpen);
+  textEl.textContent=isOpen?'閉じる':'もっと見る';
+  btn.classList.toggle('open',isOpen);
+}
+// HeartRails APIで7桁郵便番号→緯度経度を取得(建物レベル精度)
+async function fetchZipCoord(zip7){
+  try{
+    const res=await fetch(`https://geoapi.heartrails.com/api/json?method=searchByPostal&postal=${zip7}`);
+    const data=await res.json();
+    const loc=data?.response?.location?.[0];
+    if(loc && loc.x && loc.y){
+      return {lat:parseFloat(loc.y),lng:parseFloat(loc.x),addr:`${loc.prefecture}${loc.city}${loc.town}`};
+    }
+  }catch(e){}
+  return null;
+}
+function renderSearchResult(userLat,userLng,labelHtml,scrollToResult){
+  shopState.mode='search';
+  shopState.lastLat=userLat;
+  shopState.lastLng=userLng;
+  shopState.lastLabel=labelHtml;
+  const resEl=document.getElementById('shop-results');
+  const countEl=document.getElementById('shop-count');
+  const ranked=filteredShops().map(s=>({
+    ...s,
+    distanceKm:haversineKm(userLat,userLng,s.lat,s.lng)
+  })).sort((a,b)=>a.distanceKm-b.distanceKm);
+  countEl.style.display='block';
+  countEl.innerHTML=`${labelHtml}<br><small class="shop-count-note">※表示される距離は直線距離です。実際の道のりとは異なる場合があります。</small>`;
+  if(ranked.length===0){
+    resEl.innerHTML='<p class="shop-empty">選択した都道府県に店舗がありません。都道府県の絞り込みを解除するか、別の都道府県をお試しください。</p>';
+    updateFloatingBar();
+    if(scrollToResult){
+      countEl.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    return;
+  }
+  const hero=ranked[0];
+  const others=ranked.slice(1,5);
+  const rest=ranked.slice(5);
+  resEl.innerHTML=`
+    ${renderHeroShop(hero)}
+    <div class="shop-others-grid">${renderShops(others)}</div>
+    ${rest.length>0?`
+    <div class="shop-more-wrap">
+      <div class="shop-more-list-outer">
+        <div class="shop-more-list" id="shopMoreList">${renderShops(rest)}</div>
+      </div>
+      <button type="button" class="shop-more-btn" id="shopMoreBtn" onclick="toggleMoreShops()">
+        <span class="shop-more-btn-text">もっと見る</span>
+      </button>
+    </div>
+    `:''}
+  `;
+  updateFloatingBar();
+  if(scrollToResult){
+    countEl.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+function searchByLocation(){
+  const btn=document.getElementById('shopGeoBtn');
+  const countEl=document.getElementById('shop-count');
+  const resEl=document.getElementById('shop-results');
+  if(!navigator.geolocation){
+    countEl.style.display='block';
+    countEl.textContent='お使いの環境では現在地の取得に対応していません。郵便番号で検索してください。';
+    return;
+  }
+  btn.disabled=true;
+  countEl.style.display='block';
+  countEl.textContent='現在地を取得中…';
+  resEl.innerHTML='';
+  navigator.geolocation.getCurrentPosition(
+    pos=>{
+      btn.disabled=false;
+      renderSearchResult(pos.coords.latitude,pos.coords.longitude,'現在地から近い順',true);
+    },
+    ()=>{
+      btn.disabled=false;
+      countEl.textContent='現在地を取得できませんでした。郵便番号で検索してください。';
+    },
+    {timeout:10000}
+  );
+}
+async function searchShop(){
+  const z1=document.getElementById('zip1').value.trim();
+  const z2=document.getElementById('zip2').value.trim();
+  const zip=z1+z2;
+  const countEl=document.getElementById('shop-count');
+  const resEl=document.getElementById('shop-results');
+  if(zip.length<3){
+    showInitialShops();
+    return;
+  }
+  if(zip.length===7){
+    countEl.style.display='block';
+    countEl.textContent='位置情報を取得中…';
+    resEl.innerHTML='';
+    const coord=await fetchZipCoord(zip);
+    if(coord){
+      renderSearchResult(coord.lat,coord.lng,
+        `<span class="shop-count-zip">〒${z1}-${z2}</span>(${coord.addr})から近い順`,true);
+      return;
+    }
+  }
+  const center=ZIP_CENTERS[z1];
+  if(!center){
+    countEl.style.display='block';
+    countEl.textContent='この郵便番号の位置情報が見つかりませんでした。';
+    resEl.innerHTML='<p class="shop-empty">別の番号を試すか、下の店舗一覧からお近くの店舗をお探しください。</p>';
+    return;
+  }
+  renderSearchResult(center[0],center[1],
+    `<span class="shop-count-zip">〒${z1}${z2?'-'+z2:''}</span> から近い順`,true);
+}
+document.getElementById('zip1').addEventListener('input',function(){if(this.value.length>=3)document.getElementById('zip2').focus();});
+document.getElementById('zip1').addEventListener('keydown',function(e){
+  if(e.key!=='Enter')return;
+  e.preventDefault();
+  if(this.value.trim().length>=3)searchShop();
+  else document.getElementById('zip2').focus();
+});
+document.getElementById('zip2').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();searchShop();}});
+
+renderPrefTabs();
+showInitialShops();
+setupShopFilterBarVisibility();
+</script>
+
+</body>
+</html>
