@@ -199,127 +199,15 @@
     font-size: 14px;
   }
 
-  /* 今だけ特典セクション。悩みカードの淡い水色とはっきり区別がつくよう、紺のグラデーション背景にした */
+  /* 今だけ特典セクション。ユーザーがAffinityで作成した1枚画像をそのまま使用 */
   .tokuten-section {
-    background: linear-gradient(180deg, var(--main) 0%, var(--main-deep) 100%);
-    padding: 40px 20px 40px;
+    background: var(--main);
+    line-height: 0;
   }
-  .tokuten-title {
-    text-align: center;
-    margin: 0 0 20px;
-    font-size: 20px;
-    font-weight: 900;
-    color: #fff;
-    letter-spacing: 0.02em;
-  }
-  .tokuten-card {
-    background: #fff;
-    border-radius: 20px;
-    padding: 32px 24px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .tokuten-campaign-name {
-    width: 100%;
-    margin: 0 0 18px;
-    font-size: 26px;
-    font-weight: 900;
-    color: var(--text);
-    line-height: 1.4;
-  }
-  .tokuten-campaign-name-sub {
-    display: block;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text);
-  }
-  .tokuten-offer-lead { margin: 0 0 2px; font-size: 14px; color: #666; }
-  .tokuten-offer-amount {
-    margin: 0 0 20px;
-    font-family: "Zen Maru Gothic", sans-serif;
-    font-size: 34px;
-    font-weight: 900;
-    color: var(--text);
-    line-height: 1.1;
-  }
-  .tokuten-offer-amount small,
-  .tokuten-offer2-amount small { font-size: 15px; font-weight: 700; }
-
-  /* 古いメガネ→新しいメガネ の下取りイラスト */
-  .tokuten-trade-illust {
-    width: 100%;
-    margin-bottom: 18px;
-  }
-  .tokuten-trade-illust img {
+  .tokuten-section-img {
     display: block;
     width: 100%;
     height: auto;
-  }
-
-  .tokuten-reassure {
-    width: 100%;
-    margin: 0;
-    font-size: 13.5px;
-    color: var(--text);
-    line-height: 1.8;
-  }
-  .tokuten-divider {
-    width: 100%;
-    height: 1px;
-    background: #e6e6e6;
-    margin: 20px 0 18px;
-  }
-  .tokuten-offer2-tag { margin: 0 0 2px; font-size: 12px; color: #888; }
-  .tokuten-offer2-lead { margin: 0 0 6px; font-size: 14px; color: #666; display: flex; align-items: center; justify-content: center; gap: 6px; }
-  .tokuten-line-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 2px 7px;
-    border-radius: 4px;
-    background: #06C755;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
-  .tokuten-offer2-amount {
-    margin: 0;
-    font-family: "Zen Maru Gothic", sans-serif;
-    font-size: 26px;
-    font-weight: 900;
-    color: var(--text);
-    line-height: 1.1;
-  }
-  .tokuten-total-label {
-    margin: 0 0 2px;
-    font-size: 13px;
-    font-weight: 700;
-    color: #888;
-  }
-  .tokuten-total-amount {
-    margin: 0;
-    font-family: "Zen Maru Gothic", sans-serif;
-    font-size: 46px;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1.1;
-  }
-  .tokuten-period {
-    margin-top: 22px;
-    text-align: center;
-  }
-  .tokuten-period p { margin: 0; }
-  .tokuten-period .cap { font-size: 12.5px; color: #fff; opacity: 0.85; margin-bottom: 4px; }
-  .tokuten-period .range { font-size: 16px; font-weight: 700; color: #fff; }
-  .tokuten-closing {
-    margin: 18px 0 0;
-    text-align: center;
-    font-size: 13px;
-    color: #fff;
-    opacity: 0.9;
-    line-height: 1.8;
   }
 
   /* 店舗検索(THE SALE LPの仕組みをこのLPの配色・フォントに合わせて移植) */
@@ -876,38 +764,7 @@
       </div>
     </section>
     <section class="tokuten-section" id="sec-tokuten">
-      <p class="tokuten-title">今だけ特典</p>
-
-      <div class="tokuten-card">
-        <p class="tokuten-campaign-name">メガネの下取り<span class="tokuten-campaign-name-sub">キャンペーン</span></p>
-
-        <p class="tokuten-offer-lead">メガネ一式ご購入で</p>
-        <p class="tokuten-offer-amount">1,100<small>円OFF</small></p>
-
-        <div class="tokuten-trade-illust">
-          <img src="img/tokuten-trade.png" alt="今お使いのメガネを下取りに出して、新しいメガネへ">
-        </div>
-
-        <p class="tokuten-reassure">家に眠っているメガネはありませんか？<br>古いメガネも、壊れていても大丈夫。<br>他店で購入したメガネも下取りできます。</p>
-
-        <div class="tokuten-divider"></div>
-
-        <p class="tokuten-offer2-tag">さらに</p>
-        <p class="tokuten-offer2-lead"><span class="tokuten-line-badge">LINE</span>お友だち登録で</p>
-        <p class="tokuten-offer2-amount">1,100<small>円OFF</small></p>
-
-        <div class="tokuten-divider"></div>
-
-        <p class="tokuten-total-label">最大</p>
-        <p class="tokuten-total-amount">2,200円OFF</p>
-      </div>
-
-      <div class="tokuten-period">
-        <p class="cap">キャンペーン期間</p>
-        <p class="range">2026年10月13日(火)〜11月12日(木)</p>
-      </div>
-
-      <p class="tokuten-closing">ご相談は無料です。<br>まずは今の見え方、一緒に解決しましょう。</p>
+      <img class="tokuten-section-img" src="img/tokuten-section.png" alt="今だけ特典 メガネの下取りキャンペーン 下取り1本につき1,100円OFF こんなメガネも下取ります(ご自宅に眠っているメガネ・古いメガネ・壊れているメガネ・他店で購入したメガネ) さらにLINEお友だち登録で1,100円OFF 期間:2026年11月12日(木)まで 詳細:メガネ一式ご購入につき1本下取りいたします。">
     </section>
 
     <section class="store-section" id="sec-store">
