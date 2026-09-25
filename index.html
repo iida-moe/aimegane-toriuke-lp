@@ -245,9 +245,9 @@
     font-size: 13px;
     font-weight: 700;
   }
+  /* 店舗検索の見出し(.store-title)とフォント・サイズを揃える */
   .flow-title {
-    font-family: "Zen Maru Gothic", sans-serif;
-    font-size: clamp(24px, 7vw, 30px);
+    font-size: clamp(28px, 7.8vw, 34px);
     font-weight: 900;
     color: var(--main);
     line-height: 1.4;
@@ -846,6 +846,13 @@
       margin-top: 43px;
       width: 240px;
     }
+    .side-promo a {
+      display: block;
+      transition: transform .15s ease;
+    }
+    .side-promo a:hover {
+      transform: translateY(-2px);
+    }
     .side-promo img {
       width: 100%;
       height: auto;
@@ -914,7 +921,7 @@
     </div>
 
     <div class="side-promo">
-      <img src="img/promo-badge.png" alt="メガネの下取りキャンペーン実施中 11/12(木)まで">
+      <a href="#sec-tokuten"><img src="img/promo-badge.png" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
     </div>
   </div>
 
