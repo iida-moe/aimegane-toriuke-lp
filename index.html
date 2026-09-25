@@ -199,6 +199,158 @@
     font-size: 14px;
   }
 
+  /* 無料相談の流れ(悩みカードと特典の間で、相談の中身を具体的にイメージしてもらうためのセクション) */
+  .flow-section {
+    background: #fff;
+    padding: 56px 20px 60px;
+  }
+  .flow-head { text-align: center; margin-bottom: 36px; }
+  .flow-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--text);
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .flow-title {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: clamp(24px, 7vw, 30px);
+    font-weight: 900;
+    color: var(--main);
+    line-height: 1.4;
+  }
+  /* 320px幅でも「お話から。」が1行に収まるよう画面幅で可変 */
+  .flow-lead {
+    margin-top: 12px;
+    font-size: clamp(12.5px, 3.9vw, 14px);
+    color: #555;
+    line-height: 1.8;
+  }
+  .flow-steps {
+    position: relative;
+    list-style: none;
+  }
+  /* STEP同士をつなぐ縦線。セクションが見えたら上から伸びる */
+  .flow-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    bottom: 28px;
+    left: 27px;
+    width: 3px;
+    background: repeating-linear-gradient(to bottom, var(--bg-side) 0 6px, transparent 6px 11px);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 1.6s ease;
+  }
+  .flow-steps.is-visible::before { transform: scaleY(1); }
+  .flow-step {
+    position: relative;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .flow-step + .flow-step { margin-top: 20px; }
+  .flow-step-num {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--main);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 0 0 5px #fff;
+  }
+  .flow-step-num small { font-size: 10px; letter-spacing: .06em; margin-bottom: 3px; }
+  .flow-step-num span { font-size: 22px; color: var(--accent); }
+  .flow-step-card {
+    flex: 1;
+    min-width: 0;
+    background: #F2F7FC;
+    border-radius: 14px;
+    padding: 16px 16px 16px 18px;
+  }
+  .flow-step-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: clamp(14px, 4.5vw, 17px); /* 320px幅で「目のストレスチェック」が折れないよう可変 */
+    font-weight: 700;
+    color: var(--main);
+    line-height: 1.4;
+  }
+  .flow-step-icon { width: 22px; height: 22px; flex-shrink: 0; color: var(--main); }
+  .flow-step-text { font-size: 13.5px; color: var(--text); line-height: 1.75; }
+  .flow-step-em { color: var(--main); background: linear-gradient(transparent 65%, #FFF1A6 65%); }
+  .flow-note { margin-top: 18px; font-size: 11px; color: #888; line-height: 1.7; }
+  .flow-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    max-width: 300px;
+    margin: 28px auto 0;
+    padding: 16px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--text);
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  }
+
+  /* ── スクロールで下からふわっと表示(JSで.is-visibleを付与) ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.is-visible { opacity: 1; transform: none; }
+  /* STEPは1つずつ時間差で表示 */
+  .flow-steps .reveal:nth-child(2) { transition-delay: .25s; }
+  .flow-steps .reveal:nth-child(3) { transition-delay: .5s; }
+  .flow-steps .reveal:nth-child(4) { transition-delay: .75s; }
+
+  /* 黄色の相談ボタンに、ときどき光が走る */
+  .shine { position: relative; overflow: hidden; }
+  .shine::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -80%;
+    width: 50%; height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.75), transparent);
+    transform: skewX(-20deg);
+    animation: shine 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes shine {
+    0%, 60% { left: -80%; }
+    100% { left: 130%; }
+  }
+
+  /* 動きを減らす設定の端末ではアニメーションを止める */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .flow-steps::before { transform: none; transition: none; }
+    .shine::after { animation: none; display: none; }
+  }
+
   /* 今だけ特典セクション。ユーザーがAffinityで作成した1枚画像をそのまま使用 */
   .tokuten-section {
     background: var(--main);
@@ -741,12 +893,13 @@
   <nav class="side-nav">
     <a href="#sec-fv">TOP</a>
     <a href="#sec-nayami">こんなお悩みありませんか?</a>
+    <a href="#sec-flow">無料相談の流れ</a>
     <a href="#sec-tokuten">今だけ特典</a>
     <a href="#sec-store">お近くの店舗</a>
     <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="side-cta side-cta-secondary">
       店舗一覧へ<span class="cta-arrow">▶</span>
     </a>
-    <a href="#sec-store" class="side-cta side-cta-primary">無料相談はこちら<span class="cta-arrow">▶</span></a>
+    <a href="#sec-store" class="side-cta side-cta-primary shine">無料相談はこちら<span class="cta-arrow">▶</span></a>
   </nav>
 
   <div class="page">
@@ -765,7 +918,7 @@
         <img src="img/fv-composite.png" alt="メガネの不調に悩む男女のイラスト">
       </div>
 
-      <a href="#sec-store" class="fv-cta-placeholder">無料相談はこちら<span class="cta-arrow">▶</span></a>
+      <a href="#sec-store" class="fv-cta-placeholder shine">無料相談はこちら<span class="cta-arrow">▶</span></a>
     </section>
 
     <section class="nayami-section" id="sec-nayami">
@@ -774,22 +927,65 @@
           <path d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,50 L1440,100 L0,100 Z" fill="#A3C0E0"></path>
         </svg>
       </div>
-      <div class="nayami-card">
+      <div class="nayami-card reveal">
         <img src="img/nayami-card-1.png" alt="こんなこと、ありませんか？ スマホやパソコンを長時間使用すると、目の疲れを感じる。アイメガネなら目のストレスを無料でチェック。調節機能解析装置「アコモレフ」を元に目の調節力やストレス度まで数値化し、楽に見えるメガネをご提案します。">
       </div>
-      <div class="nayami-card">
+      <div class="nayami-card reveal">
         <img src="img/nayami-card-2.png" alt="メガネがズレる、かけ心地が悪い。アイメガネなら眼鏡作製技能士がかけ心地を調整。お客様のお顔に合わせて、快適な装用感をサポートします。">
       </div>
-      <div class="nayami-card">
+      <div class="nayami-card reveal">
         <img src="img/nayami-card-3.png" alt="スマホや新聞など細かい文字が見にくい。アイメガネなら15項目の診断で、ぴったりの見え方に。普段よく見るもの・過ごし方をヒアリング。生活スタイルに合ったレンズ・度数をご提案します。">
       </div>
     </section>
+
+    <section class="flow-section" id="sec-flow">
+      <div class="flow-head reveal">
+        <span class="flow-label">ご相談は無料です</span>
+        <h2 class="flow-title">アイメガネの<br>無料相談の流れ</h2>
+        <p class="flow-lead">メガネを作る前に、まずはじっくりお話から。<br>今の見え方やお悩みを一緒に整理します。</p>
+      </div>
+
+      <ol class="flow-steps">
+        <li class="flow-step reveal">
+          <div class="flow-step-num"><small>STEP</small><span>1</span></div>
+          <div class="flow-step-card">
+            <p class="flow-step-title"><svg class="flow-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg>ヒアリング</p>
+            <p class="flow-step-text">普段よく見るもの、お仕事や趣味などの過ごし方、今のメガネのお悩みをお伺いします。</p>
+          </div>
+        </li>
+        <li class="flow-step reveal">
+          <div class="flow-step-num"><small>STEP</small><span>2</span></div>
+          <div class="flow-step-card">
+            <p class="flow-step-title"><svg class="flow-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>目のストレスチェック</p>
+            <p class="flow-step-text">調節機能解析装置「アコモレフ」で、目の調節力や<span class="flow-step-em">ストレス度を数値化</span>。疲れの原因が見えてきます。</p>
+          </div>
+        </li>
+        <li class="flow-step reveal">
+          <div class="flow-step-num"><small>STEP</small><span>3</span></div>
+          <div class="flow-step-card">
+            <p class="flow-step-title"><svg class="flow-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 11l2 2 4-4M9 17h6"/></svg>15項目の診断</p>
+            <p class="flow-step-text">見え方を細かくチェックし、生活スタイルに合った<span class="flow-step-em">レンズ・度数をご提案</span>します。</p>
+          </div>
+        </li>
+        <li class="flow-step reveal">
+          <div class="flow-step-num"><small>STEP</small><span>4</span></div>
+          <div class="flow-step-card">
+            <p class="flow-step-title"><svg class="flow-step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6.5" cy="14" r="3.5"/><circle cx="17.5" cy="14" r="3.5"/><path d="M10 14h4M3 14l-1-5M21 14l1-5"/></svg>かけ心地の調整</p>
+            <p class="flow-step-text">全店在籍の<span class="flow-step-em">眼鏡作製技能士</span>が、お顔に合わせてズレにくく快適なかけ心地に調整します。</p>
+          </div>
+        </li>
+      </ol>
+
+      <p class="flow-note reveal">※アコモレフは一部店舗(小川大塚店)を除きます。</p>
+      <a href="#sec-store" class="flow-cta shine reveal">無料相談を予約する<span class="cta-arrow">▶</span></a>
+    </section>
+
     <section class="tokuten-section" id="sec-tokuten">
-      <img class="tokuten-section-img" src="img/tokuten-section.png" alt="今だけ特典 メガネの下取りキャンペーン 下取り1本につき1,100円OFF こんなメガネも下取ります(ご自宅に眠っているメガネ・古いメガネ・壊れているメガネ・他店で購入したメガネ) さらにLINEお友だち登録で1,100円OFF 期間:2026年11月12日(木)まで 詳細:メガネ一式ご購入につき1本下取りいたします。">
+      <img class="tokuten-section-img reveal" src="img/tokuten-section.png" alt="今だけ特典 メガネの下取りキャンペーン 下取り1本につき1,100円OFF こんなメガネも下取ります(ご自宅に眠っているメガネ・古いメガネ・壊れているメガネ・他店で購入したメガネ) さらにLINEお友だち登録で1,100円OFF 期間:2026年11月12日(木)まで 詳細:メガネ一式ご購入につき1本下取りいたします。">
     </section>
 
     <section class="store-section" id="sec-store">
-      <h2 class="store-title">お近くの店舗を探す</h2>
+      <h2 class="store-title reveal">お近くの店舗を探す</h2>
       <p class="shop-intro">現在地、または郵便番号(上3桁)で<br>お近くの店舗を探せます</p>
       <p class="shop-intro-note">※WEB予約は、本日から3日後以降の日程でお取りいただけます。お急ぎの場合はお電話にてお問い合わせください。</p>
 
@@ -864,11 +1060,11 @@
     </div>
 
     <section class="finalcta-section" id="sec-cta">
-      <p class="finalcta-title">そのメガネ、<br>そのままにしていませんか？</p>
+      <p class="finalcta-title reveal">そのメガネ、<br>そのままにしていませんか？</p>
       <p class="finalcta-sub">まずは無料相談で、<br>今のお悩みを一緒に解決しましょう。</p>
       <p class="finalcta-note">下取り＋LINE登録で<span class="finalcta-note-em">最大2,200円OFF</span><br>キャンペーンは11/12(木)まで</p>
       <div class="finalcta-btns">
-        <a href="#sec-store" class="finalcta-btn finalcta-btn-primary">無料相談はこちら<span class="cta-arrow">▶</span></a>
+        <a href="#sec-store" class="finalcta-btn finalcta-btn-primary shine">無料相談はこちら<span class="cta-arrow">▶</span></a>
         <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="finalcta-btn finalcta-btn-secondary">店舗一覧へ<span class="cta-arrow">▶</span></a>
       </div>
     </section>
@@ -1272,5 +1468,16 @@ showInitialShops();
 setupShopFilterBarVisibility();
 </script>
 
+<script>
+// スクロールで要素をふわっと表示(.reveal → .is-visible)。STEPの縦線は.flow-steps自体に付与
+(function(){
+  var targets=document.querySelectorAll('.reveal, .flow-steps');
+  if(!('IntersectionObserver' in window)){ targets.forEach(function(el){el.classList.add('is-visible');}); return; }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -12% 0px'});
+  targets.forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
