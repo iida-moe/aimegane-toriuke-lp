@@ -379,6 +379,83 @@
     .shine::after { animation: none; display: none; }
   }
 
+  /* 下取りの流れ(今だけ特典のあと、店舗検索へつなぐ3ステップ) */
+  .trade-section {
+    background: #fff;
+    padding: 52px 20px 12px;
+  }
+  .trade-head { text-align: center; margin-bottom: 28px; }
+  .trade-steps { list-style: none; }
+  .trade-step {
+    position: relative;
+    border: 2px solid var(--main);
+    border-radius: 14px;
+    padding: 22px 18px 20px;
+    text-align: center;
+    background: #fff;
+  }
+  /* ステップ間の▼。悩みカードの矢印と同じようにゆっくり上下に揺れる */
+  .trade-step + .trade-step { margin-top: 38px; }
+  .trade-step + .trade-step::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    margin-left: -14px;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 16px solid var(--main);
+    animation: arrow-bob 1.8s ease-in-out infinite;
+  }
+  .trade-step-num {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: .08em;
+    color: var(--main);
+    line-height: 1.2;
+    background: linear-gradient(transparent 65%, var(--accent) 65%);
+  }
+  .trade-step-title {
+    font-size: clamp(16px, 4.8vw, 18px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .trade-step-em { color: var(--main); font-size: 1.25em; }
+  .trade-step-note { margin-top: 8px; font-size: 12px; color: #666; line-height: 1.7; }
+  .trade-step-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    max-width: 240px;
+    margin: 14px auto 0;
+    padding: 12px;
+    border-radius: 999px;
+    background: var(--main);
+    color: #fff;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .trade-step-btn:hover { background: #2C4680; }
+  .trade-plus {
+    margin-top: 14px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #EEF8EE;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .trade-plus-em { color: #06A13A; font-size: 1.15em; }
+  @media (prefers-reduced-motion: reduce) {
+    .trade-step + .trade-step::before { animation: none; }
+  }
+
   /* 今だけ特典セクション。ユーザーがAffinityで作成した1枚画像をそのまま使用 */
   .tokuten-section {
     background: var(--main);
@@ -930,6 +1007,7 @@
     <a href="#sec-nayami">こんなこと、ありませんか？</a>
     <a href="#sec-flow">無料相談の流れ</a>
     <a href="#sec-tokuten">今だけ特典</a>
+    <a href="#sec-trade">下取りの流れ</a>
     <a href="#sec-store">お近くの店舗</a>
     <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="side-cta side-cta-secondary">
       店舗一覧へ<span class="cta-arrow">▶</span>
@@ -1026,6 +1104,32 @@
 
     <section class="tokuten-section" id="sec-tokuten">
       <img class="tokuten-section-img reveal" src="img/tokuten-section.png" alt="今だけ特典 メガネの下取りキャンペーン 下取り1本につき1,100円OFF こんなメガネも下取ります(ご自宅に眠っているメガネ・古いメガネ・壊れているメガネ・他店で購入したメガネ) さらにLINEお友だち登録で1,100円OFF 期間:2026年11月12日(木)まで 詳細:メガネ一式ご購入につき1本下取りいたします。">
+    </section>
+
+    <section class="trade-section" id="sec-trade">
+      <div class="trade-head reveal">
+        <span class="flow-label">かんたん3ステップ</span>
+        <h2 class="flow-title">下取りの流れ</h2>
+      </div>
+      <ol class="trade-steps">
+        <li class="trade-step reveal">
+          <p class="trade-step-num">STEP1</p>
+          <p class="trade-step-title">ご自宅で使わなくなった<br>メガネを探す</p>
+          <p class="trade-step-note">※他店で購入したメガネ・<br>壊れているメガネもOK！</p>
+        </li>
+        <li class="trade-step reveal">
+          <p class="trade-step-num">STEP2</p>
+          <p class="trade-step-title">お近くのアイメガネで<br><span class="trade-step-em">無料相談</span></p>
+          <p class="trade-step-note">今の見え方やお悩みをお伺いし、<br>ぴったりのメガネをご提案します。</p>
+          <a href="#sec-store" class="trade-step-btn">店舗を探す<span class="cta-arrow">▶</span></a>
+        </li>
+        <li class="trade-step reveal">
+          <p class="trade-step-num">STEP3</p>
+          <p class="trade-step-title">メガネ一式のご購入で<br>下取り<span class="trade-step-em">1,100円OFF</span></p>
+          <p class="trade-step-note">※メガネ一式ご購入につき<br>1本下取りいたします。</p>
+          <p class="trade-plus">さらにLINEお友だち登録で<br><span class="trade-plus-em">1,100円OFF</span><br>合わせて最大2,200円OFF！</p>
+        </li>
+      </ol>
     </section>
 
     <section class="store-section" id="sec-store">
