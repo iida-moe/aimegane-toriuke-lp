@@ -161,14 +161,43 @@
     text-align: center;
   }
 
+  /* 背景色は悩みカード画像の青(#A3C0E0)と完全に揃える(矢印が上下に動いた時に色の違う隙間が見えないように)。
+     解決策カードのポップ演出で横にはみ出してもスクロールが出ないよう横方向だけ切り取る */
   .nayami-section {
-    background: var(--bg-side);
+    background: #A3C0E0;
+    overflow-x: clip;
   }
   .nayami-card img {
     display: block;
     width: 100%;
     height: auto;
   }
+  /* 悩みカードは「お悩み／▼／アイメガネなら／解決策」の4枚に分割し、解決策に向けて順に動かす。
+     ▼は上から落ちてきて弾み、その後ゆっくり上下に揺れ続ける */
+  .nayami-arrow { opacity: 0; transform: translateY(-28px); }
+  .nayami-arrow.is-visible {
+    animation: arrow-drop .7s cubic-bezier(.3,1.6,.5,1) both, arrow-bob 1.8s ease-in-out .9s infinite;
+  }
+  @keyframes arrow-drop {
+    from { opacity: 0; transform: translateY(-28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes arrow-bob {
+    0%, 100% { opacity: 1; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(7px); }
+  }
+  /* 解決策カードは少し小さい状態から、ぽんっと弾むように拡大して登場 */
+  .nayami-answer { opacity: 0; transform: scale(.88); }
+  .nayami-answer.is-visible { animation: answer-pop .75s cubic-bezier(.3,1.5,.5,1) .15s both; }
+  @keyframes answer-pop {
+    from { opacity: 0; transform: scale(.88); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nayami-arrow, .nayami-answer { opacity: 1; transform: none; }
+    .nayami-arrow.is-visible, .nayami-answer.is-visible { animation: none; }
+  }
+
   /* 各カード画像は内部の余白(上下の青い部分)がバラバラなため、
      カード間の見た目の間隔を揃えるために調整。
      %指定は幅基準(=画像の拡大縮小と同じ基準)で効くので、画面幅が変わっても比率が崩れない。
@@ -927,14 +956,23 @@
           <path d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,50 L1440,100 L0,100 Z" fill="#A3C0E0"></path>
         </svg>
       </div>
-      <div class="nayami-card reveal">
-        <img src="img/nayami-card-1.png" alt="こんなこと、ありませんか？ スマホやパソコンを長時間使用すると、目の疲れを感じる。アイメガネなら目のストレスを無料でチェック。調節機能解析装置「アコモレフ」を元に目の調節力やストレス度まで数値化し、楽に見えるメガネをご提案します。">
+      <div class="nayami-card">
+        <img class="reveal" src="img/nayami-1-q.png" alt="こんなこと、ありませんか？ スマホやパソコンを長時間使用すると、目の疲れを感じる">
+        <img class="nayami-arrow" src="img/nayami-1-arrow.png" alt="">
+        <img class="reveal" src="img/nayami-1-label.png" alt="アイメガネなら">
+        <img class="nayami-answer" src="img/nayami-1-a.png" alt="目の疲れを無料でチェック。調節機能解析装置「アコモレフ」を元に目の「調節力」や「ストレス度」を数値化し、楽に見えるメガネをご提案します。">
       </div>
-      <div class="nayami-card reveal">
-        <img src="img/nayami-card-2.png" alt="メガネがズレる、かけ心地が悪い。アイメガネなら眼鏡作製技能士がかけ心地を調整。お客様のお顔に合わせて、快適な装用感をサポートします。">
+      <div class="nayami-card">
+        <img class="reveal" src="img/nayami-2-q.png" alt="メガネがズレる、かけ心地が悪い">
+        <img class="nayami-arrow" src="img/nayami-2-arrow.png" alt="">
+        <img class="reveal" src="img/nayami-2-label.png" alt="アイメガネなら">
+        <img class="nayami-answer" src="img/nayami-2-a.png" alt="眼鏡作製技能士がかけ心地を調整。お客様のお顔に合わせて、快適な装用感をサポートします。">
       </div>
-      <div class="nayami-card reveal">
-        <img src="img/nayami-card-3.png" alt="スマホや新聞など細かい文字が見にくい。アイメガネなら15項目の診断で、ぴったりの見え方に。普段よく見るもの・過ごし方をヒアリング。生活スタイルに合ったレンズ・度数をご提案します。">
+      <div class="nayami-card">
+        <img class="reveal" src="img/nayami-3-q.png" alt="スマホや新聞など、小さい文字が見にくい">
+        <img class="nayami-arrow" src="img/nayami-3-arrow.png" alt="">
+        <img class="reveal" src="img/nayami-3-label.png" alt="アイメガネなら">
+        <img class="nayami-answer" src="img/nayami-3-a.png" alt="15項目の診断で、ぴったりの見え方に。普段よく見るもの・過ごし方をヒアリング。生活スタイルに合ったレンズ・度数をご提案します。">
       </div>
     </section>
 
@@ -1471,7 +1509,7 @@ setupShopFilterBarVisibility();
 <script>
 // スクロールで要素をふわっと表示(.reveal → .is-visible)。STEPの縦線は.flow-steps自体に付与
 (function(){
-  var targets=document.querySelectorAll('.reveal, .flow-steps');
+  var targets=document.querySelectorAll('.reveal, .flow-steps, .nayami-arrow, .nayami-answer');
   if(!('IntersectionObserver' in window)){ targets.forEach(function(el){el.classList.add('is-visible');}); return; }
   var io=new IntersectionObserver(function(entries){
     entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
