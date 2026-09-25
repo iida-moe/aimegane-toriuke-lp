@@ -355,28 +355,10 @@
   .flow-steps .reveal:nth-child(3) { transition-delay: .5s; }
   .flow-steps .reveal:nth-child(4) { transition-delay: .75s; }
 
-  /* 黄色の相談ボタンに、ときどき光が走る */
-  .shine { position: relative; overflow: hidden; }
-  .shine::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -80%;
-    width: 50%; height: 100%;
-    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.75), transparent);
-    transform: skewX(-20deg);
-    animation: shine 3.5s ease-in-out infinite;
-    pointer-events: none;
-  }
-  @keyframes shine {
-    0%, 60% { left: -80%; }
-    100% { left: 130%; }
-  }
-
   /* 動きを減らす設定の端末ではアニメーションを止める */
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
     .flow-steps::before { transform: none; transition: none; }
-    .shine::after { animation: none; display: none; }
   }
 
   /* 下取りの流れ(今だけ特典のあと、店舗検索へつなぐ3ステップ) */
@@ -1003,7 +985,7 @@
     <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="side-cta side-cta-secondary">
       店舗一覧へ<span class="cta-arrow">▶</span>
     </a>
-    <a href="#sec-store" class="side-cta side-cta-primary shine">無料相談はこちら<span class="cta-arrow">▶</span></a>
+    <a href="#sec-store" class="side-cta side-cta-primary">無料相談はこちら<span class="cta-arrow">▶</span></a>
   </nav>
 
   <div class="page">
@@ -1022,7 +1004,7 @@
         <img src="img/fv-composite.png" alt="メガネの不調に悩む男女のイラスト">
       </div>
 
-      <a href="#sec-store" class="fv-cta-placeholder shine">無料相談はこちら<span class="cta-arrow">▶</span></a>
+      <a href="#sec-store" class="fv-cta-placeholder">無料相談はこちら<span class="cta-arrow">▶</span></a>
     </section>
 
     <section class="nayami-section" id="sec-nayami">
@@ -1090,7 +1072,7 @@
       </ol>
 
       <p class="flow-note reveal">※アコモレフは一部店舗(小川大塚店)を除きます。</p>
-      <a href="#sec-store" class="flow-cta shine reveal">無料相談を予約する<span class="cta-arrow">▶</span></a>
+      <a href="#sec-store" class="flow-cta reveal">無料相談を予約する<span class="cta-arrow">▶</span></a>
     </section>
 
     <section class="tokuten-section" id="sec-tokuten">
@@ -1202,7 +1184,7 @@
       <p class="finalcta-sub">まずは無料相談で、<br>今のお悩みを一緒に解決しましょう。</p>
       <p class="finalcta-note">下取り＋LINE登録で<span class="finalcta-note-em">最大2,200円OFF</span><br>キャンペーンは11/12(木)まで</p>
       <div class="finalcta-btns">
-        <a href="#sec-store" class="finalcta-btn finalcta-btn-primary shine">無料相談はこちら<span class="cta-arrow">▶</span></a>
+        <a href="#sec-store" class="finalcta-btn finalcta-btn-primary">無料相談はこちら<span class="cta-arrow">▶</span></a>
         <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="finalcta-btn finalcta-btn-secondary">店舗一覧へ<span class="cta-arrow">▶</span></a>
       </div>
     </section>
