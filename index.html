@@ -441,8 +441,10 @@
   }
 
   /* 最終CTA */
+  /* 店舗一覧・フッター(どちらも白)と区別し、締めのブロックとしてまとまって見えるよう淡いブルーの背景に。
+     PC版の外側の背景(rgba(166,205,230,0.2))より少し濃くして、中央カラム内で埋もれないようにしている */
   .finalcta-section {
-    background: #fff;
+    background: #E3EFF8;
     padding: 56px 24px 64px;
     text-align: center;
   }
@@ -462,8 +464,17 @@
   }
   .finalcta-note {
     margin: 0 0 28px;
-    font-size: 12.5px;
-    color: #888;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.9;
+  }
+  /* 最後のひと押しとして特典額を強調。太字ではなく色・サイズ・黄色マーカー下線で目立たせる */
+  .finalcta-note-em {
+    margin-left: 2px;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--main);
+    background: linear-gradient(transparent 62%, var(--accent) 62%);
   }
   .finalcta-btns {
     display: flex;
@@ -855,7 +866,7 @@
     <section class="finalcta-section" id="sec-cta">
       <p class="finalcta-title">そのメガネ、<br>そのままにしていませんか？</p>
       <p class="finalcta-sub">まずは無料相談で、<br>今のお悩みを一緒に解決しましょう。</p>
-      <p class="finalcta-note">メガネ下取り2,200円OFFキャンペーンは11/12(木)まで</p>
+      <p class="finalcta-note">下取り＋LINE登録で<span class="finalcta-note-em">最大2,200円OFF</span><br>キャンペーンは11/12(木)まで</p>
       <div class="finalcta-btns">
         <a href="#sec-store" class="finalcta-btn finalcta-btn-primary">無料相談はこちら<span class="cta-arrow">▶</span></a>
         <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="finalcta-btn finalcta-btn-secondary">店舗一覧へ<span class="cta-arrow">▶</span></a>
