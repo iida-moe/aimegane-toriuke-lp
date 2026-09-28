@@ -3,7 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>メガネの相談会＆下取りCP｜アイメガネ</title>
+<title>メガネの無料相談＆下取りキャンペーン｜アイメガネ</title>
+<meta name="description" content="目の疲れ・メガネのズレ・手元の見えにくさ、アイメガネで無料相談。今なら使わないメガネの下取り＋LINE登録で最大2,200円OFF。11/12(木)まで。">
+<!-- SNS・LINEでシェアされた時の表示。本番URLに移したら og:url / og:image のURLも差し替えること -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="メガネの無料相談＆下取りキャンペーン｜アイメガネ">
+<meta property="og:description" content="使わないメガネの下取り＋LINE登録で最大2,200円OFF。11/12(木)まで。">
+<meta property="og:url" content="https://iida-moe.github.io/aimegane-toriuke-lp/">
+<meta property="og:image" content="https://iida-moe.github.io/aimegane-toriuke-lp/img/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
@@ -91,6 +99,19 @@
     height: auto;
   }
 
+  /* スマホ用：FVのすぐ下に下取りキャンペーンの横長バナー(PCは左側に表示しているので非表示) */
+  .fv-promo {
+    display: block;
+    max-width: 340px;
+    margin: 20px auto 0;
+  }
+  .fv-promo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  }
+
   .cta-icon-img {
     width: 16px;
     height: 16px;
@@ -107,9 +128,9 @@
     justify-content: center;
     gap: 6px;
     max-width: 280px;
-    margin: 24px auto 0;
+    margin: 16px auto 0;
     padding: 14px;
-    border-radius: 10px;
+    border-radius: 999px;
     background: var(--accent);
     text-align: center;
     color: var(--text);
@@ -629,6 +650,8 @@
     line-height: 1.9;
   }
   .page-footer-company a { color: #666; }
+  /* 狭い画面で住所や電話番号が途中で折れないよう、かたまり単位で改行させる */
+  .nowrap { display: inline-block; }
   .page-footer-copyright {
     margin: 0;
     font-size: 11px;
@@ -719,7 +742,8 @@
     }
 
     /* 右側に固定CTAがあるため、FV内のCTA仮置きは非表示 */
-    .fv-cta-placeholder {
+    .fv-cta-placeholder,
+    .fv-promo {
       display: none;
     }
 
@@ -884,6 +908,7 @@
         <img src="img/fv-composite.png" alt="メガネの不調に悩む男女のイラスト">
       </div>
 
+      <a href="#sec-tokuten" class="fv-promo"><img src="img/promo-badge.png" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
       <a href="#sec-store" class="fv-cta-placeholder">無料相談はこちら<span class="cta-arrow">▶</span></a>
     </section>
 
@@ -1034,8 +1059,8 @@
       </a>
       <p class="page-footer-company">
         アイジャパン株式会社<br>
-        〒331-0812 埼玉県さいたま市北区宮原町1丁目505番地1<br>
-        お客様相談室:<a href="tel:0120210110">0120-21-0110</a>(受付10時〜18時、土日祝休)
+        〒331-0812 <span class="nowrap">埼玉県さいたま市北区</span><span class="nowrap">宮原町1丁目505番地1</span><br>
+        <span class="nowrap">お客様相談室:<a href="tel:0120210110">0120-21-0110</a></span><span class="nowrap">(受付10時〜18時、土日祝休)</span>
       </p>
       <p class="page-footer-copyright">&copy; 2026 アイジャパン株式会社</p>
     </footer>
