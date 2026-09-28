@@ -327,6 +327,18 @@
   }
   .trade-step-em { color: var(--main); font-size: 1.2em; }
   .trade-step-note { margin-top: 2px; font-size: 12px; color: #666; line-height: 1.6; }
+  .trade-step-plus { margin-top: 2px; font-size: 13px; color: #06A13A; }
+  .trade-step-max {
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--main);
+  }
+  /* 合計額は色・サイズ・黄色マーカー下線で強調(太字にはしない) */
+  .trade-step-max span {
+    font-size: 1.6em;
+    font-weight: 500;
+    background: linear-gradient(transparent 65%, var(--accent) 65%);
+  }
   .trade-step-note-em { color: var(--main); font-size: 1.15em; }
   .trade-step-btn {
     display: flex;
@@ -962,6 +974,8 @@
         <li class="trade-step reveal">
           <p class="trade-step-num">STEP3</p>
           <p class="trade-step-title">ご購入時に<span class="trade-step-em">1,100円OFF</span></p>
+          <p class="trade-step-plus">＋LINE登録でさらに1,100円OFF</p>
+          <p class="trade-step-max">最大<span>2,200円OFF</span></p>
           <p class="trade-step-note">※メガネ一式ご購入につき1本</p>
         </li>
       </ol>
