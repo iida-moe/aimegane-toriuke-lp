@@ -118,9 +118,17 @@
     flex-shrink: 0;
     display: block;
   }
-  /* ボタン内の▶マーク。テキストのすぐ右に添えて、全体を中央に見せる */
+  /* ボタン内の三角マーク。文字の「▶」はiPhoneで青い絵文字に変わってしまうため、CSSの三角で描く。
+     色は文字色(currentColor)に合わせる */
   .cta-arrow {
-    font-size: 0.7em;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    border-top: 0.32em solid transparent;
+    border-bottom: 0.32em solid transparent;
+    border-left: 0.5em solid currentColor;
+    flex-shrink: 0;
   }
   .fv-cta-placeholder {
     display: flex;
@@ -899,9 +907,9 @@
     <a href="#sec-trade">下取りの流れ</a>
     <a href="#sec-store">お近くの店舗</a>
     <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="side-cta side-cta-secondary">
-      店舗一覧へ<span class="cta-arrow">▶</span>
+      店舗一覧へ<span class="cta-arrow" aria-hidden="true"></span>
     </a>
-    <a href="#sec-store" class="side-cta side-cta-primary">無料相談はこちら<span class="cta-arrow">▶</span></a>
+    <a href="#sec-store" class="side-cta side-cta-primary">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
   </nav>
 
   <div class="page">
@@ -921,7 +929,7 @@
       </div>
 
       <a href="#sec-tokuten" class="fv-promo"><img src="img/promo-badge.png" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
-      <a href="#sec-store" class="fv-cta-placeholder">無料相談はこちら<span class="cta-arrow">▶</span></a>
+      <a href="#sec-store" class="fv-cta-placeholder">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
     </section>
 
     <section class="nayami-section" id="sec-nayami">
@@ -969,7 +977,7 @@
           <p class="trade-step-num">STEP2</p>
           <p class="trade-step-title">お近くのお店へ</p>
           <p class="trade-step-note">目が疲れやすい・今のメガネが見えにくい<br>など、<span class="trade-step-note-em">無料相談もOK！</span></p>
-          <a href="#sec-store" class="trade-step-btn">店舗を探す<span class="cta-arrow">▶</span></a>
+          <a href="#sec-store" class="trade-step-btn">店舗を探す<span class="cta-arrow" aria-hidden="true"></span></a>
         </li>
         <li class="trade-step reveal">
           <p class="trade-step-num">STEP3</p>
@@ -1061,8 +1069,8 @@
         <h2 class="sr-only">毎日かけるメガネだから、一度見直してみませんか。</h2>
         <img src="img/finalcta.png" alt="下取り＋LINE登録で最大2,200円OFF 11/12(木)まで。まずは無料相談で、今のお悩みを一緒に解決しましょう。">
         <div class="finalcta-btns">
-          <a href="#sec-store" class="finalcta-btn finalcta-btn-primary">無料相談はこちら<span class="cta-arrow">▶</span></a>
-          <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="finalcta-btn finalcta-btn-secondary">店舗一覧へ<span class="cta-arrow">▶</span></a>
+          <a href="#sec-store" class="finalcta-btn finalcta-btn-primary">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
+          <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="finalcta-btn finalcta-btn-secondary">店舗一覧へ<span class="cta-arrow" aria-hidden="true"></span></a>
         </div>
       </div>
     </section>
