@@ -339,6 +339,7 @@
   .trade-step-em { color: var(--main); font-size: 1.2em; white-space: nowrap; }
   .trade-step-note { margin-top: 1px; font-size: clamp(11.5px, 3.5vw, 12.5px); color: #555; line-height: 1.6; }
   .trade-step-note-em { color: var(--main); font-size: 1.1em; }
+  .trade-step-line, .trade-step-line .trade-step-note-em { color: #06A13A; } /* LINEの緑 */
   @media (prefers-reduced-motion: reduce) {
     .trade-step + .trade-step::before { animation: none; }
   }
@@ -959,6 +960,7 @@
           <p class="trade-step-num">STEP3</p>
           <div class="trade-step-body">
             <p class="trade-step-title">ご購入時に<span class="trade-step-em">1,100円OFF</span></p>
+            <p class="trade-step-note trade-step-line">LINEお友だち登録で<br><span class="trade-step-note-em">さらにお得！</span></p>
           </div>
         </li>
       </ol>
