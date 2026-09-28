@@ -296,75 +296,49 @@
   }
   .trade-head { text-align: center; margin-bottom: 28px; }
   .trade-steps { list-style: none; }
+  /* 各STEPは「STEP番号＋ひと言」の横1行。特典画像とかぶる情報は載せない */
   .trade-step {
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 3vw, 14px); /* 320px幅でも「1,100円OFF」が折れないよう余白を可変 */
     border: 2px solid var(--main);
     border-radius: 14px;
-    padding: 16px 14px;
-    text-align: center;
+    padding: 12px clamp(12px, 3.6vw, 16px);
     background: #fff;
   }
   /* ステップ間の▼。悩みカードの矢印と同じようにゆっくり上下に揺れる */
-  .trade-step + .trade-step { margin-top: 34px; }
+  .trade-step + .trade-step { margin-top: 28px; }
   .trade-step + .trade-step::before {
     content: '';
     position: absolute;
-    top: -30px;
+    top: -24px;
     left: 50%;
-    margin-left: -14px;
-    border-left: 14px solid transparent;
-    border-right: 14px solid transparent;
-    border-top: 16px solid var(--main);
+    margin-left: -11px;
+    border-left: 11px solid transparent;
+    border-right: 11px solid transparent;
+    border-top: 13px solid var(--main);
     animation: arrow-bob 1.8s ease-in-out infinite;
   }
   .trade-step-num {
-    display: inline-block;
-    margin-bottom: 4px;
-    font-size: 18px;
+    flex-shrink: 0;
+    font-size: clamp(15px, 4.6vw, 17px);
     font-weight: 900;
-    letter-spacing: .08em;
+    letter-spacing: .06em;
     color: var(--main);
     line-height: 1.2;
     background: linear-gradient(transparent 65%, var(--accent) 65%);
   }
+  .trade-step-body { flex: 1; min-width: 0; }
   .trade-step-title {
     font-size: clamp(15px, 4.6vw, 17px);
     font-weight: 700;
     color: var(--text);
-    line-height: 1.6;
+    line-height: 1.5;
   }
-  .trade-step-em { color: var(--main); font-size: 1.2em; }
-  .trade-step-note { margin-top: 2px; font-size: clamp(11.5px, 3.6vw, 12.5px); color: #555; line-height: 1.6; } /* 320px幅でSTEP2の注釈が折れないよう可変 */
-  .trade-step-plus { margin-top: 2px; font-size: 13px; color: #06A13A; }
-  .trade-step-max {
-    margin-top: 4px;
-    font-size: 14px;
-    color: var(--main);
-  }
-  /* 合計額は色・サイズ・黄色マーカー下線で強調(太字にはしない) */
-  .trade-step-max span {
-    font-size: 1.6em;
-    font-weight: 500;
-    background: linear-gradient(transparent 65%, var(--accent) 65%);
-  }
-  .trade-step-note-em { color: var(--main); font-size: 1.15em; }
-  .trade-step-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    max-width: 200px;
-    margin: 10px auto 0;
-    padding: 10px;
-    border-radius: 999px;
-    background: var(--main);
-    color: #fff;
-    font-family: "Zen Maru Gothic", sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
-  }
-  .trade-step-btn:hover { background: #2C4680; }
+  .trade-step-em { color: var(--main); font-size: 1.2em; white-space: nowrap; }
+  .trade-step-note { margin-top: 1px; font-size: clamp(11.5px, 3.5vw, 12.5px); color: #555; line-height: 1.6; }
+  .trade-step-note-em { color: var(--main); font-size: 1.1em; }
   @media (prefers-reduced-motion: reduce) {
     .trade-step + .trade-step::before { animation: none; }
   }
@@ -970,21 +944,22 @@
       <ol class="trade-steps">
         <li class="trade-step reveal">
           <p class="trade-step-num">STEP1</p>
-          <p class="trade-step-title">使わないメガネを探す</p>
-          <p class="trade-step-note">※他店購入・壊れたメガネもOK！</p>
+          <div class="trade-step-body">
+            <p class="trade-step-title">使わないメガネを探す</p>
+          </div>
         </li>
         <li class="trade-step reveal">
           <p class="trade-step-num">STEP2</p>
-          <p class="trade-step-title">お近くのお店へ</p>
-          <p class="trade-step-note">目が疲れやすい・今のメガネが見えにくい<br>など、<span class="trade-step-note-em">無料相談もOK！</span></p>
-          <a href="#sec-store" class="trade-step-btn">店舗を探す<span class="cta-arrow" aria-hidden="true"></span></a>
+          <div class="trade-step-body">
+            <p class="trade-step-title">お近くのお店へ</p>
+            <p class="trade-step-note">目の疲れ・見えにくさなど、<br><span class="trade-step-note-em">無料相談もOK！</span></p>
+          </div>
         </li>
         <li class="trade-step reveal">
           <p class="trade-step-num">STEP3</p>
-          <p class="trade-step-title">ご購入時に<span class="trade-step-em">1,100円OFF</span></p>
-          <p class="trade-step-plus">＋LINE登録でさらに1,100円OFF</p>
-          <p class="trade-step-max">最大<span>2,200円OFF</span></p>
-          <p class="trade-step-note">※メガネ一式ご購入につき1本</p>
+          <div class="trade-step-body">
+            <p class="trade-step-title">ご購入時に<span class="trade-step-em">1,100円OFF</span></p>
+          </div>
         </li>
       </ol>
     </section>
