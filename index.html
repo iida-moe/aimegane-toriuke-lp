@@ -73,13 +73,19 @@
   }
 
   .fv {
-    padding: 10px 24px 40px;
+    padding: 0 24px 40px;
   }
 
-  /* スマホ版のロゴ。サイトのヘッダーのように左上に小さめに置き、FVをなるべく上に見せる */
+  /* スマホ版のロゴ。サイトのヘッダーのように左上に小さめに置き、FVをなるべく上に見せる。
+     背景をFV画像の上端と同じ水色にして、ロゴとFVの境目が出ないようにしている */
   .fv-logo {
+    margin: 0 -24px;
+    padding: 10px 24px 6px 16px; /* 左はロゴ画像の透明な余白ぶん詰めて、見た目の位置を揃える */
+    background: #C7E1F8;
+  }
+  .fv-logo a {
+    display: block;
     width: 116px;
-    margin: 0 0 10px -8px; /* ロゴ画像の左右の透明な余白ぶん左に寄せ、見た目の位置を揃える */
   }
   .fv-logo img {
     width: 100%;
