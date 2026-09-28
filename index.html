@@ -93,7 +93,7 @@
     display: block;
   }
 
-  /* FVのビジュアルはAffinityで作った1枚の画像(img/fv-composite.png)をそのまま使用。
+  /* FVのビジュアルはAffinityで作った1枚の画像(img/fv-composite.webp、元はpng)をそのまま使用。
      見出し文言を直す時はこの画像自体をAffinityで作り直す必要がある */
   .fv-visual {
     position: relative;
@@ -595,7 +595,7 @@
   }
 
   /* 最終CTA */
-  /* 最終CTA。ユーザーがAffinityで作成した1枚画像(img/finalcta.png)の上に、HTMLのボタンを横並びで重ねる。
+  /* 最終CTA。ユーザーがAffinityで作成した1枚画像(img/finalcta.webp、元はpng)の上に、HTMLのボタンを横並びで重ねる。
      ボタン位置は画像内の空白(上から約37〜69%)の中央に%指定で合わせているので、画面幅が変わってもズレない。
      画像を作り直して空白の位置が変わったら top の値を調整すること */
   .finalcta-section {
@@ -874,12 +874,12 @@
   <div class="side-left-panel">
     <div class="side-logo">
       <a href="https://www.aimegane.com/" target="_blank" rel="noopener">
-        <img src="img/aimegane_logo.png" alt="アイメガネ">
+        <img src="img/aimegane_logo.webp" width="454" height="122" alt="アイメガネ">
       </a>
     </div>
 
     <div class="side-promo">
-      <a href="#sec-tokuten"><img src="img/promo-badge.png" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
+      <a href="#sec-tokuten"><img src="img/promo-badge.webp" width="1000" height="267" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
     </div>
   </div>
 
@@ -903,16 +903,16 @@
       <!-- モバイル版：ロゴはヘッダーとして中央上部に表示（PC版は左固定ロゴを使用） -->
       <div class="fv-logo">
         <a href="https://www.aimegane.com/" target="_blank" rel="noopener">
-          <img src="img/aimegane_logo.png" alt="アイメガネ">
+          <img src="img/aimegane_logo.webp" width="454" height="122" alt="アイメガネ">
         </a>
       </div>
 
       <div class="fv-visual">
         <h1 class="sr-only">その疲れ、お使いのメガネが原因かも？</h1>
-        <img src="img/fv-composite.png" alt="メガネの不調に悩む男女のイラスト">
+        <img fetchpriority="high" src="img/fv-composite.webp" width="1675" height="2834" alt="メガネの不調に悩む男女のイラスト">
       </div>
 
-      <a href="#sec-tokuten" class="fv-promo"><img src="img/promo-badge.png" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
+      <a href="#sec-tokuten" class="fv-promo"><img src="img/promo-badge.webp" width="1000" height="267" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
       <a href="#sec-store" class="fv-cta-placeholder">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
     </section>
 
@@ -923,27 +923,27 @@
         </svg>
       </div>
       <div class="nayami-card">
-        <img class="reveal" src="img/nayami-1-q.png" alt="こんなこと、ありませんか？ スマホやパソコンを長時間使用すると、目の疲れを感じる">
-        <img class="nayami-arrow" src="img/nayami-1-arrow.png" alt="">
-        <img class="reveal" src="img/nayami-1-label.png" alt="アイメガネなら">
-        <img class="nayami-answer" src="img/nayami-1-a.png" alt="目の疲れを無料でチェック。調節機能解析装置「アコモレフ」を元に目の「調節力」や「ストレス度」を数値化し、楽に見えるメガネをご提案します。">
+        <img loading="lazy" decoding="async" class="reveal" src="img/nayami-1-q.webp" width="1207" height="1517" alt="こんなこと、ありませんか？ スマホやパソコンを長時間使用すると、目の疲れを感じる">
+        <img loading="lazy" decoding="async" class="nayami-arrow" src="img/nayami-1-arrow.webp" width="1207" height="147" alt="">
+        <img loading="lazy" decoding="async" class="reveal" src="img/nayami-1-label.webp" width="1207" height="146" alt="アイメガネなら">
+        <img loading="lazy" decoding="async" class="nayami-answer" src="img/nayami-1-a.webp" width="1207" height="1190" alt="目の疲れを無料でチェック。調節機能解析装置「アコモレフ」を元に目の「調節力」や「ストレス度」を数値化し、楽に見えるメガネをご提案します。">
       </div>
       <div class="nayami-card">
-        <img class="reveal" src="img/nayami-2-q.png" alt="メガネがズレる、かけ心地が悪い">
-        <img class="nayami-arrow" src="img/nayami-2-arrow.png" alt="">
-        <img class="reveal" src="img/nayami-2-label.png" alt="アイメガネなら">
-        <img class="nayami-answer" src="img/nayami-2-a.png" alt="眼鏡作製技能士がかけ心地を調整。お客様のお顔に合わせて、快適な装用感をサポートします。">
+        <img loading="lazy" decoding="async" class="reveal" src="img/nayami-2-q.webp" width="1206" height="1322" alt="メガネがズレる、かけ心地が悪い">
+        <img loading="lazy" decoding="async" class="nayami-arrow" src="img/nayami-2-arrow.webp" width="1206" height="145" alt="">
+        <img loading="lazy" decoding="async" class="reveal" src="img/nayami-2-label.webp" width="1206" height="143" alt="アイメガネなら">
+        <img loading="lazy" decoding="async" class="nayami-answer" src="img/nayami-2-a.webp" width="1206" height="1390" alt="眼鏡作製技能士がかけ心地を調整。お客様のお顔に合わせて、快適な装用感をサポートします。">
       </div>
       <div class="nayami-card">
-        <img class="reveal" src="img/nayami-3-q.png" alt="スマホや新聞など、小さい文字が見にくい">
-        <img class="nayami-arrow" src="img/nayami-3-arrow.png" alt="">
-        <img class="reveal" src="img/nayami-3-label.png" alt="アイメガネなら">
-        <img class="nayami-answer" src="img/nayami-3-a.png" alt="15項目の診断で、ぴったりの見え方に。普段よく見るもの・過ごし方をヒアリング。生活スタイルに合ったレンズ・度数をご提案します。">
+        <img loading="lazy" decoding="async" class="reveal" src="img/nayami-3-q.webp" width="1206" height="1326" alt="スマホや新聞など、小さい文字が見にくい">
+        <img loading="lazy" decoding="async" class="nayami-arrow" src="img/nayami-3-arrow.webp" width="1206" height="155" alt="">
+        <img loading="lazy" decoding="async" class="reveal" src="img/nayami-3-label.webp" width="1206" height="157" alt="アイメガネなら">
+        <img loading="lazy" decoding="async" class="nayami-answer" src="img/nayami-3-a.webp" width="1206" height="1362" alt="15項目の診断で、ぴったりの見え方に。普段よく見るもの・過ごし方をヒアリング。生活スタイルに合ったレンズ・度数をご提案します。">
       </div>
     </section>
 
     <section class="tokuten-section" id="sec-tokuten">
-      <img class="tokuten-section-img reveal" src="img/tokuten-section.png" alt="今だけ特典 メガネの下取りキャンペーン 下取り1本につき1,100円OFF こんなメガネも下取ります(ご自宅に眠っているメガネ・古いメガネ・壊れているメガネ・他店で購入したメガネ) さらにLINEお友だち登録で1,100円OFF 期間:2026年11月12日(木)まで 詳細:メガネ一式ご購入につき1本下取りいたします。">
+      <img loading="lazy" decoding="async" class="tokuten-section-img reveal" src="img/tokuten-section.webp" width="1206" height="3000" alt="今だけ特典 メガネの下取りキャンペーン 下取り1本につき1,100円OFF こんなメガネも下取ります(ご自宅に眠っているメガネ・古いメガネ・壊れているメガネ・他店で購入したメガネ) さらにLINEお友だち登録で1,100円OFF 期間:2026年11月12日(木)まで 詳細:メガネ一式ご購入につき1本下取りいたします。">
     </section>
 
     <section class="trade-section" id="sec-trade">
@@ -1053,7 +1053,7 @@
     <section class="finalcta-section" id="sec-cta">
       <div class="finalcta-visual reveal">
         <h2 class="sr-only">毎日かけるメガネだから、一度見直してみませんか。</h2>
-        <img src="img/finalcta.png" alt="下取り＋LINE登録で最大2,200円OFF 11/12(木)まで。まずは無料相談で、今のお悩みを一緒に解決しましょう。">
+        <img loading="lazy" decoding="async" src="img/finalcta.webp" width="1207" height="1590" alt="下取り＋LINE登録で最大2,200円OFF キャンペーン期間 10/13(火)〜11/12(木)。気になることがあれば、まずはお気軽にご相談ください。">
         <div class="finalcta-btns">
           <a href="#sec-store" class="finalcta-btn finalcta-btn-primary">お近くの店舗で無料相談<span class="cta-arrow" aria-hidden="true"></span></a>
         </div>
@@ -1062,7 +1062,7 @@
 
     <footer class="page-footer">
       <a href="https://www.aimegane.com/" target="_blank" rel="noopener" class="page-footer-logo">
-        <img src="img/aimegane_logo.png" alt="アイメガネ">
+        <img src="img/aimegane_logo.webp" width="454" height="122" alt="アイメガネ">
       </a>
       <p class="page-footer-company">
         アイジャパン株式会社<br>
