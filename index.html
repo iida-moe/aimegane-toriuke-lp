@@ -103,7 +103,7 @@
   .fv-promo {
     display: block;
     max-width: 340px;
-    margin: 20px auto 0;
+    margin: 24px auto 0;
   }
   .fv-promo img {
     display: block;
@@ -136,7 +136,7 @@
     justify-content: center;
     gap: 6px;
     max-width: 280px;
-    margin: 16px auto 0;
+    margin: 22px auto 0;
     padding: 14px;
     border-radius: 999px;
     background: var(--accent);
@@ -334,7 +334,7 @@
     line-height: 1.6;
   }
   .trade-step-em { color: var(--main); font-size: 1.2em; }
-  .trade-step-note { margin-top: 2px; font-size: 12px; color: #666; line-height: 1.6; }
+  .trade-step-note { margin-top: 2px; font-size: clamp(11.5px, 3.6vw, 12.5px); color: #555; line-height: 1.6; } /* 320px幅でSTEP2の注釈が折れないよう可変 */
   .trade-step-plus { margin-top: 2px; font-size: 13px; color: #06A13A; }
   .trade-step-max {
     margin-top: 4px;
@@ -390,7 +390,7 @@
     font-size: 14px; color: #555; line-height: 1.8; margin-bottom: 6px;
   }
   .shop-intro-note {
-    font-size: 12px; color: var(--text); margin-bottom: 22px;
+    font-size: 12.5px; color: #555; line-height: 1.7; margin-bottom: 22px;
   }
   .shop-search-box {
     background: #F7F7F5; border-radius: 16px;
@@ -462,7 +462,7 @@
   .shop-geo-btn:hover { background: #2C4680; }
   .shop-geo-btn:disabled { opacity: .6; cursor: default; }
   .shop-geo-icon { width: 16px; height: 16px; flex-shrink: 0; }
-  .shop-divider { display: flex; align-items: center; gap: 12px; margin: 16px 0; color: #999; font-size: 13px; }
+  .shop-divider { display: flex; align-items: center; gap: 12px; margin: 16px 0; color: #777; font-size: 13px; }
   .shop-divider::before, .shop-divider::after { content: ''; flex: 1; height: 1px; background: #e0e0e0; }
   .shop-search-form {
     display: flex; align-items: center; justify-content: center;
@@ -490,7 +490,7 @@
   .shop-search-btn:hover { background: #2C4680; }
   .shop-count { font-size: 14px; font-weight: 700; color: #555; margin-bottom: 14px; }
   .shop-count-zip { font-weight: 900; color: var(--main); }
-  .shop-count-note { display: inline-block; margin-top: 4px; font-size: 11px; color: #888; }
+  .shop-count-note { display: inline-block; margin-top: 4px; font-size: 12px; color: #666; }
   .shop-results { text-align: left; margin-bottom: 8px; }
   .shop-initial, .shop-more-list { display: grid; grid-template-columns: 1fr; gap: 14px; }
   .shop-more-list { display: none; margin-top: 14px; }
@@ -515,7 +515,7 @@
   }
   .shop-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); border-color: rgba(57,92,163,0.35); }
   .shop-card-name { font-size: 16px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
-  .shop-card-addr { font-size: 12.5px; color: #888; margin-bottom: 12px; }
+  .shop-card-addr { font-size: 13px; color: #666; margin-bottom: 12px; }
   .shop-card-distance { font-size: 12.5px; color: var(--main); font-weight: 700; margin-bottom: 12px; }
   .shop-card-distance strong { font-weight: 900; }
   .shop-card-btns { display: flex; gap: 8px; }
@@ -549,7 +549,7 @@
   .shop-hero-btn-tel:hover { background: var(--main); color: #fff; }
   .shop-hero-btn-tel-num { font-size: 0.7em; font-weight: 700; }
   .shop-others-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 14px; }
-  .shop-empty { text-align: center; color: #888; padding: 20px 16px; font-size: 14px; line-height: 1.7; }
+  .shop-empty { text-align: center; color: #666; padding: 20px 16px; font-size: 14px; line-height: 1.7; }
 
   /* 店舗検索: フローティング絞り込みバー */
   .shop-filter-bar {
@@ -569,7 +569,7 @@
   .shop-filter-count-row { display: flex; align-items: baseline; gap: 5px; flex-shrink: 0; white-space: nowrap; }
   .shop-filter-count-num { font-family: "Zen Maru Gothic", sans-serif; font-size: 22px; font-weight: 900; color: var(--main); line-height: 1; }
   .shop-filter-count-label { font-size: 12px; font-weight: 700; color: #555; }
-  .shop-filter-total { font-size: 11px; color: #999; }
+  .shop-filter-total { font-size: 11.5px; color: #777; }
   .shop-filter-divider { display: none; }
   .shop-filter-cond-wrap { flex: none; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
   .shop-filter-cond-label { font-size: 12px; color: #888; white-space: nowrap; flex-shrink: 0; }
@@ -675,7 +675,7 @@
   .page-footer-copyright {
     margin: 0;
     font-size: 11px;
-    color: #999;
+    color: #888;
   }
 
   /* PC版：固定サイドナビ・固定ロゴ */
