@@ -626,11 +626,11 @@
   .finalcta-btns {
     position: absolute;
     top: 49.25%; /* 画像内の空白(615〜951px / 1590px)のちょうど中央 */
-    left: 9%;
-    right: 9%;
+    left: 14%;
+    right: 14%;
     transform: translateY(-50%);
     display: flex;
-    gap: 3%;
+    justify-content: center;
   }
   .finalcta-btn {
     flex: 1;
@@ -639,17 +639,17 @@
     align-items: center;
     justify-content: center;
     gap: 4px;
-    padding: clamp(11px, 3.4vw, 15px) 4px;
+    padding: clamp(12px, 3.6vw, 16px) 8px;
     border-radius: 999px;
     text-align: center;
     font-family: "Zen Maru Gothic", sans-serif;
     font-weight: 700;
-    font-size: clamp(12px, 3.6vw, 15px);
+    font-size: clamp(13.5px, 4.2vw, 16px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     white-space: nowrap;
     text-decoration: none;
   }
   .finalcta-btn-primary { background: var(--accent); color: var(--text); border: 2px solid var(--accent); } /* 枠線ありの店舗一覧ボタンと高さを揃える */
-  .finalcta-btn-secondary { background: #fff; color: var(--main); border: 2px solid var(--main); }
 
   /* フッター。最終CTAの白背景と地続きにして、境目の線が目立たないようにしている */
   .page-footer {
@@ -1069,8 +1069,7 @@
         <h2 class="sr-only">毎日かけるメガネだから、一度見直してみませんか。</h2>
         <img src="img/finalcta.png" alt="下取り＋LINE登録で最大2,200円OFF 11/12(木)まで。まずは無料相談で、今のお悩みを一緒に解決しましょう。">
         <div class="finalcta-btns">
-          <a href="#sec-store" class="finalcta-btn finalcta-btn-primary">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
-          <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="finalcta-btn finalcta-btn-secondary">店舗一覧へ<span class="cta-arrow" aria-hidden="true"></span></a>
+          <a href="#sec-store" class="finalcta-btn finalcta-btn-primary">お近くの店舗で無料相談<span class="cta-arrow" aria-hidden="true"></span></a>
         </div>
       </div>
     </section>
