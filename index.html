@@ -671,60 +671,41 @@
   }
 
   /* 最終CTA */
-  /* 店舗一覧・フッター(どちらも白)と区別し、締めのブロックとしてまとまって見えるよう淡いブルーの背景に。
-     PC版の外側の背景(rgba(166,205,230,0.2))より少し濃くして、中央カラム内で埋もれないようにしている */
+  /* 最終CTA。ユーザーがAffinityで作成した1枚画像(img/finalcta.png)の上に、HTMLのボタンを横並びで重ねる。
+     ボタン位置は画像内の空白(上から約37〜69%)の中央に%指定で合わせているので、画面幅が変わってもズレない。
+     画像を作り直して空白の位置が変わったら top の値を調整すること */
   .finalcta-section {
-    background: #E3EFF8;
-    padding: 56px 24px 64px;
-    text-align: center;
+    background: #A3C0E0; /* 画像の外側の青と同じ色 */
   }
-  /* 小さいスマホ(320px幅)で「そのままにしていませ／んか？」と崩れて改行されないよう、画面幅に合わせて縮める */
-  .finalcta-title {
-    margin: 0 0 16px;
-    font-size: clamp(20px, 6.4vw, 26px);
-    font-weight: 900;
-    color: var(--main);
-    line-height: 1.5;
-  }
-  .finalcta-sub {
-    margin: 0 0 8px;
-    font-size: 15px;
-    color: var(--text);
-    line-height: 1.8;
-  }
-  .finalcta-note {
-    margin: 0 0 28px;
-    font-size: 13px;
-    color: #555;
-    line-height: 1.9;
-  }
-  /* 最後のひと押しとして特典額を強調。太字ではなく色・サイズ・黄色マーカー下線で目立たせる */
-  .finalcta-note-em {
-    margin-left: 2px;
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--main);
-    background: linear-gradient(transparent 62%, var(--accent) 62%);
+  .finalcta-visual { position: relative; }
+  .finalcta-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
   .finalcta-btns {
+    position: absolute;
+    top: 53%;
+    left: 9%;
+    right: 9%;
+    transform: translateY(-50%);
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+    gap: 3%;
   }
   .finalcta-btn {
+    flex: 1;
+    min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    width: 100%;
-    max-width: 280px;
-    padding: 15px;
+    gap: 4px;
+    padding: clamp(11px, 3.4vw, 15px) 4px;
     border-radius: 999px;
     text-align: center;
     font-family: "Zen Maru Gothic", sans-serif;
     font-weight: 700;
-    font-size: 15px;
+    font-size: clamp(12px, 3.6vw, 15px);
+    white-space: nowrap;
     text-decoration: none;
   }
   .finalcta-btn-primary { background: var(--accent); color: var(--text); }
@@ -796,6 +777,7 @@
       font-weight: 500;
       color: var(--text);
       text-decoration: none;
+      white-space: nowrap; /* 「こんなこと、ありませんか？」が幅200pxにわずかに収まらず折れるため */
     }
     .side-nav a:hover {
       color: var(--main);
@@ -1180,12 +1162,13 @@
     </div>
 
     <section class="finalcta-section" id="sec-cta">
-      <p class="finalcta-title reveal">そのメガネ、<br>そのままにしていませんか？</p>
-      <p class="finalcta-sub">まずは無料相談で、<br>今のお悩みを一緒に解決しましょう。</p>
-      <p class="finalcta-note">下取り＋LINE登録で<span class="finalcta-note-em">最大2,200円OFF</span><br>キャンペーンは11/12(木)まで</p>
-      <div class="finalcta-btns">
-        <a href="#sec-store" class="finalcta-btn finalcta-btn-primary">無料相談はこちら<span class="cta-arrow">▶</span></a>
-        <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="finalcta-btn finalcta-btn-secondary">店舗一覧へ<span class="cta-arrow">▶</span></a>
+      <div class="finalcta-visual reveal">
+        <h2 class="sr-only">毎日かけるメガネだから、一度見直してみませんか。</h2>
+        <img src="img/finalcta.png" alt="下取り＋LINE登録で最大2,200円OFF 11/12(木)まで。まずは無料相談で、今のお悩みを一緒に解決しましょう。">
+        <div class="finalcta-btns">
+          <a href="#sec-store" class="finalcta-btn finalcta-btn-primary">無料相談はこちら<span class="cta-arrow">▶</span></a>
+          <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="finalcta-btn finalcta-btn-secondary">店舗一覧へ<span class="cta-arrow">▶</span></a>
+        </div>
       </div>
     </section>
 
