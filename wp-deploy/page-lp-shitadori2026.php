@@ -19,7 +19,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
 <meta property="og:image" content="<?php echo $lp_assets; ?>/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-side: #A6CDE6; /* 淡いブルー：ページ全体ではなく、今後カード等の差し色として使用予定 */
@@ -156,8 +156,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     background: var(--accent);
     text-align: center;
     color: var(--text);
-    font-family: "Zen Maru Gothic", sans-serif;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 14px;
     text-decoration: none;
   }
@@ -169,7 +168,6 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     width: calc(100% + 24px);
     background: var(--main);
     color: #fff;
-    font-family: "Zen Maru Gothic", sans-serif;
     font-size: 14px;
     font-weight: 700;
     text-align: center;
@@ -191,7 +189,6 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-family: "Zen Maru Gothic", sans-serif;
     font-weight: 700;
     font-size: 11px;
     line-height: 1.3;
@@ -279,7 +276,6 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     border-radius: 999px;
     background: var(--accent);
     color: var(--text);
-    font-family: "Zen Maru Gothic", sans-serif;
     font-size: 13px;
     font-weight: 700;
   }
@@ -447,8 +443,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
   .shop-geo-btn {
     display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
     padding: 15px 18px; background: var(--main); color: #fff;
-    font-family: "Zen Maru Gothic", sans-serif;
-    font-size: 15px; font-weight: 700; border: none; border-radius: 999px;
+    font-size: 15px; font-weight: 900; border: none; border-radius: 999px;
     cursor: pointer; transition: background .2s;
   }
   .shop-geo-btn:hover { background: #00205A; }
@@ -474,8 +469,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
   .shop-search-btn {
     padding: 11px 24px;
     background: var(--main); color: #fff;
-    font-family: "Zen Maru Gothic", sans-serif;
-    font-size: 15px; font-weight: 700;
+    font-size: 15px; font-weight: 900;
     border: none; border-radius: 999px; cursor: pointer;
     transition: background .2s;
   }
@@ -512,7 +506,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
   .shop-card-distance strong { font-weight: 900; }
   .shop-card-btns { display: flex; gap: 8px; }
   /* 電話ボタンは電話番号だけの1行にして、WEB予約ボタンと一緒に低く揃える */
-  .shop-btn-web, .shop-btn-tel { flex: 1; padding: 11px 0; text-align: center; font-size: 13.5px; font-weight: 900; border-radius: 6px; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all .2s; font-family: "Zen Maru Gothic", sans-serif; }
+  .shop-btn-web, .shop-btn-tel { flex: 1; padding: 11px 0; text-align: center; font-size: 13.5px; font-weight: 900; border-radius: 6px; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all .2s; }
   .shop-btn-web { background: var(--accent); color: var(--text); border: none; }
   .shop-btn-web:hover { background: #e6c900; }
   .shop-btn-tel { background: #fff; color: var(--main); border: 2px solid var(--main); }
@@ -534,7 +528,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
   .shop-hero-distance { font-size: 14px; color: var(--main); font-weight: 700; margin-bottom: 18px; }
   .shop-hero-distance strong { font-size: 1.15em; font-weight: 900; }
   .shop-hero-btns { display: flex; gap: 10px; }
-  .shop-hero-btn { flex: 1; padding: 12px 8px; text-align: center; font-size: 14px; font-weight: 900; text-decoration: none; border-radius: 6px; transition: all .2s; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: "Zen Maru Gothic", sans-serif; }
+  .shop-hero-btn { flex: 1; padding: 12px 8px; text-align: center; font-size: 14px; font-weight: 900; text-decoration: none; border-radius: 6px; transition: all .2s; display: flex; flex-direction: column; align-items: center; justify-content: center; }
   .shop-hero-btn-web { background: var(--accent); color: var(--text); border: 2px solid var(--accent); }
   .shop-hero-btn-web:hover { background: #e6c900; border-color: #e6c900; }
   .shop-hero-btn-tel { background: #fff; color: var(--main); border: 2px solid var(--main); }
@@ -558,7 +552,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     display: flex; flex-direction: column; align-items: stretch; gap: 8px;
   }
   .shop-filter-count-row { display: flex; align-items: baseline; gap: 5px; flex-shrink: 0; white-space: nowrap; }
-  .shop-filter-count-num { font-family: "Zen Maru Gothic", sans-serif; font-size: 22px; font-weight: 900; color: var(--main); line-height: 1; }
+  .shop-filter-count-num { font-size: 22px; font-weight: 900; color: var(--main); line-height: 1; }
   .shop-filter-count-label { font-size: 12px; font-weight: 700; color: #555; }
   .shop-filter-total { font-size: 11.5px; color: #777; }
   .shop-filter-divider { display: none; }
@@ -581,7 +575,6 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     flex: 1;
     display: inline-flex; align-items: center; justify-content: center;
     background: #fff; color: var(--main); border: 2px solid var(--main);
-    font-family: "Zen Maru Gothic", sans-serif;
     font-size: 12.5px; font-weight: 700; padding: 9px 16px; border-radius: 999px;
     white-space: nowrap; transition: background .2s; cursor: pointer;
   }
@@ -590,7 +583,6 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     flex: 1;
     display: inline-flex; align-items: center; justify-content: center;
     background: #00205A; color: #fff; border: 2px solid #00205A;
-    font-family: "Zen Maru Gothic", sans-serif;
     font-size: 12.5px; font-weight: 700; padding: 9px 16px; border-radius: 999px;
     white-space: nowrap; text-decoration: none; transition: background .2s;
   }
@@ -633,8 +625,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     padding: clamp(12px, 3.6vw, 16px) 8px;
     border-radius: 999px;
     text-align: center;
-    font-family: "Zen Maru Gothic", sans-serif;
-    font-weight: 700;
+    font-weight: 900;
     font-size: clamp(13.5px, 4.2vw, 16px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     white-space: nowrap;
@@ -720,8 +711,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
       align-items: center;
       justify-content: center;
       gap: 8px;
-      font-family: "Zen Maru Gothic", sans-serif;
-      font-weight: 700;
+      font-weight: 900;
       font-size: 15px;
       letter-spacing: 0.02em;
       text-align: center;
