@@ -887,7 +887,7 @@
     </div>
 
     <div class="side-promo">
-      <a href="#sec-tokuten" data-track="side_banner"><img src="img/promo-badge.webp" width="1000" height="267" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
+      <a href="#sec-tokuten" data-track="side_banner" data-cta-location="side_banner"><img src="img/promo-badge.webp" width="1000" height="267" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
     </div>
   </div>
 
@@ -898,10 +898,10 @@
     <a href="#sec-tokuten">今だけ特典</a>
     <a href="#sec-trade">下取りの流れ</a>
     <a href="#sec-store">お近くの店舗</a>
-    <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="side-cta side-cta-secondary" data-track="side_shop_list">
+    <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="side-cta side-cta-secondary" data-track="side_shop_list" data-cta-location="side_shop_list">
       店舗一覧へ<span class="cta-arrow" aria-hidden="true"></span>
     </a>
-    <a href="#sec-store" class="side-cta side-cta-primary" data-track="side_nav">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
+    <a href="#sec-store" class="side-cta side-cta-primary" data-track="side_nav" data-cta-location="side_nav">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
   </nav>
 
   <div class="page">
@@ -920,8 +920,8 @@
         <img fetchpriority="high" src="img/fv-composite.webp" width="1675" height="2834" alt="メガネの不調に悩む男女のイラスト">
       </div>
 
-      <a href="#sec-tokuten" class="fv-promo" data-track="fv_banner"><img src="img/promo-badge.webp" width="1000" height="267" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
-      <a href="#sec-store" class="fv-cta-placeholder" data-track="fv">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
+      <a href="#sec-tokuten" class="fv-promo" data-track="fv_banner" data-cta-location="fv_banner"><img src="img/promo-badge.webp" width="1000" height="267" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
+      <a href="#sec-store" class="fv-cta-placeholder" data-track="fv" data-cta-location="fv">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
     </section>
 
     <section class="nayami-section" id="sec-nayami">
@@ -990,7 +990,7 @@
 
       <div class="shop-search-box">
         <div class="shop-geo-wrap">
-          <button type="button" class="shop-geo-btn" id="shopGeoBtn" onclick="searchByLocation()"><svg class="shop-geo-icon" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M256,0C139.563,0,45.172,94.406,45.172,210.828S210.875,512,256,512c45.109,0,210.828-184.75,210.828-301.172S372.438,0,256,0z M256,307.594c-53.453,0-96.766-43.328-96.766-96.766c0-53.453,43.313-96.766,96.766-96.766c53.438,0,96.766,43.313,96.766,96.766C352.766,264.266,309.438,307.594,256,307.594z"/></svg> 現在地から探す</button>
+          <button type="button" class="shop-geo-btn" id="shopGeoBtn" data-cta-location="search_geo" onclick="searchByLocation()"><svg class="shop-geo-icon" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M256,0C139.563,0,45.172,94.406,45.172,210.828S210.875,512,256,512c45.109,0,210.828-184.75,210.828-301.172S372.438,0,256,0z M256,307.594c-53.453,0-96.766-43.328-96.766-96.766c0-53.453,43.313-96.766,96.766-96.766c53.438,0,96.766,43.313,96.766,96.766C352.766,264.266,309.438,307.594,256,307.594z"/></svg> 現在地から探す</button>
           <div class="shop-divider"><span>または</span></div>
         </div>
 
@@ -999,7 +999,7 @@
           <input type="text" id="zip1" maxlength="3" placeholder="330" class="shop-zip-input" inputmode="numeric" autocomplete="off" aria-label="郵便番号の前3桁">
           <span class="shop-zip-sep">-</span>
           <input type="text" id="zip2" maxlength="4" placeholder="0846" class="shop-zip-input shop-zip-input-lg" inputmode="numeric" autocomplete="off" aria-label="郵便番号の後4桁(任意)">
-          <button type="button" class="shop-search-btn" onclick="searchShop()">検索</button>
+          <button type="button" class="shop-search-btn" data-cta-location="search_submit" onclick="searchShop()">検索</button>
         </div>
       </div>
 
@@ -1063,7 +1063,7 @@
         <h2 class="sr-only">毎日かけるメガネだから、一度見直してみませんか。</h2>
         <img loading="lazy" decoding="async" src="img/finalcta.webp" width="1207" height="1590" alt="下取り＋LINE登録で最大2,200円OFF キャンペーン期間 10/13(火)〜11/12(木)。気になることがあれば、まずはお気軽にご相談ください。">
         <div class="finalcta-btns">
-          <a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="final">お近くの店舗で無料相談<span class="cta-arrow" aria-hidden="true"></span></a>
+          <a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="final" data-cta-location="final">お近くの店舗で無料相談<span class="cta-arrow" aria-hidden="true"></span></a>
         </div>
       </div>
     </section>
@@ -1283,8 +1283,8 @@ function renderShops(list){
       <p class="shop-card-addr">${s.addr}</p>
       ${s.distanceKm!=null?`<p class="shop-card-distance">お住まいから約 <strong>${s.distanceKm.toFixed(1)} km</strong></p>`:''}
       <div class="shop-card-btns">
-        <a href="${s.web}" target="_blank" rel="noopener" class="shop-btn-web">WEB予約</a>
-        <a href="tel:${s.tel.replace(/-/g,'')}" class="shop-btn-tel" aria-label="電話予約 ${s.tel}">${s.tel}</a>
+        <a href="${s.web}" target="_blank" rel="noopener" class="shop-btn-web" data-cta-location="store_web">WEB予約</a>
+        <a href="tel:${s.tel.replace(/-/g,'')}" class="shop-btn-tel" data-cta-location="store_tel" aria-label="電話予約 ${s.tel}">${s.tel}</a>
       </div>
     </div>
   `).join('');
@@ -1299,8 +1299,8 @@ function renderHeroShop(s){
         <p class="shop-hero-addr">${s.addr}</p>
         ${s.distanceKm!=null?`<p class="shop-hero-distance">お住まいから約 <strong>${s.distanceKm.toFixed(1)} km</strong></p>`:''}
         <div class="shop-hero-btns">
-          <a href="${s.web}" target="_blank" rel="noopener" class="shop-hero-btn shop-hero-btn-web">WEB予約</a>
-          <a href="tel:${s.tel.replace(/-/g,'')}" class="shop-hero-btn shop-hero-btn-tel" aria-label="電話予約 ${s.tel}">${s.tel}</a>
+          <a href="${s.web}" target="_blank" rel="noopener" class="shop-hero-btn shop-hero-btn-web" data-cta-location="store_web">WEB予約</a>
+          <a href="tel:${s.tel.replace(/-/g,'')}" class="shop-hero-btn shop-hero-btn-tel" data-cta-location="store_tel" aria-label="電話予約 ${s.tel}">${s.tel}</a>
         </div>
       </div>
     </div>
@@ -1322,7 +1322,7 @@ function showInitialShops(){
     <div class="shop-more-wrap">
       <div class="shop-more-list-outer">
         <div class="shop-more-list" id="shopMoreList">${renderShops(rest)}</div>
-        <div class="shop-back-rail" id="shopBackRail"><a href="#sec-store" class="shop-back-top"><span class="shop-back-arrows">«</span>検索に戻る</a></div>
+        <div class="shop-back-rail" id="shopBackRail"><a href="#sec-store" class="shop-back-top" data-cta-location="back_to_search"><span class="shop-back-arrows">«</span>検索に戻る</a></div>
       </div>
       <button type="button" class="shop-more-btn" id="shopMoreBtn" onclick="toggleMoreShops()">
         <span class="shop-more-btn-text">もっと見る</span>
@@ -1479,6 +1479,7 @@ setupShopFilterBarVisibility();
 })();
 </script>
 <script>
+// ボタンには ザ・セールLPと同じ data-cta-location を付けている(GTMの既存設定 lp_cta_click で拾えるように)。
 // クリック計測(GA4イベント)。GA4を読み込んでいない環境(社内レビュー等)では dataLayer に積まれるだけで送信されない
 //  cta_click          … CTA・バナーのクリック。cta_location で場所を区別(fv / fv_banner / side_nav / side_banner / side_shop_list / final)
 //  shop_reserve_click … 店舗カードのWEB予約・電話予約。shop_name と method(web / tel)
