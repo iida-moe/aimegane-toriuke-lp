@@ -915,19 +915,19 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
         <img loading="lazy" decoding="async" class="reveal" src="<?php echo $lp_assets; ?>/nayami-1-q.webp?v=9003d79d" width="1207" height="1496" alt="こんなこと、ありませんか？ スマホやパソコンを長時間使用すると、目の疲れを感じる">
         <img loading="lazy" decoding="async" class="nayami-arrow" src="<?php echo $lp_assets; ?>/nayami-1-arrow.webp?v=789f9a3f" width="1207" height="148" alt="">
         <img loading="lazy" decoding="async" class="reveal" src="<?php echo $lp_assets; ?>/nayami-1-label.webp?v=24a1ee01" width="1207" height="146" alt="アイメガネなら">
-        <img loading="lazy" decoding="async" class="nayami-answer" src="<?php echo $lp_assets; ?>/nayami-1-a.webp?v=55db6d74" width="1207" height="1188" alt="目の疲れを無料でチェック。調節機能解析装置「アコモレフ」を元に目の「調節力」や「ストレス度」を数値化し、楽に見えるメガネをご案内します。">
+        <img loading="lazy" decoding="async" class="nayami-answer" src="<?php echo $lp_assets; ?>/nayami-1-a.webp?v=86683e06" width="1207" height="1188" alt="目の疲れを無料でチェック。調節機能解析装置「アコモレフ」を元に目の「調節力」や「ストレス度」を数値化し、楽に見えるメガネをご案内します。">
       </div>
       <div class="nayami-card">
         <img loading="lazy" decoding="async" class="reveal" src="<?php echo $lp_assets; ?>/nayami-2-q.webp?v=f8ca53c5" width="1206" height="1322" alt="メガネがズレる、かけ心地が悪い">
         <img loading="lazy" decoding="async" class="nayami-arrow" src="<?php echo $lp_assets; ?>/nayami-2-arrow.webp?v=fb81f847" width="1206" height="145" alt="">
         <img loading="lazy" decoding="async" class="reveal" src="<?php echo $lp_assets; ?>/nayami-2-label.webp?v=0b24d237" width="1206" height="143" alt="アイメガネなら">
-        <img loading="lazy" decoding="async" class="nayami-answer" src="<?php echo $lp_assets; ?>/nayami-2-a.webp?v=6610c10f" width="1206" height="1390" alt="眼鏡作製技能士がかけ心地を調整。お客様のお顔に合わせて、快適な装用感をサポートします。">
+        <img loading="lazy" decoding="async" class="nayami-answer" src="<?php echo $lp_assets; ?>/nayami-2-a.webp?v=0018082c" width="1206" height="1390" alt="眼鏡作製技能士がかけ心地を調整。お客様のお顔に合わせて、快適な装用感をサポートします。">
       </div>
       <div class="nayami-card">
         <img loading="lazy" decoding="async" class="reveal" src="<?php echo $lp_assets; ?>/nayami-3-q.webp?v=78907482" width="1206" height="1326" alt="スマホや新聞など、小さい文字が見にくい">
         <img loading="lazy" decoding="async" class="nayami-arrow" src="<?php echo $lp_assets; ?>/nayami-3-arrow.webp?v=e07177e4" width="1206" height="142" alt="">
         <img loading="lazy" decoding="async" class="reveal" src="<?php echo $lp_assets; ?>/nayami-3-label.webp?v=14550339" width="1206" height="157" alt="アイメガネなら">
-        <img loading="lazy" decoding="async" class="nayami-answer" src="<?php echo $lp_assets; ?>/nayami-3-a.webp?v=cb5fe8bf" width="1206" height="1375" alt="15項目の診断で、ぴったりの見え方に。普段よく見るもの・過ごし方をヒアリング。生活スタイルに合ったレンズ・度数をご提案します。">
+        <img loading="lazy" decoding="async" class="nayami-answer" src="<?php echo $lp_assets; ?>/nayami-3-a.webp?v=b7299742" width="1206" height="1375" alt="15項目の診断で、ぴったりの見え方に。普段よく見るもの・過ごし方をヒアリング。生活スタイルに合ったレンズ・度数をご提案します。">
       </div>
     </section>
 
