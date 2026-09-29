@@ -868,7 +868,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     </div>
 
     <div class="side-promo">
-      <a href="#sec-tokuten" data-track="side_banner" data-cta-location="side_banner"><img src="<?php echo $lp_assets; ?>/promo-badge.webp?v=55b5f7a0" width="1000" height="267" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
+      <a href="#sec-tokuten" data-track="side_banner" data-cta-location="side_banner"><img src="<?php echo $lp_assets; ?>/promo-badge.webp?v=8642c4ca" width="1000" height="267" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
     </div>
   </div>
 
@@ -901,7 +901,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
         <img fetchpriority="high" src="<?php echo $lp_assets; ?>/fv-composite.webp?v=af92a016" width="1675" height="2834" alt="メガネの不調に悩む男女のイラスト">
       </div>
 
-      <a href="#sec-tokuten" class="fv-promo" data-track="fv_banner" data-cta-location="fv_banner"><img src="<?php echo $lp_assets; ?>/promo-badge.webp?v=55b5f7a0" width="1000" height="267" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
+      <a href="#sec-tokuten" class="fv-promo" data-track="fv_banner" data-cta-location="fv_banner"><img src="<?php echo $lp_assets; ?>/promo-badge.webp?v=8642c4ca" width="1000" height="267" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
       <a href="#sec-store" class="fv-cta-placeholder" data-track="fv" data-cta-location="fv">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
     </section>
 
@@ -932,7 +932,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     </section>
 
     <section class="tokuten-section" id="sec-tokuten">
-      <img loading="lazy" decoding="async" class="tokuten-section-img reveal" src="<?php echo $lp_assets; ?>/tokuten-section.webp?v=4105e4db" width="1206" height="3000" alt="今だけ特典 メガネの下取りキャンペーン 下取り1本につき1,100円OFF こんなメガネも下取ります(ご自宅に眠っているメガネ・古いメガネ・壊れているメガネ・他店で購入したメガネ) さらにLINEお友だち登録で1,100円OFF 期間:2026年11/12(木)まで 詳細:メガネ一式ご購入につき1本下取りいたします。">
+      <img loading="lazy" decoding="async" class="tokuten-section-img reveal" src="<?php echo $lp_assets; ?>/tokuten-section.webp?v=b8c5b95e" width="1206" height="3000" alt="今だけ特典 メガネの下取りキャンペーン 下取り1本につき1,100円OFF こんなメガネも下取ります(ご自宅に眠っているメガネ・古いメガネ・壊れているメガネ・他店で購入したメガネ) さらにLINEお友だち登録で1,100円OFF 期間:10/13(火)〜11/12(木) 詳細:メガネ一式ご購入につき1本下取りいたします。">
     </section>
 
     <section class="trade-section" id="sec-trade">
