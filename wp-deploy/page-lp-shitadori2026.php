@@ -908,7 +908,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     </section>
 
     <section class="tokuten-section" id="sec-tokuten">
-      <img loading="lazy" decoding="async" class="tokuten-section-img reveal" src="<?php echo $lp_assets; ?>/tokuten-section.webp?v=bc10d49c" width="1206" height="3000" alt="今だけ特典 メガネの下取りキャンペーン 下取り1本につき1,100円OFF こんなメガネも下取ります(ご自宅に眠っているメガネ・古いメガネ・壊れているメガネ・他店で購入したメガネ) さらにLINEお友だち登録で1,100円OFF 期間:2026年11月12日(木)まで 詳細:メガネ一式ご購入につき1本下取りいたします。">
+      <img loading="lazy" decoding="async" class="tokuten-section-img reveal" src="<?php echo $lp_assets; ?>/tokuten-section.webp?v=88120f62" width="1206" height="3000" alt="今だけ特典 メガネの下取りキャンペーン 下取り1本につき1,100円OFF こんなメガネも下取ります(ご自宅に眠っているメガネ・古いメガネ・壊れているメガネ・他店で購入したメガネ) さらにLINEお友だち登録で1,100円OFF 期間:2026年11月12日(木)まで 詳細:メガネ一式ご購入につき1本下取りいたします。">
     </section>
 
     <section class="trade-section" id="sec-trade">
