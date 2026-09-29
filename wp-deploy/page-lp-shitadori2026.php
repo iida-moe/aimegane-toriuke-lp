@@ -1027,7 +1027,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     </section>
 
     <div class="sp-float-cta" id="spFloatCta" aria-hidden="true">
-      <a href="#sec-store" data-track="floating" data-cta-location="floating" tabindex="-1">お近くの店舗で無料相談を予約<span class="cta-arrow" aria-hidden="true"></span></a>
+      <a href="#sec-store" data-track="floating" data-cta-location="floating" tabindex="-1">お近くのお店で無料相談<span class="cta-arrow" aria-hidden="true"></span></a>
     </div>
 
     <div class="shop-filter-bar" id="shopFilterBar">
