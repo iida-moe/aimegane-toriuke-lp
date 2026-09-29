@@ -302,11 +302,13 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     .reveal { opacity: 1; transform: none; transition: none; }
   }
 
-  /* 下取りの流れ(今だけ特典のあと、店舗検索へつなぐ3ステップ) */
+  /* 下取りの流れ(今だけ特典のあと、店舗検索へつなぐ3ステップ)。
+     悩みカードと同じ「水色の背景に白いカード」にそろえ、見出しと矢印も悩みカード画像の紺(#002C7B)に合わせる */
   .trade-section {
-    background: #fff;
-    padding: 52px 20px 12px;
+    background: #A3C0E0;
+    padding: 52px 20px 56px;
   }
+  .trade-section .flow-title { color: #002C7B; }
   .trade-head { text-align: center; margin-bottom: 28px; }
   .trade-steps { list-style: none; }
   /* 各STEPは「STEP番号＋ひと言」の横1行。特典画像とかぶる情報は載せない */
@@ -315,9 +317,8 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     display: flex;
     align-items: center;
     gap: clamp(10px, 3vw, 14px); /* 320px幅でも「1,100円OFF」が折れないよう余白を可変 */
-    border: 2px solid var(--main);
-    border-radius: 14px;
-    padding: 12px clamp(12px, 3.6vw, 16px);
+    border-radius: 16px;
+    padding: 14px clamp(12px, 3.6vw, 16px);
     background: #fff;
   }
   /* ステップ間の▼。悩みカードの矢印と同じようにゆっくり上下に揺れる */
@@ -330,7 +331,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     margin-left: -11px;
     border-left: 11px solid transparent;
     border-right: 11px solid transparent;
-    border-top: 13px solid var(--main);
+    border-top: 13px solid #002C7B;
     animation: arrow-bob 1.8s ease-in-out infinite;
   }
   .trade-step-num {
@@ -338,7 +339,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     font-size: clamp(15px, 4.6vw, 17px);
     font-weight: 900;
     letter-spacing: .06em;
-    color: var(--main);
+    color: #002C7B;
     line-height: 1.2;
     background: linear-gradient(transparent 65%, var(--accent) 65%);
   }
