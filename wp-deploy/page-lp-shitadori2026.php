@@ -145,6 +145,37 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     border-left: 0.5em solid currentColor;
     flex-shrink: 0;
   }
+  /* スマホ用：FVを過ぎたら画面下に出てくる追従の予約ボタン。
+     店舗検索(下に絞り込みバーが出る)と最終CTAが見えている間は、重ならないよう隠す。PC版は右ナビがあるので出さない */
+  .sp-float-cta {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    z-index: 800;
+    width: min(480px, 100%);
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(255,255,255,0.94);
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+    transform: translate(-50%, 110%);
+    transition: transform .35s ease;
+  }
+  .sp-float-cta.visible { transform: translate(-50%, 0); }
+  .sp-float-cta a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--text);
+    font-weight: 900;
+    font-size: 15px;
+    text-decoration: none;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  }
+  @media (prefers-reduced-motion: reduce) { .sp-float-cta { transition: none; } }
+
   .fv-cta-placeholder {
     display: flex;
     align-items: center;
@@ -745,7 +776,8 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
 
     /* 右側に固定CTAがあるため、FV内のCTA仮置きは非表示 */
     .fv-cta-placeholder,
-    .fv-promo {
+    .fv-promo,
+    .sp-float-cta {
       display: none;
     }
 
@@ -993,6 +1025,10 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
       <p id="shop-count" class="shop-count" style="display:none;" role="status" aria-live="polite"></p>
       <div id="shop-results" class="shop-results"></div>
     </section>
+
+    <div class="sp-float-cta" id="spFloatCta" aria-hidden="true">
+      <a href="#sec-store" data-track="floating" data-cta-location="floating" tabindex="-1">お近くの店舗で無料相談を予約<span class="cta-arrow" aria-hidden="true"></span></a>
+    </div>
 
     <div class="shop-filter-bar" id="shopFilterBar">
       <div class="shop-filter-card">
@@ -1414,6 +1450,30 @@ document.getElementById('zip2').addEventListener('keydown',function(e){if(e.key=
 renderPrefTabs();
 showInitialShops();
 setupShopFilterBarVisibility();
+setupSpFloatCta();
+// 追従の予約ボタン：FVを過ぎたら表示。店舗検索と最終CTAが画面に入っている間は隠す
+function setupSpFloatCta(){
+  const bar=document.getElementById('spFloatCta');
+  const fv=document.getElementById('sec-fv');
+  const store=document.getElementById('sec-store');
+  const cta=document.getElementById('sec-cta');
+  if(!bar||!fv||!store||!cta)return;
+  const link=bar.querySelector('a');
+  function check(){
+    const vh=window.innerHeight;
+    const pastFv=fv.getBoundingClientRect().bottom<0;
+    const s=store.getBoundingClientRect(), c=cta.getBoundingClientRect();
+    const inStore=s.top<vh && s.bottom>0;
+    const inCta=c.top<vh && c.bottom>0;
+    const show=pastFv && !inStore && !inCta;
+    bar.classList.toggle('visible',show);
+    bar.setAttribute('aria-hidden',show?'false':'true');
+    link.tabIndex=show?0:-1;
+  }
+  window.addEventListener('scroll',check,{passive:true});
+  window.addEventListener('resize',check);
+  check();
+}
 </script>
 
 <script>
