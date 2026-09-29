@@ -509,12 +509,12 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
   .shop-card-distance { font-size: 12.5px; color: var(--main); font-weight: 700; margin-bottom: 12px; }
   .shop-card-distance strong { font-weight: 900; }
   .shop-card-btns { display: flex; gap: 8px; }
-  .shop-btn-web, .shop-btn-tel { flex: 1; padding: 8px 0; text-align: center; font-size: 13.5px; font-weight: 900; border-radius: 6px; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all .2s; font-family: "Zen Maru Gothic", sans-serif; }
+  /* 電話ボタンは電話番号だけの1行にして、WEB予約ボタンと一緒に低く揃える */
+  .shop-btn-web, .shop-btn-tel { flex: 1; padding: 11px 0; text-align: center; font-size: 13.5px; font-weight: 900; border-radius: 6px; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all .2s; font-family: "Zen Maru Gothic", sans-serif; }
   .shop-btn-web { background: var(--accent); color: var(--text); border: none; }
   .shop-btn-web:hover { background: #e6c900; }
   .shop-btn-tel { background: #fff; color: var(--main); border: 2px solid var(--main); }
   .shop-btn-tel:hover { background: var(--main); color: #fff; }
-  .shop-btn-tel-num { font-size: 11px; font-weight: 700; }
   .shop-hero-card {
     background: #fff; border: 2.5px solid var(--main); border-radius: 12px; overflow: hidden;
     display: flex; flex-direction: column; margin-bottom: 20px; box-shadow: 0 6px 20px rgba(57,92,163,0.12);
@@ -537,7 +537,6 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
   .shop-hero-btn-web:hover { background: #e6c900; border-color: #e6c900; }
   .shop-hero-btn-tel { background: #fff; color: var(--main); border: 2px solid var(--main); }
   .shop-hero-btn-tel:hover { background: var(--main); color: #fff; }
-  .shop-hero-btn-tel-num { font-size: 0.7em; font-weight: 700; }
   .shop-others-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 14px; }
   .shop-empty { text-align: center; color: #666; padding: 20px 16px; font-size: 14px; line-height: 1.7; }
 
@@ -1241,7 +1240,7 @@ function renderShops(list){
       ${s.distanceKm!=null?`<p class="shop-card-distance">お住まいから約 <strong>${s.distanceKm.toFixed(1)} km</strong></p>`:''}
       <div class="shop-card-btns">
         <a href="${s.web}" target="_blank" rel="noopener" class="shop-btn-web">WEB予約</a>
-        <a href="tel:${s.tel.replace(/-/g,'')}" class="shop-btn-tel">電話予約<br><span class="shop-btn-tel-num">${s.tel}</span></a>
+        <a href="tel:${s.tel.replace(/-/g,'')}" class="shop-btn-tel" aria-label="電話予約 ${s.tel}">${s.tel}</a>
       </div>
     </div>
   `).join('');
@@ -1257,7 +1256,7 @@ function renderHeroShop(s){
         ${s.distanceKm!=null?`<p class="shop-hero-distance">お住まいから約 <strong>${s.distanceKm.toFixed(1)} km</strong></p>`:''}
         <div class="shop-hero-btns">
           <a href="${s.web}" target="_blank" rel="noopener" class="shop-hero-btn shop-hero-btn-web">WEB予約</a>
-          <a href="tel:${s.tel.replace(/-/g,'')}" class="shop-hero-btn shop-hero-btn-tel">電話予約<br><span class="shop-hero-btn-tel-num">${s.tel}</span></a>
+          <a href="tel:${s.tel.replace(/-/g,'')}" class="shop-hero-btn shop-hero-btn-tel" aria-label="電話予約 ${s.tel}">${s.tel}</a>
         </div>
       </div>
     </div>
