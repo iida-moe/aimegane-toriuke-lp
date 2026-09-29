@@ -27,7 +27,8 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     --main: #002C7B; /* 文字・線・ボタンの紺。悩みカード・今だけ特典の画像の文字色に合わせる */
     --frame: #395CA3; /* 今だけ特典・横長バナーの画像の外枠の青(広い面だけに使う) */
     --main-deep: #26437A; /* 今だけ特典セクションのグラデーション下側用の濃い紺 */
-    --accent: #FFE100; /* アクセントカラー：黄色 */
+    --accent: #FFD84D; /* ボタンの黄色。画像の温かい黄色(マーカー#FDE288・バナーの丸)に合わせ、押せるよう少し濃く */
+    --marker: #FDE288; /* 文字の下に敷くマーカーの黄色(今だけ特典・最終CTAの画像と同じ) */
     --gold: #C9960C; /* 割引額の強調文字用（--accentの黄色そのままだと白背景で読みにくいため濃いめに調整） */
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -338,7 +339,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     letter-spacing: .06em;
     color: #002C7B;
     line-height: 1.2;
-    background: linear-gradient(transparent 65%, var(--accent) 65%);
+    background: linear-gradient(transparent 65%, var(--marker) 65%);
   }
   .trade-step-body { flex: 1; min-width: 0; }
   .trade-step-title {
@@ -508,7 +509,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
   /* 電話ボタンは電話番号だけの1行にして、WEB予約ボタンと一緒に低く揃える */
   .shop-btn-web, .shop-btn-tel { flex: 1; padding: 11px 0; text-align: center; font-size: 13.5px; font-weight: 900; border-radius: 6px; text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all .2s; }
   .shop-btn-web { background: var(--accent); color: var(--text); border: none; }
-  .shop-btn-web:hover { background: #e6c900; }
+  .shop-btn-web:hover { background: #F5C928; }
   .shop-btn-tel { background: #fff; color: var(--main); border: 2px solid var(--main); }
   .shop-btn-tel:hover { background: var(--main); color: #fff; }
   .shop-hero-card {
@@ -530,7 +531,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
   .shop-hero-btns { display: flex; gap: 10px; }
   .shop-hero-btn { flex: 1; padding: 12px 8px; text-align: center; font-size: 14px; font-weight: 900; text-decoration: none; border-radius: 6px; transition: all .2s; display: flex; flex-direction: column; align-items: center; justify-content: center; }
   .shop-hero-btn-web { background: var(--accent); color: var(--text); border: 2px solid var(--accent); }
-  .shop-hero-btn-web:hover { background: #e6c900; border-color: #e6c900; }
+  .shop-hero-btn-web:hover { background: #F5C928; border-color: #F5C928; }
   .shop-hero-btn-tel { background: #fff; color: var(--main); border: 2px solid var(--main); }
   .shop-hero-btn-tel:hover { background: var(--main); color: #fff; }
   .shop-others-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 14px; }
