@@ -298,19 +298,14 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
   }
   @media (prefers-reduced-motion: reduce) { .sp-float-cta { transition: none; } }
 
-  /* 無料相談ボタン(黄)の動き。PCはカーソルを合わせた時に1回ぽよんと弾む、スマホは押した瞬間に少し沈む */
-  @keyframes cta-bounce {
-    0%   { transform: translateY(0); }
-    30%  { transform: translateY(-6px); }
-    50%  { transform: translateY(0); }
-    70%  { transform: translateY(-3px); }
-    100% { transform: translateY(0); }
-  }
+  /* 無料相談ボタン(黄)の動き。PCはカーソルを合わせると少し浮いて、黄色が少し濃くなる(店舗カードのWEB予約と同じ#F5C928)。
+     スマホは押した瞬間に少し沈む */
   .fv-cta-placeholder,
   .sp-float-cta a,
   .sp-menu-cta-primary,
-  .finalcta-btn-primary {
-    transition: transform .1s ease;
+  .finalcta-btn-primary,
+  .side-nav .side-cta-primary {
+    transition: transform .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
   }
   @media (hover: hover) {
     .fv-cta-placeholder:hover,
@@ -318,8 +313,10 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     .sp-menu-cta-primary:hover,
     .finalcta-btn-primary:hover,
     .side-nav .side-cta-primary:hover {
-      animation: cta-bounce .5s ease-out;
-      transform: translateY(0);
+      transform: translateY(-3px);
+      background-color: #F5C928;
+      border-color: #F5C928;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.16);
     }
   }
   .fv-cta-placeholder:active,
@@ -333,7 +330,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     .sp-float-cta a:hover,
     .sp-menu-cta-primary:hover,
     .finalcta-btn-primary:hover,
-    .side-nav .side-cta-primary:hover { animation: none; }
+    .side-nav .side-cta-primary:hover { transform: none; }
   }
 
   .fv-cta-placeholder {
@@ -910,7 +907,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
       padding: 16px 20px;
       border-radius: 999px;
       text-decoration: none;
-      transition: transform .15s ease, box-shadow .15s ease;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
     }
     .side-nav .side-cta:hover {
       transform: translateY(-2px);
@@ -932,7 +929,8 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     }
     .side-nav .side-cta-primary:hover {
       box-shadow: 0 6px 14px rgba(0,0,0,0.16);
-      transform: none; /* 浮く動きの代わりに弾む動き(cta-bounce)を使う */
+      transform: translateY(-3px); /* 他の無料相談ボタンと浮く量を揃える */
+      background-color: #F5C928;
     }
 
     /* 右側に固定CTAがあるため、FV内のCTA仮置きは非表示 */
