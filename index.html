@@ -83,9 +83,116 @@
   /* スマホ版のロゴ。サイトのヘッダーのように左上に小さめに置き、FVをなるべく上に見せる。
      背景をFV画像の上端と同じ水色にして、ロゴとFVの境目が出ないようにしている */
   .fv-logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin: 0 -24px;
-    padding: 10px 24px 6px 16px; /* 左はロゴ画像の透明な余白ぶん詰めて、見た目の位置を揃える */
+    padding: 10px 14px 6px 16px; /* 左はロゴ画像の透明な余白ぶん詰めて、見た目の位置を揃える。右はメニューボタンの線が端から24pxになる幅 */
     background: #C7E1F8;
+  }
+
+  /* スマホ用のハンバーガーメニュー(PCは右ナビがあるので出さない)。
+     ボタンはロゴの右。開くと右からメニューがふわっと出てくる */
+  .sp-menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .sp-menu-btn span {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    border-radius: 2px;
+    background: var(--main);
+  }
+  .sp-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 900;
+    visibility: hidden;
+    transition: visibility 0s linear .3s;
+  }
+  .sp-menu.open { visibility: visible; transition: none; }
+  .sp-menu-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+  .sp-menu.open .sp-menu-overlay { opacity: 1; }
+  .sp-menu-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(300px, 82%);
+    padding: 12px 24px 32px;
+    background: #fff;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateX(24px);
+    transition: opacity .3s ease, transform .3s ease;
+  }
+  .sp-menu.open .sp-menu-panel { opacity: 1; transform: none; }
+  .sp-menu-close {
+    display: block;
+    position: relative;
+    width: 44px;
+    height: 44px;
+    margin: 0 -10px 8px auto;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .sp-menu-close::before,
+  .sp-menu-close::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 2.5px;
+    border-radius: 2px;
+    background: var(--main);
+  }
+  .sp-menu-close::before { transform: translate(-50%, -50%) rotate(45deg); }
+  .sp-menu-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
+  .sp-menu-links a {
+    display: block;
+    padding: 14px 2px;
+    border-bottom: 1px solid #E3E6EA;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .sp-menu-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 24px;
+    padding: 14px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .sp-menu-cta + .sp-menu-cta { margin-top: 12px; }
+  .sp-menu-cta-primary { background: var(--accent); color: var(--text); border: 2px solid var(--accent); }
+  .sp-menu-cta-secondary { background: #fff; color: var(--main); border: 2px solid var(--main); }
+  @media (prefers-reduced-motion: reduce) {
+    .sp-menu, .sp-menu-overlay, .sp-menu-panel { transition: none; }
   }
   .fv-logo a {
     display: block;
@@ -776,6 +883,10 @@
     .sp-float-cta {
       display: none;
     }
+    .sp-menu-btn,
+    .sp-menu {
+      display: none;
+    }
     /* PCはバナーもボタンも無いので、FVの背景は元の白に戻す */
     .fv {
       background: #fff;
@@ -942,6 +1053,23 @@
     <a href="#sec-store" class="side-cta side-cta-primary" data-track="side_nav" data-cta-location="side_nav">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
   </nav>
 
+  <!-- スマホ版：ハンバーガーメニューの中身(右ナビと同じ項目) -->
+  <div class="sp-menu" id="spMenu" aria-hidden="true">
+    <div class="sp-menu-overlay" data-menu-close></div>
+    <nav class="sp-menu-panel" aria-label="メニュー">
+      <button type="button" class="sp-menu-close" data-menu-close aria-label="メニューを閉じる"></button>
+      <div class="sp-menu-links">
+        <a href="#sec-fv">TOP</a>
+        <a href="#sec-nayami">こんなこと、ありませんか？</a>
+        <a href="#sec-tokuten">今だけ特典</a>
+        <a href="#sec-trade">下取りの流れ</a>
+        <a href="#sec-store">お近くの店舗</a>
+      </div>
+      <a href="#sec-store" class="sp-menu-cta sp-menu-cta-primary" data-track="sp_menu" data-cta-location="sp_menu">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
+      <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="sp-menu-cta sp-menu-cta-secondary" data-track="sp_menu_shop_list" data-cta-location="sp_menu_shop_list">店舗一覧へ<span class="cta-arrow" aria-hidden="true"></span></a>
+    </nav>
+  </div>
+
   <div class="page">
 
     <section class="fv" id="sec-fv">
@@ -951,6 +1079,9 @@
         <a href="https://www.aimegane.com/" target="_blank" rel="noopener">
           <img src="img/aimegane_logo.webp" width="454" height="122" alt="アイメガネ">
         </a>
+        <button type="button" class="sp-menu-btn" id="spMenuBtn" aria-label="メニューを開く" aria-controls="spMenu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
 
       <div class="fv-visual">
@@ -1531,6 +1662,27 @@ function setupSpFloatCta(){
   window.addEventListener('resize',check);
   check();
 }
+</script>
+
+<script>
+// スマホのハンバーガーメニュー：開閉。メニュー内のリンクを押したら閉じてそのセクションへ移動
+(function(){
+  var btn=document.getElementById('spMenuBtn');
+  var menu=document.getElementById('spMenu');
+  if(!btn||!menu)return;
+  function setOpen(open){
+    menu.classList.toggle('open',open);
+    menu.setAttribute('aria-hidden',open?'false':'true');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    document.body.style.overflow=open?'hidden':'';
+    if(open){ menu.querySelector('.sp-menu-close').focus(); } else { btn.focus({preventScroll:true}); }
+  }
+  btn.addEventListener('click',function(){ setOpen(true); });
+  menu.addEventListener('click',function(e){
+    if(e.target.closest('[data-menu-close]') || e.target.closest('a')) setOpen(false);
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && menu.classList.contains('open')) setOpen(false); });
+})();
 </script>
 
 <script>
