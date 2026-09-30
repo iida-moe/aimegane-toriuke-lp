@@ -236,6 +236,15 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     height: 40px;
   }
 
+  /* 【見比べ用】バナー・無料相談ボタンの背景をモノクロにした案。URLの末尾に ?bg=gray(薄いグレー) / ?bg=dark(濃いグレー) を付けると切り替わる。
+     決まったら不要な方を消す */
+  @media (max-width: 1023px) {
+    html[data-bg="gray"] .fv { background: #EEEEEE; }
+    html[data-bg="gray"] .fv-wave path { fill: #EEEEEE; }
+    html[data-bg="dark"] .fv { background: #3B3B3B; }
+    html[data-bg="dark"] .fv-wave path { fill: #3B3B3B; }
+  }
+
   /* スマホ用：FVのすぐ下に下取りキャンペーンの横長バナー(PCは左側に表示しているので非表示) */
   .fv-promo {
     display: block;
@@ -1038,6 +1047,13 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     }
   }
 </style>
+<script>
+  // 【見比べ用】?bg=gray / ?bg=dark で背景のモノクロ案に切り替え(案が決まったら消す)
+  (function () {
+    var bg = new URLSearchParams(location.search).get('bg');
+    if (bg === 'gray' || bg === 'dark') document.documentElement.setAttribute('data-bg', bg);
+  })();
+</script>
 </head>
 <body>
   <?php include get_stylesheet_directory() . '/lp/lp-tracking-body.php'; ?>
