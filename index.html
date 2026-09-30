@@ -82,24 +82,26 @@
 
   /* スマホ版のロゴ。サイトのヘッダーのように左上に小さめに置き、FVをなるべく上に見せる。
      背景をFV画像の上端と同じ水色にして、ロゴとFVの境目が出ないようにしている */
-  /* スクロールしても画面上に残る(追従ヘッダー)。FVの外(.pageの直下)に置いているのは、FVの中だとFVを過ぎた所で止まってしまうため */
+  /* ロゴの帯は追従しない。右上のメニューボタンだけ画面に固定(.sp-menu-btn)。
+     高さはボタンが帯の中に収まる60pxで固定 */
   .fv-logo {
-    position: sticky;
-    top: 0;
-    z-index: 850; /* 追従の予約ボタン(800)より上、メニュー(900)より下 */
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    min-height: 60px;
     padding: 10px 14px 6px 16px; /* 左はロゴ画像の透明な余白ぶん詰めて、見た目の位置を揃える。右はメニューボタンの線が端から24pxになる幅 */
     background: #C7E1F8;
   }
 
-  /* メニューのリンクで移動した時、見出しが追従ヘッダー(高さ約60px)の下に隠れないようにする */
-  .page section[id] { scroll-margin-top: 60px; }
-
   /* スマホ用のハンバーガーメニュー(PCは右ナビがあるので出さない)。
-     ボタンはロゴの右。開くと右からメニューがふわっと出てくる */
+     ボタンは画面右上に固定して追従(位置はLPの横幅の右端に合わせる)。開くと右からメニューがふわっと出てくる。
+     FVの帯を過ぎたら、写真や色の上でも線が見えるよう白い丸を敷く(.is-floating) */
   .sp-menu-btn {
+    position: fixed;
+    top: 10px;
+    right: calc(max(0px, (100vw - 480px) / 2) + 14px);
+    z-index: 850; /* 追従の予約ボタン(800)より上、メニュー(900)より下 */
+    border-radius: 50%;
+    transition: background-color .25s ease, box-shadow .25s ease;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -111,6 +113,13 @@
     background: none;
     border: none;
     cursor: pointer;
+  }
+  .sp-menu-btn.is-floating {
+    background-color: rgba(255,255,255,0.92);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  @media (min-width: 600px) {
+    .sp-menu-btn { right: calc(max(0px, (100vw - 600px) / 2) + 14px); }
   }
   .sp-menu-btn span {
     display: block;
@@ -973,7 +982,6 @@
     .fv-wave {
       display: none;
     }
-    .page section[id] { scroll-margin-top: 0; }
     /* PCはバナーもボタンも無いので、FVの背景は元の白に戻す */
     .fv {
       background: #fff;
@@ -1773,6 +1781,10 @@ function setupSpFloatCta(){
     if(open){ menu.querySelector('.sp-menu-close').focus(); } else { btn.focus({preventScroll:true}); }
   }
   btn.addEventListener('click',function(){ setOpen(true); });
+  // ロゴの帯(60px)を過ぎたらボタンに白い丸を敷く
+  function onScroll(){ btn.classList.toggle('is-floating', window.scrollY > 50); }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
   menu.addEventListener('click',function(e){
     if(e.target.closest('[data-menu-close]') || e.target.closest('a')) setOpen(false);
   });
