@@ -222,6 +222,19 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     width: 100%;
     height: auto;
   }
+  /* スマホ：FV画像の下端がバナー背景の水色とぶつ切りに見えないよう、下端に同じ水色の波を重ねる */
+  .fv-wave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px; /* 画像との間に細い隙間が出ないよう1px下へ */
+    line-height: 0;
+  }
+  .fv-wave svg {
+    display: block;
+    width: 100%;
+    height: 40px;
+  }
 
   /* スマホ用：FVのすぐ下に下取りキャンペーンの横長バナー(PCは左側に表示しているので非表示) */
   .fv-promo {
@@ -890,7 +903,8 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
       display: none;
     }
     .sp-menu-btn,
-    .sp-menu {
+    .sp-menu,
+    .fv-wave {
       display: none;
     }
     /* PCはバナーもボタンも無いので、FVの背景は元の白に戻す */
@@ -1036,6 +1050,11 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
       <div class="fv-visual">
         <h1 class="sr-only">その疲れ、お使いのメガネが原因かも？</h1>
         <img fetchpriority="high" src="<?php echo $lp_assets; ?>/fv-composite.webp?v=af92a016" width="1675" height="2834" alt="メガネの不調に悩む男女のイラスト">
+        <div class="fv-wave" aria-hidden="true">
+          <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+            <path d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,50 L1440,100 L0,100 Z" fill="#A3C0E0"></path>
+          </svg>
+        </div>
       </div>
 
       <a href="#sec-tokuten" class="fv-promo" data-track="fv_banner" data-cta-location="fv_banner"><img src="<?php echo $lp_assets; ?>/promo-badge.webp?v=8642c4ca" width="1000" height="267" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
