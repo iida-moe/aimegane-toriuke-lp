@@ -80,8 +80,10 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     background: #fff;
   }
 
+  /* 横長バナーと無料相談ボタンの背景は、下の悩みセクションと同じ水色(#A3C0E0)にしてつなげる */
   .fv {
     padding: 0 24px 40px;
+    background: #A3C0E0;
   }
 
   /* スマホ版のロゴ。サイトのヘッダーのように左上に小さめに置き、FVをなるべく上に見せる。
@@ -779,6 +781,10 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     .fv-promo,
     .sp-float-cta {
       display: none;
+    }
+    /* PCはバナーもボタンも無いので、FVの背景は元の白に戻す */
+    .fv {
+      background: #fff;
     }
 
     /* 中央カラムを仕切り線で区切り、ロゴは左に固定表示。参考LP(眼鏡市場、実測389px)に合わせて幅を狭める */
