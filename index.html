@@ -82,14 +82,20 @@
 
   /* スマホ版のロゴ。サイトのヘッダーのように左上に小さめに置き、FVをなるべく上に見せる。
      背景をFV画像の上端と同じ水色にして、ロゴとFVの境目が出ないようにしている */
+  /* スクロールしても画面上に残る(追従ヘッダー)。FVの外(.pageの直下)に置いているのは、FVの中だとFVを過ぎた所で止まってしまうため */
   .fv-logo {
+    position: sticky;
+    top: 0;
+    z-index: 850; /* 追従の予約ボタン(800)より上、メニュー(900)より下 */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 -24px;
     padding: 10px 14px 6px 16px; /* 左はロゴ画像の透明な余白ぶん詰めて、見た目の位置を揃える。右はメニューボタンの線が端から24pxになる幅 */
     background: #C7E1F8;
   }
+
+  /* メニューのリンクで移動した時、見出しが追従ヘッダー(高さ約60px)の下に隠れないようにする */
+  .page section[id] { scroll-margin-top: 60px; }
 
   /* スマホ用のハンバーガーメニュー(PCは右ナビがあるので出さない)。
      ボタンはロゴの右。開くと右からメニューがふわっと出てくる */
@@ -967,6 +973,7 @@
     .fv-wave {
       display: none;
     }
+    .page section[id] { scroll-margin-top: 0; }
     /* PCはバナーもボタンも無いので、FVの背景は元の白に戻す */
     .fv {
       background: #fff;
@@ -1155,17 +1162,17 @@
 
   <div class="page">
 
-    <section class="fv" id="sec-fv">
+    <!-- モバイル版：ロゴ＋メニューボタンの追従ヘッダー（PC版は左固定ロゴを使用） -->
+    <header class="fv-logo">
+      <a href="https://www.aimegane.com/" target="_blank" rel="noopener">
+        <img src="img/aimegane_logo.webp" width="454" height="122" alt="アイメガネ">
+      </a>
+      <button type="button" class="sp-menu-btn" id="spMenuBtn" aria-label="メニューを開く" aria-controls="spMenu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
 
-      <!-- モバイル版：ロゴはヘッダーとして中央上部に表示（PC版は左固定ロゴを使用） -->
-      <div class="fv-logo">
-        <a href="https://www.aimegane.com/" target="_blank" rel="noopener">
-          <img src="img/aimegane_logo.webp" width="454" height="122" alt="アイメガネ">
-        </a>
-        <button type="button" class="sp-menu-btn" id="spMenuBtn" aria-label="メニューを開く" aria-controls="spMenu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+    <section class="fv" id="sec-fv">
 
       <div class="fv-visual">
         <h1 class="sr-only">その疲れ、お使いのメガネが原因かも？</h1>
