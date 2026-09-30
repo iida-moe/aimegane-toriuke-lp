@@ -588,7 +588,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
   .trade-step-line .trade-step-note-em { color: #06A13A; font-size: 1em; }
   /* 来店前の不安を消す補足(LINE登録はお店で・下取り後の処分) */
   .trade-step-small { font-size: clamp(10.5px, 3.2vw, 11.5px); color: #666; }
-  .trade-foot-note { margin-top: 18px; text-align: center; font-size: 12px; color: var(--main); }
+  .trade-head-note { margin-top: 6px; font-size: 12px; color: var(--main); }
   @media (prefers-reduced-motion: reduce) {
     .trade-step + .trade-step::before { animation: none; }
   }
@@ -1182,6 +1182,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
       <div class="trade-head reveal">
         <span class="flow-label">かんたん3ステップ</span>
         <h2 class="flow-title">下取りの流れ</h2>
+        <p class="trade-head-note">※下取りしたメガネは、責任を持って処分いたします。</p>
       </div>
       <ol class="trade-steps">
         <li class="trade-step reveal">
@@ -1205,7 +1206,6 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
           </div>
         </li>
       </ol>
-      <p class="trade-foot-note reveal">※下取りしたメガネは、責任を持って処分いたします。</p>
     </section>
 
     <section class="store-section" id="sec-store">
