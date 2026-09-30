@@ -248,6 +248,26 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     height: auto;
     box-shadow: 0 3px 8px rgba(0,0,0,0.12);
   }
+  /* 横長バナーの動き(無料相談ボタンと揃える)。カーソルを合わせると少し浮いて影が広がる、スマホは押した瞬間に少し沈む */
+  .fv-promo,
+  .side-promo a {
+    transition: transform .2s ease;
+  }
+  .fv-promo img,
+  .side-promo img {
+    transition: box-shadow .2s ease;
+  }
+  @media (hover: hover) {
+    .fv-promo:hover,
+    .side-promo a:hover { transform: translateY(-3px); }
+    .fv-promo:hover img,
+    .side-promo a:hover img { box-shadow: 0 8px 16px rgba(0,0,0,0.18); }
+  }
+  .fv-promo:active { transform: scale(0.98); }
+  @media (prefers-reduced-motion: reduce) {
+    .fv-promo:hover,
+    .side-promo a:hover { transform: none; }
+  }
 
   .cta-icon-img {
     width: 16px;
@@ -1004,10 +1024,6 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     }
     .side-promo a {
       display: block;
-      transition: transform .15s ease;
-    }
-    .side-promo a:hover {
-      transform: translateY(-2px);
     }
     .side-promo img {
       width: 100%;
