@@ -298,6 +298,44 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
   }
   @media (prefers-reduced-motion: reduce) { .sp-float-cta { transition: none; } }
 
+  /* 無料相談ボタン(黄)の動き。PCはカーソルを合わせた時に1回ぽよんと弾む、スマホは押した瞬間に少し沈む */
+  @keyframes cta-bounce {
+    0%   { transform: translateY(0); }
+    30%  { transform: translateY(-6px); }
+    50%  { transform: translateY(0); }
+    70%  { transform: translateY(-3px); }
+    100% { transform: translateY(0); }
+  }
+  .fv-cta-placeholder,
+  .sp-float-cta a,
+  .sp-menu-cta-primary,
+  .finalcta-btn-primary {
+    transition: transform .1s ease;
+  }
+  @media (hover: hover) {
+    .fv-cta-placeholder:hover,
+    .sp-float-cta a:hover,
+    .sp-menu-cta-primary:hover,
+    .finalcta-btn-primary:hover,
+    .side-nav .side-cta-primary:hover {
+      animation: cta-bounce .5s ease-out;
+      transform: translateY(0);
+    }
+  }
+  .fv-cta-placeholder:active,
+  .sp-float-cta a:active,
+  .sp-menu-cta-primary:active,
+  .finalcta-btn-primary:active {
+    transform: scale(0.97);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fv-cta-placeholder:hover,
+    .sp-float-cta a:hover,
+    .sp-menu-cta-primary:hover,
+    .finalcta-btn-primary:hover,
+    .side-nav .side-cta-primary:hover { animation: none; }
+  }
+
   .fv-cta-placeholder {
     display: flex;
     align-items: center;
@@ -894,6 +932,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     }
     .side-nav .side-cta-primary:hover {
       box-shadow: 0 6px 14px rgba(0,0,0,0.16);
+      transform: none; /* 浮く動きの代わりに弾む動き(cta-bounce)を使う */
     }
 
     /* 右側に固定CTAがあるため、FV内のCTA仮置きは非表示 */
