@@ -1187,9 +1187,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
         <li class="trade-step reveal">
           <p class="trade-step-num">STEP1</p>
           <div class="trade-step-body">
-            <p class="trade-step-title">使わないメガネを探す</p>
-            <p class="trade-step-note">持ち物：<span class="trade-step-note-em">使わないメガネ1本とスマホ</span></p>
-          </div>
+            <p class="trade-step-title">使わないメガネを探す</p>          </div>
         </li>
         <li class="trade-step reveal">
           <p class="trade-step-num">STEP2</p>
