@@ -1209,8 +1209,8 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
         <img loading="lazy" decoding="async" class="reveal" src="<?php echo $lp_assets; ?>/nayami-3-q.webp?v=78907482" width="1206" height="1326" alt="スマホや新聞など、小さい文字が見にくい">
         <img loading="lazy" decoding="async" class="nayami-arrow" src="<?php echo $lp_assets; ?>/nayami-3-arrow.webp?v=e07177e4" width="1206" height="142" alt="">
         <img loading="lazy" decoding="async" class="reveal" src="<?php echo $lp_assets; ?>/nayami-3-label.webp?v=14550339" width="1206" height="157" alt="アイメガネなら">
-        <img loading="lazy" decoding="async" class="nayami-answer" src="<?php echo $lp_assets; ?>/nayami-3-a.webp?v=b7299742" width="1206" height="1375" alt="15項目の診断で、ぴったりの見え方に。普段よく見るもの・過ごし方をヒアリング。生活スタイルに合ったレンズ・度数をご提案します。">
-        <a href="https://www.aimegane.com/aboutus/gijutsu/" target="_blank" rel="noopener" class="nayami-more reveal" data-track="gijutsu_link" data-cta-location="gijutsu_link">15項目の測定とは<span class="nayami-more-arrow" aria-hidden="true"></span></a>
+        <img loading="lazy" decoding="async" class="nayami-answer" src="<?php echo $lp_assets; ?>/nayami-3-a.webp?v=b7299742" width="1206" height="1375" alt="15項目の測定で、ぴったりの見え方に。普段よく見るもの・過ごし方をヒアリング。生活スタイルに合ったレンズ・度数をご提案します。">
+        <a href="https://www.aimegane.com/aboutus/gijutsu/#measurement-15" target="_blank" rel="noopener" class="nayami-more reveal" data-track="gijutsu_link" data-cta-location="gijutsu_link">15項目の測定とは<span class="nayami-more-arrow" aria-hidden="true"></span></a>
       </div>
     </section>
 
