@@ -479,6 +479,30 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     margin-top: -12.4%;
   }
 
+  /* 3枚目(15項目の診断)カードの下のリンク。公式サイトの技術紹介ページへ。
+     画像の下の水色の余白(横幅の約17%)に乗せるため上に詰め、右端はカードの右端に揃える */
+  .nayami-more {
+    position: relative;
+    display: table;
+    margin: -14.5% 7% 0 auto;
+    padding: 6px 2px;
+    color: var(--main);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .nayami-more-arrow::after {
+    content: '››';
+    margin-left: 4px;
+    font-weight: 900;
+    text-decoration: none;
+    display: inline-block;
+  }
+  @media (hover: hover) {
+    .nayami-more:hover { opacity: .75; }
+  }
+
   /* FV画像下端(色がバラバラ)と悩みカード画像上端(単色の青)の境目を隠すための波形仕切り。
      色は悩みカードの背景色(163,192,224 / #A3C0E0、カード2枚目以降で採用)に合わせている。上にはみ出させてFV側に重ねる */
   .wave-divider {
@@ -1186,6 +1210,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
         <img loading="lazy" decoding="async" class="nayami-arrow" src="<?php echo $lp_assets; ?>/nayami-3-arrow.webp?v=e07177e4" width="1206" height="142" alt="">
         <img loading="lazy" decoding="async" class="reveal" src="<?php echo $lp_assets; ?>/nayami-3-label.webp?v=14550339" width="1206" height="157" alt="アイメガネなら">
         <img loading="lazy" decoding="async" class="nayami-answer" src="<?php echo $lp_assets; ?>/nayami-3-a.webp?v=b7299742" width="1206" height="1375" alt="15項目の診断で、ぴったりの見え方に。普段よく見るもの・過ごし方をヒアリング。生活スタイルに合ったレンズ・度数をご提案します。">
+        <a href="https://www.aimegane.com/aboutus/gijutsu/" target="_blank" rel="noopener" class="nayami-more reveal" data-track="gijutsu_link" data-cta-location="gijutsu_link">15項目の測定とは<span class="nayami-more-arrow" aria-hidden="true"></span></a>
       </div>
     </section>
 
