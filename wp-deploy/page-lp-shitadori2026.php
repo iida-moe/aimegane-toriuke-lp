@@ -1188,6 +1188,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     </section>
 
     <section class="nayami-section" id="sec-nayami">
+      <h2 class="sr-only">こんなこと、ありませんか？メガネのお悩みはアイメガネで無料相談</h2>
       <div class="wave-divider" aria-hidden="true">
         <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
           <path d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,50 L1440,100 L0,100 Z" fill="#A3C0E0"></path>
@@ -1215,6 +1216,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     </section>
 
     <section class="tokuten-section" id="sec-tokuten">
+      <h2 class="sr-only">今だけ特典 メガネの下取りキャンペーン 最大2,200円OFF</h2>
       <img loading="lazy" decoding="async" class="tokuten-section-img reveal" src="<?php echo $lp_assets; ?>/tokuten-section.webp?v=b8c5b95e" width="1206" height="3000" alt="今だけ特典 メガネの下取りキャンペーン 下取り1本につき1,100円OFF こんなメガネも下取ります(ご自宅に眠っているメガネ・古いメガネ・壊れているメガネ・他店で購入したメガネ) さらにLINEお友だち登録で1,100円OFF 期間:10/13(火)〜11/12(木) 詳細:メガネ一式ご購入につき1本下取りいたします。">
     </section>
 
