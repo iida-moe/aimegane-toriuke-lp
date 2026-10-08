@@ -1174,8 +1174,8 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     <section class="fv" id="sec-fv">
 
       <div class="fv-visual">
-        <h1 class="sr-only">その疲れ、お使いのメガネが原因かも？</h1>
-        <img fetchpriority="high" src="<?php echo $lp_assets; ?>/fv-composite.webp?v=f2a50005" width="1675" height="2834" alt="メガネの不調に悩む男女のイラスト">
+        <h1 class="sr-only">その悩み、お使いのメガネが原因かも？</h1>
+        <img fetchpriority="high" src="<?php echo $lp_assets; ?>/fv-composite.webp?v=cf9e8fba" width="1675" height="2834" alt="メガネの不調に悩む男女のイラスト">
         <div class="fv-wave" aria-hidden="true">
           <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
             <path d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,50 L1440,100 L0,100 Z" fill="#A3C0E0"></path>
