@@ -498,6 +498,101 @@
     .nayami-more:hover { opacity: .75; }
   }
 
+  /* アシストレンズの案内(悩みカード3枚の下)。下取りの流れと同じ「水色の背景に白い角丸カード」。
+     左右は悩みカード画像の白いカードの端(横幅の約6%)にそろえる。文字は画像にせずHTMLで持つ(あとで直しやすいように) */
+  .nayami-section { padding-bottom: 44px; } /* アシストレンズのカードの下にも、カード間と同じくらいの余白 */
+  .assist {
+    margin: 4% 7.8% 0; /* 悩みカード画像の白いカードの左右端にそろえる */
+    padding: 28px clamp(16px, 5vw, 24px) 26px;
+    border-radius: 16px;
+    background: #fff;
+    text-align: center;
+  }
+  .assist-lead {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.8;
+  }
+  .assist-title {
+    margin-top: 10px;
+    font-size: clamp(22px, 6.6vw, 26px);
+    font-weight: 900;
+    color: var(--main);
+    line-height: 1.35;
+  }
+  .assist-title-sub {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  /* 比較図：アシストレンズ → 遠近両用レンズ */
+  .assist-figure {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: start;
+    gap: 6px;
+    margin-top: 22px;
+  }
+  .assist-lens svg { display: block; width: 100%; height: auto; }
+  .assist-lens-name {
+    margin-top: 8px;
+    font-size: clamp(14px, 4.3vw, 16px);
+    font-weight: 700;
+    color: var(--main);
+    line-height: 1.3;
+  }
+  .assist-lens-desc {
+    margin-top: 4px;
+    font-size: clamp(11px, 3.4vw, 12.5px);
+    color: #555;
+    line-height: 1.6;
+  }
+  .assist-step {
+    padding-top: 14%;
+    font-size: clamp(10.5px, 3.2vw, 12px);
+    font-weight: 700;
+    color: var(--main);
+    line-height: 1.4;
+  }
+  .assist-step-arrow {
+    display: block;
+    width: 34px;
+    height: 16px;
+    margin: 6px auto 0;
+  }
+  .assist-body {
+    margin-top: 22px;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.85;
+    text-align: left;
+  }
+  .assist-em { color: var(--main); }
+  .assist-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+    color: var(--main);
+    font-weight: 900;
+  }
+  .assist-price-label { font-size: 18px; }
+  .assist-price-num {
+    font-size: 52px;
+    line-height: 1;
+    background: linear-gradient(transparent 62%, var(--marker) 62%);
+    padding: 0 4px;
+  }
+  .assist-price-num small { font-size: 26px; }
+  .assist-note {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.7;
+    text-align: left;
+  }
+
   /* FV画像下端(色がバラバラ)と悩みカード画像上端(単色の青)の境目を隠すための波形仕切り。
      色は悩みカードの背景色(163,192,224 / #A3C0E0、カード2枚目以降で採用)に合わせている。上にはみ出させてFV側に重ねる */
   .wave-divider {
@@ -1264,6 +1359,63 @@
         <img loading="lazy" decoding="async" class="reveal" src="img/nayami-3-label.webp" width="1206" height="157" alt="アイメガネなら">
         <img loading="lazy" decoding="async" class="nayami-answer" src="img/nayami-3-a.webp" width="1206" height="1375" alt="15項目の測定でぴったりの見え方に。普段よく見るもの・過ごし方をヒアリング。見えにくさの原因を確かめて、ぴったりのレンズ・度数をご提案します。">
         <a href="https://www.aimegane.com/aboutus/gijutsu/#measurement-15" target="_blank" rel="noopener" class="nayami-more reveal" data-track="gijutsu_link" data-cta-location="gijutsu_link">15項目の測定とは<span class="nayami-more-arrow" aria-hidden="true"></span></a>
+      </div>
+
+      <!-- アシストレンズの案内 -->
+      <div class="assist reveal" id="sec-assist">
+        <p class="assist-lead">「最近、手元が見づらい…」<br>「でも、遠近両用はまだ早いかも」<br>という方へ</p>
+        <h3 class="assist-title"><span class="assist-title-sub">遠近両用の前に</span>「アシストレンズ」</h3>
+
+        <div class="assist-figure">
+          <div class="assist-lens">
+            <svg viewBox="0 0 200 176" role="img" aria-label="アシストレンズ：レンズの下のほうだけ、うっすら手元用の度数が入っている">
+              <defs>
+                <clipPath id="lensClipA"><path d="M32 10 Q100 0 168 10 Q195 15 196 62 Q197 124 168 160 Q100 176 32 160 Q3 124 4 62 Q5 15 32 10 Z"/></clipPath>
+                <linearGradient id="lensGradA" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#F5FAFE"/><stop offset=".58" stop-color="#F5FAFE"/><stop offset="1" stop-color="#A9C8EC"/>
+                </linearGradient>
+              </defs>
+              <g clip-path="url(#lensClipA)"><rect width="200" height="176" fill="url(#lensGradA)"/></g>
+              <g transform="translate(70 26)"><circle cx="52" cy="6" r="6" fill="#FFD84D"/><path d="M0 34 L22 8 L44 34 Z" fill="#9FBCE0"/><path d="M26 34 L42 16 L62 34 Z" fill="#7FA3D4"/></g>
+              <g transform="translate(87 106)"><rect x="0" y="0" width="26" height="44" rx="5" fill="#fff" stroke="#002C7B" stroke-width="3.5"/><rect x="4.5" y="6" width="17" height="27" rx="1.5" fill="#C7E1F8"/><line x1="10" y1="38.5" x2="16" y2="38.5" stroke="#002C7B" stroke-width="2.5" stroke-linecap="round"/></g>
+              <path d="M32 10 Q100 0 168 10 Q195 15 196 62 Q197 124 168 160 Q100 176 32 160 Q3 124 4 62 Q5 15 32 10 Z" fill="none" stroke="#002C7B" stroke-width="5"/>
+            </svg>
+            <p class="assist-lens-name">アシスト<br>レンズ</p>
+            <p class="assist-lens-desc">下のほうだけ、<br>手元を少し楽に</p>
+          </div>
+
+          <p class="assist-step" aria-hidden="true">見づらく<br>なったら<svg class="assist-step-arrow" viewBox="0 0 34 16"><path d="M2 8 H24" stroke="#FFD84D" stroke-width="5" stroke-linecap="round"/><path d="M22 1 L33 8 L22 15 Z" fill="#FFD84D"/></svg></p>
+
+          <div class="assist-lens">
+            <svg viewBox="0 0 200 176" role="img" aria-label="遠近両用レンズ：下に向かってしっかり手元用の度数が入っている">
+              <defs>
+                <clipPath id="lensClipB"><path d="M32 10 Q100 0 168 10 Q195 15 196 62 Q197 124 168 160 Q100 176 32 160 Q3 124 4 62 Q5 15 32 10 Z"/></clipPath>
+                <linearGradient id="lensGradB" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#F5FAFE"/><stop offset=".4" stop-color="#E6F0FA"/><stop offset="1" stop-color="#CFE0F3"/>
+                </linearGradient>
+                <radialGradient id="lensNearB" cx=".5" cy=".95" r=".6">
+                  <stop offset="0" stop-color="#5E89C9"/><stop offset=".55" stop-color="#8FB1E0"/><stop offset="1" stop-color="#8FB1E0" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <g clip-path="url(#lensClipB)">
+                <rect width="200" height="176" fill="url(#lensGradB)"/>
+                <path d="M0 70 Q46 74 64 112 Q74 140 62 176 L0 176 Z" fill="#B9CFEA"/>
+                <path d="M200 70 Q154 74 136 112 Q126 140 138 176 L200 176 Z" fill="#B9CFEA"/>
+                <ellipse cx="100" cy="166" rx="56" ry="82" fill="url(#lensNearB)"/>
+              </g>
+              <g transform="translate(70 26)"><circle cx="52" cy="6" r="6" fill="#FFD84D"/><path d="M0 34 L22 8 L44 34 Z" fill="#9FBCE0"/><path d="M26 34 L42 16 L62 34 Z" fill="#7FA3D4"/></g>
+              <g transform="translate(87 106)"><rect x="0" y="0" width="26" height="44" rx="5" fill="#fff" stroke="#002C7B" stroke-width="3.5"/><rect x="4.5" y="6" width="17" height="27" rx="1.5" fill="#C7E1F8"/><line x1="10" y1="38.5" x2="16" y2="38.5" stroke="#002C7B" stroke-width="2.5" stroke-linecap="round"/></g>
+              <path d="M32 10 Q100 0 168 10 Q195 15 196 62 Q197 124 168 160 Q100 176 32 160 Q3 124 4 62 Q5 15 32 10 Z" fill="none" stroke="#002C7B" stroke-width="5"/>
+            </svg>
+            <p class="assist-lens-name">遠近両用<br>レンズ</p>
+            <p class="assist-lens-desc">遠くも手元も<br>しっかり見える</p>
+          </div>
+        </div>
+
+        <p class="assist-body">レンズの下のほうに、<span class="assist-em">手元のピント合わせを楽にする度数</span>が入ったレンズです。かけ外しせずに、遠くも手元も見やすく。歪みが少なく、はじめてでも慣れやすいのが特長です。年齢とともに見づらくなっても、遠近両用へスムーズに切り替えられます。</p>
+
+        <p class="assist-price"><span class="assist-price-label">追加料金</span><span class="assist-price-num">0<small>円</small></span></p>
+        <p class="assist-note">※ふつうのレンズと同じ価格で、アシストレンズに変更できます（メガネ一式の価格に含まれます）。</p>
       </div>
     </section>
 
