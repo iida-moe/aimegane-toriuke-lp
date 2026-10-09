@@ -87,7 +87,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
   }
 
   /* スマホ版のロゴ。サイトのヘッダーのように左上に小さめに置き、FVをなるべく上に見せる。
-     背景をFV画像の上端と同じ水色にして、ロゴとFVの境目が出ないようにしている */
+     背景をFV画像の上端と同じ白にして、ロゴとFVの境目が出ないようにしている */
   /* ロゴの帯は追従しない。右上のメニューボタンだけ画面に固定(.sp-menu-btn)。
      高さはボタンが帯の中に収まる60pxで固定 */
   .fv-logo {
@@ -95,7 +95,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     align-items: center;
     min-height: 60px;
     padding: 10px 14px 6px 16px; /* 左はロゴ画像の透明な余白ぶん詰めて、見た目の位置を揃える。右はメニューボタンの線が端から24pxになる幅 */
-    background: #C7E1F8;
+    background: #FFFFFF; /* FV上部の白いもこもこと同じ白にしてつなげる(10/9 水色→白) */
   }
 
   /* スマホ用のハンバーガーメニュー(PCは右ナビがあるので出さない)。
