@@ -1218,7 +1218,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
 
     <section class="tokuten-section" id="sec-tokuten">
       <h2 class="sr-only">今だけ特典 メガネの下取りキャンペーン 最大2,200円OFF</h2>
-      <img loading="lazy" decoding="async" class="tokuten-section-img reveal" src="<?php echo $lp_assets; ?>/tokuten-section.webp?v=b8c5b95e" width="1206" height="3000" alt="今だけ特典 メガネの下取りキャンペーン 下取り1本につき1,100円OFF こんなメガネも下取ります(ご自宅に眠っているメガネ・古いメガネ・壊れているメガネ・他店で購入したメガネ) さらにLINEお友だち登録で1,100円OFF 期間:10/13(火)〜11/12(木) 詳細:メガネ一式ご購入につき1本下取りいたします。">
+      <img loading="lazy" decoding="async" class="tokuten-section-img reveal" src="<?php echo $lp_assets; ?>/tokuten-section.webp?v=b693ea58" width="1206" height="3000" alt="今だけ特典 下取りキャンペーン ご自宅に眠っているメガネ下取ります 下取り1本につき1,100円OFF ＋ LINEお友だち登録で1,100円OFF 最大2,200円OFF 期間:10/13(火)〜11/12(木) 対象:メガネ11,000円以上ご購入につき、1本下取りいたします。他店のメガネでも可 ※本庄南大通り店は対象外">
     </section>
 
     <section class="trade-section" id="sec-trade">
