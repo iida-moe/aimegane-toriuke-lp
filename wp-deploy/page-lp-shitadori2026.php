@@ -8,13 +8,13 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>メガネの無料相談＆下取りキャンペーン｜アイメガネ</title>
+<title>メガネの無料相談｜アイメガネ</title>
 <?php include get_stylesheet_directory() . '/lp/lp-tracking-head.php'; ?>
-<meta name="description" content="目の疲れ・メガネのズレ・手元の見えにくさ、アイメガネで無料相談。今なら使わないメガネの下取り＋LINE登録で最大2,200円OFF。11/12(木)まで。">
+<meta name="description" content="目の疲れ・メガネのズレ・手元の見えにくさ、アイメガネで無料相談。15項目の測定で見え方を確かめて、ぴったりのメガネをご提案します。">
 <!-- SNS・LINEでシェアされた時の表示 -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="メガネの無料相談＆下取りキャンペーン｜アイメガネ">
-<meta property="og:description" content="使わないメガネの下取り＋LINE登録で最大2,200円OFF。11/12(木)まで。">
+<meta property="og:title" content="メガネの無料相談｜アイメガネ">
+<meta property="og:description" content="目の疲れ・見えにくさ・メガネのズレ、アイメガネで無料相談。">
 <meta property="og:url" content="<?php echo esc_url( get_permalink() ); ?>">
 <meta property="og:image" content="<?php echo $lp_assets; ?>/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -1238,7 +1238,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     <a href="#sec-fv">TOP</a>
     <a href="#sec-nayami">こんなこと、ありませんか？</a>
     <!-- <a href="#sec-tokuten">今だけ特典</a> 11/12 下取り終了 -->
-    <a href="#sec-trade">下取りの流れ</a>
+    <a href="#sec-trade">ご来店の流れ</a>
     <a href="#sec-store">お近くの店舗</a>
     <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="side-cta side-cta-secondary" data-track="side_shop_list" data-cta-location="side_shop_list">
       店舗一覧へ<span class="cta-arrow" aria-hidden="true"></span>
@@ -1255,7 +1255,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
         <a href="#sec-fv">TOP</a>
         <a href="#sec-nayami">こんなこと、ありませんか？</a>
         <!-- <a href="#sec-tokuten">今だけ特典</a> 11/12 下取り終了 -->
-        <a href="#sec-trade">下取りの流れ</a>
+        <a href="#sec-trade">ご来店の流れ</a>
         <a href="#sec-store">お近くの店舗</a>
       </div>
       <a href="#sec-store" class="sp-menu-cta sp-menu-cta-primary" data-track="sp_menu" data-cta-location="sp_menu">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
@@ -1388,28 +1388,28 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     <section class="trade-section" id="sec-trade">
       <div class="trade-head reveal">
         <span class="flow-label">かんたん3ステップ</span>
-        <h2 class="flow-title">下取りの流れ</h2>
-        <p class="trade-head-note">※下取りしたメガネは、責任を持って処分いたします。</p>
+        <h2 class="flow-title">ご来店の流れ</h2>
       </div>
       <ol class="trade-steps">
         <li class="trade-step reveal">
           <p class="trade-step-num">STEP1</p>
-          <div class="trade-step-body">
-            <p class="trade-step-title">使わないメガネを探す</p>          </div>
-        </li>
-        <li class="trade-step reveal">
-          <p class="trade-step-num">STEP2</p>
           <div class="trade-step-body">
             <p class="trade-step-title">お近くのお店へ</p>
             <p class="trade-step-note">目の疲れ・見えにくさなど、<br><span class="trade-step-note-em">無料相談もOK！</span></p>
           </div>
         </li>
         <li class="trade-step reveal">
+          <p class="trade-step-num">STEP2</p>
+          <div class="trade-step-body">
+            <p class="trade-step-title">目の状態をチェック</p>
+            <p class="trade-step-note">15項目の測定で見え方を確認</p>
+          </div>
+        </li>
+        <li class="trade-step reveal">
           <p class="trade-step-num">STEP3</p>
           <div class="trade-step-body">
-            <p class="trade-step-title">ご購入時に<span class="trade-step-em">1,100円OFF</span></p>
-            <p class="trade-step-note trade-step-line">LINEお友だち登録で<span class="trade-step-note-em">さらにお得！</span></p>
-            <p class="trade-step-note trade-step-small">※登録はお店でスタッフがご案内します</p>
+            <p class="trade-step-title">ぴったりのメガネをご提案</p>
+            <p class="trade-step-note">眼鏡作製技能士がかけ心地まで調整</p>
           </div>
         </li>
       </ol>
