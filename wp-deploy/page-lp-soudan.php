@@ -504,158 +504,132 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     .nayami-more:hover { opacity: .75; }
   }
 
-  /* アシストレンズの案内(悩みカード3枚の下)。下取りの流れと同じ「水色の背景に白い角丸カード」。
-     左右は悩みカード画像の白いカードの端(横幅の約6%)にそろえる。文字は画像にせずHTMLで持つ(あとで直しやすいように) */
-  .nayami-section { padding-bottom: 44px; } /* アシストレンズのカードの下にも、カード間と同じくらいの余白 */
-  /* レンズ選びのセクション(白背景)。悩み(水色)→レンズ選び(白)→ご来店の流れ(水色)と交互にして区切る */
+  .nayami-section { padding-bottom: 44px; }
+
+  /* レンズ選び(11/13 Iさんの参考イメージに合わせて作り直し)。白背景。
+     見出し＝線つきの白ラベル → スタッフ(手で案内)＋大きい見出し → 4つのレンズのカード → 追加料金0円の帯 */
   .lens-section {
     background: #fff;
-    padding: 48px 20px 52px;
-  }
-  .lens-head { text-align: center; margin-bottom: 14px; }
-  .lens-section .assist {
-    margin: 0;
-    padding: 0;
-    border-radius: 0;
-  }
-  .assist {
+    padding: 44px 20px 48px;
     word-break: auto-phrase; /* 日本語を言葉の切れ目で改行(Chrome系) */
-    margin: 4% 7.8% 0; /* 悩みカード画像の白いカードの左右端にそろえる */
-    padding: 28px clamp(16px, 5vw, 24px) 26px;
-    border-radius: 16px;
-    background: #fff;
-    text-align: center;
   }
-  .assist-lead {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.8;
-  }
-  .assist-title {
-    margin-top: 10px;
-    font-size: clamp(20px, 6vw, 24px);
-    font-weight: 900;
-    color: var(--main);
-    line-height: 1.35;
-  }
-  .assist-title-sub {
-    display: block;
-    font-size: 15px;
-    font-weight: 700;
-  }
-  /* スタッフ(丸)＋吹き出しの見出し。文字を減らし、スタッフと一緒に選べることを絵で伝える */
-  .assist-talk {
+  .nw { display: inline-block; white-space: nowrap; } /* 言葉の途中で折れないように(Safari対策) */
+  .lens-head {
     display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    margin-top: 0;
-    text-align: left;
+    align-items: center;
+    gap: 12px;
   }
-  .assist-staff { flex-shrink: 0; width: 84px; margin: 0; }
-  .assist-staff img {
-    display: block;
-    width: 84px;
-    height: 84px;
-    border-radius: 50%;
-    border: 3px solid #EEF5FC;
-  }
-  .assist-staff figcaption {
-    margin-top: 4px;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--main);
-    text-align: center;
-  }
-  .assist-bubble {
-    position: relative;
-    flex: 1;
-    min-width: 0;
-    margin-top: 6px;
-    padding: 14px clamp(12px, 3.6vw, 16px);
-    border-radius: 20px;
-    background: var(--main);
-    color: #fff;
-    font-size: clamp(15px, 4.8vw, 19px);
-    font-weight: 900;
-    line-height: 1.5;
-  }
-  .assist-bubble .nw { display: inline-block; white-space: nowrap; } /* 言葉の途中で折れないように(Safari対策) */
-  .assist-bubble::before {
+  .lens-head::before,
+  .lens-head::after {
     content: '';
-    position: absolute;
-    left: -11px;
-    top: 26px;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-right: 13px solid var(--main);
+    flex: 1;
+    height: 1px;
+    background: #C9D6E8;
   }
-  .lens-icon {
-    display: grid;
-    place-items: center;
-    width: 46px;
-    height: 46px;
-    margin: 0 auto 6px;
-    border-radius: 50%;
+  .lens-head-label {
+    padding: 4px 20px;
+    border: 1.5px solid var(--main);
+    border-radius: 999px;
     background: #fff;
+    color: var(--main);
+    font-size: 14px;
+    font-weight: 700;
   }
-  .lens-icon svg { width: 28px; height: 28px; }
+  .lens-hero {
+    display: grid;
+    grid-template-columns: 36% 1fr;
+    align-items: center;
+    gap: 4px;
+    margin-top: 14px;
+  }
+  .lens-hero-staff { position: relative; }
+  .lens-hero-staff img {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* 下を白にぼかして、切れ目を目立たせない */
+    -webkit-mask-image: linear-gradient(#000 78%, transparent);
+            mask-image: linear-gradient(#000 78%, transparent);
+  }
+  .lens-hero-spark { position: absolute; right: -10%; top: 40%; width: 26%; height: auto; }
+  .lens-hero-text { text-align: center; }
+  .lens-hero-title {
+    font-size: clamp(15.5px, 4.95vw, 21px); /* 2行に収まる大きさ(320px幅でも) */
+    font-weight: 900;
+    color: var(--main);
+    line-height: 1.55;
+  }
+  .lens-hero-swoosh { display: block; width: 86%; height: auto; margin: 4px auto 0; }
+
   /* 4つのレンズ(2×2)。どれか1つを推さないよう同じ大きさで並べる */
   .lens-grid {
     list-style: none;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 12px;
+    margin-top: 18px;
   }
   .lens-item {
-    padding: 14px 6px 12px;
-    border-radius: 12px;
-    background: #EEF5FC;
+    padding: 16px 6px 14px;
+    border: 1px solid #E1EAF5;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #fff 0%, #F3F8FD 100%);
+    box-shadow: 0 4px 14px rgba(0, 44, 123, .07);
+    text-align: center;
   }
+  .lens-icon {
+    display: grid;
+    place-items: center;
+    width: clamp(52px, 16vw, 60px);
+    height: clamp(52px, 16vw, 60px);
+    margin: 0 auto 8px;
+    border-radius: 50%;
+    background: #E3EEFA;
+  }
+  .lens-icon svg { width: 62%; height: 62%; }
   .lens-name {
-    font-size: clamp(14px, 4.3vw, 16px);
-    font-weight: 700;
+    font-size: clamp(15px, 4.6vw, 18px);
+    font-weight: 900;
     color: var(--main);
     line-height: 1.3;
   }
   .lens-desc {
-    margin-top: 4px;
-    font-size: clamp(11px, 3.4vw, 12.5px);
+    margin-top: 6px;
+    font-size: clamp(11.5px, 3.5vw, 13px);
     color: #555;
     line-height: 1.6;
   }
-  .assist-price-pre {
-    margin-top: 22px;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--main);
+
+  /* 追加料金0円の帯(左にレンズのイラスト) */
+  .lens-price {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    padding: 14px 12px 14px 8px;
+    border-radius: 16px;
+    background: linear-gradient(100deg, #EEF5FC 0%, #DCEAF8 100%);
   }
-  .assist-body {
-    margin-top: 22px;
-    font-size: 15px;
-    color: var(--text);
-    line-height: 1.85;
-    text-align: left;
-  }
-  .assist-em { color: var(--main); }
-  .assist-price {
+  .lens-price-illust { flex-shrink: 0; width: 30%; max-width: 104px; height: auto; }
+  .lens-price-text { flex: 1; min-width: 0; text-align: center; color: var(--main); }
+  .lens-price-pre { font-size: clamp(11px, 3.4vw, 13px); font-weight: 700; white-space: nowrap; }
+  .lens-price-row {
     display: flex;
     align-items: baseline;
     justify-content: center;
-    gap: 8px;
-    margin-top: 4px;
-    color: var(--main);
+    gap: 6px;
+    margin-top: 2px;
     font-weight: 900;
   }
-  .assist-price-label { font-size: 18px; }
-  .assist-price-num {
-    font-size: 52px;
+  .lens-price-label { font-size: clamp(17px, 5.4vw, 21px); }
+  .lens-price-num {
+    font-size: clamp(40px, 13vw, 50px);
     line-height: 1;
-    background: linear-gradient(transparent 62%, var(--marker) 62%);
     padding: 0 4px;
+    background: linear-gradient(transparent 62%, var(--marker) 62%);
   }
-  .assist-price-num small { font-size: 26px; }
-  .assist-note {
+  .lens-price-num small { font-size: .5em; }
+  .lens-note {
     margin-top: 10px;
     font-size: 12px;
     color: #555;
@@ -1423,30 +1397,36 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     </section>
 
 
-    <!-- レンズ選び(11/13 悩みセクションから独立)。標準レンズなら遠近・中近・近々・アシストも追加料金0円 -->
+    <!-- レンズ選び(11/13 悩みセクションから独立・Iさんの参考イメージに合わせて作り直し)。標準レンズなら遠近・中近・近々・アシストも追加料金0円 -->
     <section class="lens-section" id="sec-lens">
-      <div class="lens-head reveal"><span class="flow-label">レンズ選び</span></div>
-      <div class="assist reveal">
+      <div class="lens-head reveal"><span class="lens-head-label">レンズ選び</span></div>
 
-        <div class="assist-talk">
-          <figure class="assist-staff">
-            <img loading="lazy" decoding="async" src="<?php echo $lp_assets; ?>/staff-face.webp?v=4e7da0a9" width="300" height="300" alt="">
-            <figcaption>専門スタッフ</figcaption>
-          </figure>
-          <h2 class="assist-bubble"><span class="nw">暮らしに合う</span><span class="nw">レンズを、</span><span class="nw">一緒に選べます</span></h2>
+      <div class="lens-hero reveal">
+        <div class="lens-hero-staff">
+          <img loading="lazy" decoding="async" src="<?php echo $lp_assets; ?>/lens-staff.webp?v=95029748" width="600" height="440" alt="ご案内するスタッフ">
+          <svg class="lens-hero-spark" viewBox="0 0 30 30" fill="none" stroke="#7FB3E6" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 18 L2 21"/><path d="M10 10 L8 4"/><path d="M17 12 L22 7"/></svg>
         </div>
-
-        <ul class="lens-grid">
-          <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="#002C7B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22 V17 L8 10 H24 L28 17 V22 Z"/><path d="M4 17 H28"/><circle cx="10" cy="23" r="2.6" fill="#fff"/><circle cx="22" cy="23" r="2.6" fill="#fff"/></svg></span><p class="lens-name">遠近両用</p><p class="lens-desc">遠くも手元も</p></li>
-          <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="#002C7B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15 L16 6 L27 15"/><path d="M8 13 V26 H24 V13"/><path d="M14 26 V20 H18 V26"/></svg></span><p class="lens-name">中近両用</p><p class="lens-desc">お部屋の中と手元</p></li>
-          <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="#002C7B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="8" width="18" height="12" rx="1.5"/><path d="M3 24 H29"/><path d="M7 20 L5 24 M25 20 L27 24"/></svg></span><p class="lens-name">近々両用</p><p class="lens-desc">手元とパソコン</p></li>
-          <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="#002C7B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="10.5" y="4" width="11" height="24" rx="2.2"/><path d="M14.5 24 H17.5"/></svg></span><p class="lens-name">アシストレンズ</p><p class="lens-desc">手元を少し楽に</p></li>
-        </ul>
-
-        <p class="assist-price-pre">標準レンズなら、どれを選んでも</p>
-        <p class="assist-price"><span class="assist-price-label">追加料金</span><span class="assist-price-num">0<small>円</small></span></p>
-        <p class="assist-note">※コーティングの追加やレンズのグレードアップは、別途料金がかかります。</p>
+        <div class="lens-hero-text">
+          <h2 class="lens-hero-title"><span class="nw">暮らしに合うレンズを、</span><span class="nw">一緒に選べます</span></h2>
+          <svg class="lens-hero-swoosh" viewBox="0 0 200 12" fill="none" aria-hidden="true"><path d="M4 9 Q60 1 120 6 T196 3" stroke="#9CC6EC" stroke-width="3" stroke-linecap="round"/></svg>
+        </div>
       </div>
+
+      <ul class="lens-grid reveal">
+        <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 28 V22 Q5 19.5 7.5 19 L11 12.5 Q12 10.5 14.5 10.5 H25.5 Q28 10.5 29 12.5 L32.5 19 Q35 19.5 35 22 V28 Z"/><path d="M12.5 18.5 L14.8 13.5 H25.2 L27.5 18.5 Z"/><path d="M9 23.5 H11.5 M28.5 23.5 H31"/><circle cx="12" cy="28.5" r="3.2" fill="#fff"/><circle cx="28" cy="28.5" r="3.2" fill="#fff"/></svg></span><p class="lens-name">遠近両用</p><p class="lens-desc">遠くも手元も<br>自然に見える</p></li>
+        <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19 L17 8 L30 19"/><path d="M8 16 V32 H26 V16"/><path d="M14.5 32 V25 H19.5 V32"/><path d="M34.5 32 V28"/><path d="M34.5 19 L31 28 H38 Z" fill="#002C7B"/></svg></span><p class="lens-name">中近両用</p><p class="lens-desc">お部屋の中で<br>快適に見える</p></li>
+        <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="9" width="24" height="17" rx="2"/><path d="M3.5 30 H36.5 L34.5 33 H5.5 Z"/></svg></span><p class="lens-name">近々両用</p><p class="lens-desc">手元とパソコンが<br>快適に見える</p></li>
+        <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="4.5" width="14" height="31" rx="3"/><path d="M18 31 H22"/></svg></span><p class="lens-name">アシストレンズ</p><p class="lens-desc">手元を<br>少し楽に</p></li>
+      </ul>
+
+      <div class="lens-price reveal">
+        <svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><defs><linearGradient id="lpg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#C9DDF2"/></linearGradient></defs><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg>
+        <div class="lens-price-text">
+          <p class="lens-price-pre">標準レンズなら、どれを選んでも</p>
+          <p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p>
+        </div>
+      </div>
+      <p class="lens-note">※コーティングの追加やレンズのグレードアップは、別途料金がかかります。</p>
     </section>
 
     <section class="trade-section" id="sec-trade">
