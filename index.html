@@ -526,6 +526,62 @@
     font-size: 15px;
     font-weight: 700;
   }
+  /* スタッフ(丸)＋吹き出しの見出し。文字を減らし、スタッフと一緒に選べることを絵で伝える */
+  .assist-talk {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 18px;
+    text-align: left;
+  }
+  .assist-staff { flex-shrink: 0; width: 84px; margin: 0; }
+  .assist-staff img {
+    display: block;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    border: 3px solid #EEF5FC;
+  }
+  .assist-staff figcaption {
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--main);
+    text-align: center;
+  }
+  .assist-bubble {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    margin-top: 6px;
+    padding: 14px clamp(12px, 3.6vw, 16px);
+    border-radius: 20px;
+    background: var(--main);
+    color: #fff;
+    font-size: clamp(15px, 4.8vw, 19px);
+    font-weight: 900;
+    line-height: 1.5;
+  }
+  .assist-bubble .nw { display: inline-block; white-space: nowrap; } /* 言葉の途中で折れないように(Safari対策) */
+  .assist-bubble::before {
+    content: '';
+    position: absolute;
+    left: -11px;
+    top: 26px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 13px solid var(--main);
+  }
+  .lens-icon {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    margin: 0 auto 6px;
+    border-radius: 50%;
+    background: #fff;
+  }
+  .lens-icon svg { width: 28px; height: 28px; }
   /* 4つのレンズ(2×2)。どれか1つを推さないよう同じ大きさで並べる */
   .lens-grid {
     list-style: none;
@@ -546,7 +602,7 @@
     line-height: 1.3;
   }
   .lens-desc {
-    margin-top: 6px;
+    margin-top: 4px;
     font-size: clamp(11px, 3.4vw, 12.5px);
     color: #555;
     line-height: 1.6;
@@ -1393,14 +1449,20 @@
       <!-- レンズ選びの案内(11/13 アシストレンズ単独の紹介から変更)。標準レンズなら遠近・中近・近々・アシストも追加料金0円 -->
       <div class="assist reveal" id="sec-assist">
         <p class="assist-lead">「手元が見づらい」<br>「パソコンの文字がぼやける」<br>そんなお悩みに</p>
-        <h3 class="assist-title">暮らしに合うレンズを、<br>一緒に選べます</h3>
-        <p class="assist-body">どのレンズが合うかは、ふだんの過ごし方で変わります。<span class="assist-em">専門スタッフがお悩みを伺いながら</span>、一緒に選びます。</p>
+
+        <div class="assist-talk">
+          <figure class="assist-staff">
+            <img loading="lazy" decoding="async" src="img/staff-face.webp" width="300" height="300" alt="">
+            <figcaption>専門スタッフ</figcaption>
+          </figure>
+          <h3 class="assist-bubble"><span class="nw">暮らしに合う</span><span class="nw">レンズを、</span><span class="nw">一緒に選べます</span></h3>
+        </div>
 
         <ul class="lens-grid">
-          <li class="lens-item"><p class="lens-name">遠近両用</p><p class="lens-desc">遠くも手元も1本で<br>外出・運転に</p></li>
-          <li class="lens-item"><p class="lens-name">中近両用</p><p class="lens-desc">お部屋の中と手元<br>家事・会話に</p></li>
-          <li class="lens-item"><p class="lens-name">近々両用</p><p class="lens-desc">手元とパソコン<br>デスクワークに</p></li>
-          <li class="lens-item"><p class="lens-name">アシストレンズ</p><p class="lens-desc">手元を少し楽に<br>遠近両用の前に</p></li>
+          <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="#002C7B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22 V17 L8 10 H24 L28 17 V22 Z"/><path d="M4 17 H28"/><circle cx="10" cy="23" r="2.6" fill="#fff"/><circle cx="22" cy="23" r="2.6" fill="#fff"/></svg></span><p class="lens-name">遠近両用</p><p class="lens-desc">遠くも手元も</p></li>
+          <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="#002C7B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15 L16 6 L27 15"/><path d="M8 13 V26 H24 V13"/><path d="M14 26 V20 H18 V26"/></svg></span><p class="lens-name">中近両用</p><p class="lens-desc">お部屋の中と手元</p></li>
+          <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="#002C7B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="8" width="18" height="12" rx="1.5"/><path d="M3 24 H29"/><path d="M7 20 L5 24 M25 20 L27 24"/></svg></span><p class="lens-name">近々両用</p><p class="lens-desc">手元とパソコン</p></li>
+          <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="#002C7B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="10.5" y="4" width="11" height="24" rx="2.2"/><path d="M14.5 24 H17.5"/></svg></span><p class="lens-name">アシストレンズ</p><p class="lens-desc">手元を少し楽に</p></li>
         </ul>
 
         <p class="assist-price-pre">標準レンズなら、どれを選んでも</p>
