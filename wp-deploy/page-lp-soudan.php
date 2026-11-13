@@ -575,7 +575,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     transition: transform .2s ease, box-shadow .2s ease;
-    padding: 16px 6px 22px;
+    padding: 16px 6px 32px; /* 右下の＞が説明文に重ならないように(320pxで重なっていた) */
     border: 1px solid #E1EAF5;
     border-radius: 16px;
     background: linear-gradient(180deg, #fff 0%, #F3F8FD 100%);
@@ -1545,7 +1545,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
           <img loading="lazy" decoding="async" src="<?php echo $lp_assets; ?>/lens-staff.webp?v=95029748" width="600" height="440" alt="ご案内するスタッフ">
         </div>
         <div class="lens-hero-text">
-          <h2 class="lens-hero-title"><span class="nw">暮らしに合うレンズを、</span><span class="nw">一緒に選べます</span></h2>
+          <h2 class="lens-hero-title"><span class="nw">暮らしに合うレンズを、</span><span class="nw">相談しながら選べます</span></h2>
           <svg class="lens-hero-swoosh" viewBox="0 0 200 12" fill="none" aria-hidden="true"><path d="M4 9 Q60 1 120 6 T196 3" stroke="#9CC6EC" stroke-width="3" stroke-linecap="round"/></svg>
         </div>
       </div>
