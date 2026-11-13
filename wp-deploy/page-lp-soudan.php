@@ -507,6 +507,17 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
   /* アシストレンズの案内(悩みカード3枚の下)。下取りの流れと同じ「水色の背景に白い角丸カード」。
      左右は悩みカード画像の白いカードの端(横幅の約6%)にそろえる。文字は画像にせずHTMLで持つ(あとで直しやすいように) */
   .nayami-section { padding-bottom: 44px; } /* アシストレンズのカードの下にも、カード間と同じくらいの余白 */
+  /* レンズ選びのセクション(白背景)。悩み(水色)→レンズ選び(白)→ご来店の流れ(水色)と交互にして区切る */
+  .lens-section {
+    background: #fff;
+    padding: 48px 20px 52px;
+  }
+  .lens-head { text-align: center; margin-bottom: 14px; }
+  .lens-section .assist {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+  }
   .assist {
     word-break: auto-phrase; /* 日本語を言葉の切れ目で改行(Chrome系) */
     margin: 4% 7.8% 0; /* 悩みカード画像の白いカードの左右端にそろえる */
@@ -1329,6 +1340,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
   <nav class="side-nav">
     <a href="#sec-fv">TOP</a>
     <a href="#sec-nayami">こんなこと、ありませんか？</a>
+    <a href="#sec-lens">レンズ選び</a>
     <a href="#sec-trade">ご来店の流れ</a>
     <a href="#sec-store">お近くの店舗</a>
     <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="side-cta side-cta-secondary" data-track="side_shop_list" data-cta-location="side_shop_list">
@@ -1345,6 +1357,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
       <div class="sp-menu-links">
         <a href="#sec-fv">TOP</a>
         <a href="#sec-nayami">こんなこと、ありませんか？</a>
+        <a href="#sec-lens">レンズ選び</a>
         <a href="#sec-trade">ご来店の流れ</a>
         <a href="#sec-store">お近くの店舗</a>
       </div>
@@ -1407,15 +1420,20 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
         <a href="https://www.aimegane.com/aboutus/gijutsu/#measurement-15" target="_blank" rel="noopener" class="nayami-more reveal" data-track="gijutsu_link" data-cta-location="gijutsu_link">15項目の測定とは<span class="nayami-more-arrow" aria-hidden="true"></span></a>
       </div>
 
-      <!-- レンズ選びの案内(11/13 アシストレンズ単独の紹介から変更)。標準レンズなら遠近・中近・近々・アシストも追加料金0円 -->
-      <div class="assist reveal" id="sec-assist">
+    </section>
+
+
+    <!-- レンズ選び(11/13 悩みセクションから独立)。標準レンズなら遠近・中近・近々・アシストも追加料金0円 -->
+    <section class="lens-section" id="sec-lens">
+      <div class="lens-head reveal"><span class="flow-label">レンズ選び</span></div>
+      <div class="assist reveal">
 
         <div class="assist-talk">
           <figure class="assist-staff">
             <img loading="lazy" decoding="async" src="<?php echo $lp_assets; ?>/staff-face.webp?v=4e7da0a9" width="300" height="300" alt="">
             <figcaption>専門スタッフ</figcaption>
           </figure>
-          <h3 class="assist-bubble"><span class="nw">暮らしに合う</span><span class="nw">レンズを、</span><span class="nw">一緒に選べます</span></h3>
+          <h2 class="assist-bubble"><span class="nw">暮らしに合う</span><span class="nw">レンズを、</span><span class="nw">一緒に選べます</span></h2>
         </div>
 
         <ul class="lens-grid">
@@ -1430,7 +1448,6 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
         <p class="assist-note">※コーティングの追加やレンズのグレードアップは、別途料金がかかります。</p>
       </div>
     </section>
-
 
     <section class="trade-section" id="sec-trade">
       <div class="trade-head reveal">
