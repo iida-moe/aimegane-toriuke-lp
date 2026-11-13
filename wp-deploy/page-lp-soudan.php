@@ -564,7 +564,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-top: 18px;
+    margin-top: 34px; /* 上の見出し・スタッフと近くて窮屈だったので広げた(11/13 18px→34px) */
   }
   .lens-grid li { display: flex; }
   /* カードは押すとくわしい説明(モーダル)が開くボタン */
