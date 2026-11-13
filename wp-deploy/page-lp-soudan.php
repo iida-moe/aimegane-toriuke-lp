@@ -526,14 +526,12 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     height: 1px;
     background: #C9D6E8;
   }
+  /* 丸い枠はボタンに見えるのでなし(11/13 Iさん)。両側の線だけで見出しにする */
   .lens-head-label {
-    padding: 4px 20px;
-    border: 1.5px solid var(--main);
-    border-radius: 999px;
-    background: #fff;
     color: var(--main);
     font-size: 14px;
     font-weight: 700;
+    letter-spacing: .08em;
   }
   .lens-hero {
     display: grid;
