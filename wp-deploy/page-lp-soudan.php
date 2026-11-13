@@ -1615,7 +1615,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
       </div>
       <div class="lens-detail" data-lens="chukin" hidden>
         <div class="lens-detail-head">
-          <img class="lens-detail-illust" src="<?php echo $lp_assets; ?>/soudan_lens-chukin_800_400.webp?v=f20ce5f6" width="800" height="400" alt="">
+          <img class="lens-detail-illust" src="<?php echo $lp_assets; ?>/soudan_lens-chukin_800_400.webp?v=77d6c73c" width="800" height="400" alt="">
           <p class="lens-detail-catch">お部屋の中が見やすい</p>
           <h3 class="lens-detail-name">中近両用レンズ</h3>
         </div>
