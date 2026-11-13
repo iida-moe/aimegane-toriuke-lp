@@ -705,7 +705,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     transform: rotate(-28deg);
   }
   .lens-detail-catch::after { transform: rotate(28deg); }
-  .lens-detail-name { margin-top: 4px; font-size: 24px; font-weight: 900; color: var(--main); line-height: 1.3; }
+  .lens-detail-name { margin-top: 0; font-size: 28px; font-weight: 900; color: var(--main); line-height: 1.3; }
   /* 見え方の図(Iさんの参考図に合わせる：レンズの形＋よく見える範囲の色＋ゆがみの点線＋右に距離のラベル) */
   .lens-zone-wrap { margin-top: 28px; }
   .lens-zone { display: block; width: 100%; height: auto; font-family: inherit; }
