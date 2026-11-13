@@ -636,25 +636,31 @@
     border-radius: 20px;
     background: #fff;
     color: var(--text);
-    overflow: auto;
+    overflow: hidden; /* スクロールは中の .lens-modal-scroll で。角の丸みとスクロールバーがぶつからないように */
+  }
+  .lens-modal-scroll {
+    max-height: 88vh;
+    overflow-y: auto;
     overscroll-behavior: contain;
+    scrollbar-width: thin;
   }
   .lens-modal::backdrop { background: rgba(0, 20, 60, .55); }
   .lens-modal[open] { animation: lensModalIn .25s ease; }
   @keyframes lensModalIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce) { .lens-modal[open] { animation: none; } }
+  /* ×は画面の右上に固定。イラストに重なっても見えるよう白丸＋影 */
   .lens-modal-close {
-    position: sticky;
+    position: absolute;
     top: 10px;
-    float: right;
-    margin: 10px 10px 0 0;
+    right: 12px;
     width: 36px;
     height: 36px;
     border: none;
     border-radius: 50%;
-    background: #EEF5FC;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 44, 123, .18);
     cursor: pointer;
-    z-index: 1;
+    z-index: 2;
   }
   .lens-modal-close::before,
   .lens-modal-close::after {
@@ -669,7 +675,7 @@
   }
   .lens-modal-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
   .lens-modal-close:focus:not(:focus-visible) { outline: none; } /* 開いたときに×に枠が出ないように */
-  .lens-detail { padding: 54px 22px 24px; word-break: auto-phrase; }
+  .lens-detail { padding: 56px 22px 24px; word-break: auto-phrase; }
   .lens-detail[hidden] { display: none; }
   .lens-detail-head { text-align: center; }
   /* 説明の画面の一番上：暮らしの場面のイラスト(800×480・Geminiで作成予定、今は仮) */
@@ -1621,6 +1627,7 @@
     <!-- レンズのくわしい説明(カードを押すと開く・11/13) -->
     <dialog class="lens-modal" id="lens-modal" aria-label="レンズのくわしい説明">
       <button type="button" class="lens-modal-close" aria-label="閉じる"></button>
+      <div class="lens-modal-scroll">
       <div class="lens-detail" data-lens="enkin" hidden>
         <div class="lens-detail-head">
           <img class="lens-detail-illust" src="img/soudan_lens-enkin_800_480.webp" width="800" height="480" alt="">
@@ -1688,6 +1695,7 @@
         <p class="lens-detail-text">ふだん使いのレンズの下のほうに、手元を見るときのピント合わせを少し助ける度数が入っています。見え方のちがいが少なく、はじめての方も使いやすいレンズです。</p>
         <p class="lens-detail-price">標準レンズなら追加料金 <b>0円</b></p>
         <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_assist" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
+      </div>
       </div>
     </dialog>
 
@@ -2317,7 +2325,7 @@ function setupSpFloatCta(){
       details.forEach(function(d){ d.hidden = d.getAttribute('data-lens') !== key; });
       document.body.classList.add('is-modal-open');
       modal.showModal();
-      modal.scrollTop = 0;
+      modal.querySelector('.lens-modal-scroll').scrollTop = 0;
     });
   });
   modal.querySelector('.lens-modal-close').addEventListener('click', close);
