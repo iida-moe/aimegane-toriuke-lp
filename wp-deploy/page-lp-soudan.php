@@ -675,10 +675,11 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
   }
   .lens-modal-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
   .lens-modal-close:focus:not(:focus-visible) { outline: none; } /* 開いたときに×に枠が出ないように */
-  .lens-detail { padding: 28px 22px 24px; word-break: auto-phrase; }
+  .lens-detail { padding: 54px 22px 24px; word-break: auto-phrase; }
   .lens-detail[hidden] { display: none; }
   .lens-detail-head { text-align: center; }
-  .lens-detail-head .lens-icon { margin-bottom: 10px; }
+  /* 説明の画面の一番上：暮らしの場面のイラスト(800×480・Geminiで作成予定、今は仮) */
+  .lens-detail-illust { display: block; width: 100%; height: auto; margin-bottom: 14px; border-radius: 14px; }
   .lens-detail-name { font-size: 22px; font-weight: 900; color: var(--main); line-height: 1.3; }
   .lens-detail-catch {
     display: inline-block;
@@ -1571,16 +1572,16 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
       <button type="button" class="lens-modal-close" aria-label="閉じる"></button>
       <div class="lens-detail" data-lens="enkin" hidden>
         <div class="lens-detail-head">
-          <span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 28 V22 Q5 19.5 7.5 19 L11 12.5 Q12 10.5 14.5 10.5 H25.5 Q28 10.5 29 12.5 L32.5 19 Q35 19.5 35 22 V28 Z"/><path d="M12.5 18.5 L14.8 13.5 H25.2 L27.5 18.5 Z"/><path d="M9 23.5 H11.5 M28.5 23.5 H31"/><circle cx="12" cy="28.5" r="3.2" fill="#fff"/><circle cx="28" cy="28.5" r="3.2" fill="#fff"/></svg></span>
+          <img class="lens-detail-illust" src="<?php echo $lp_assets; ?>/soudan_lens-enkin_800_480.webp?v=0fd32f4d" width="800" height="480" alt="">
           <h3 class="lens-detail-name">遠近両用レンズ</h3>
           <p class="lens-detail-catch">遠くも手元も、これ1本で</p>
         </div>
         <div class="lens-zone-wrap">
-          <svg class="lens-zone" viewBox="0 0 340 152" role="img" aria-label="レンズの見え方の図"><text x="74" y="13" text-anchor="middle" font-size="11" font-weight="700" fill="#555">メガネのレンズ</text><g transform="translate(-2.4 4) scale(0.8)"><clipPath id="lzc-enkin"><path d="M38 26 H154 Q184 26 184 56 V128 Q184 176 136 176 H56 Q8 176 8 128 V56 Q8 26 38 26 Z"/></clipPath><g clip-path="url(#lzc-enkin)"><rect width="200" height="200" fill="#fff"/><path d="M0 0 H200 V84 Q96 106 0 84 Z" fill="#D6E8F7"/><ellipse cx="96" cy="120" rx="18" ry="7" fill="#F7E39A"/><ellipse cx="96" cy="150" rx="32" ry="12" fill="#F6C9D6"/><g fill="none" stroke="#E0892E" stroke-width="2.2" stroke-dasharray="5 4"><path d="M40 96 Q72 102 74 126 Q76 152 68 176"/><path d="M152 96 Q120 102 118 126 Q116 152 124 176"/></g></g><path d="M38 26 H154 Q184 26 184 56 V128 Q184 176 136 176 H56 Q8 176 8 128 V56 Q8 26 38 26 Z" fill="none" stroke="#3B3B3B" stroke-width="5"/></g><circle cx="74.4" cy="52" r="2.6" fill="#3B3B3B"/><path d="M74.4 52 L190 42.4" stroke="#3B3B3B" stroke-width="1.2" stroke-dasharray="1.5 3" fill="none"/><g transform="translate(194 30.4)" fill="none" stroke="#3B3B3B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20 L9 9 L13 15 L16 11 L22 20 Z"/><circle cx="18" cy="5" r="2"/></g><text x="224" y="41.4" font-size="19" font-weight="900" fill="#3B3B3B">遠く</text><text x="224" y="57.4" font-size="13" fill="#666">景色・運転</text><circle cx="74.4" cy="100" r="2.6" fill="#3B3B3B"/><path d="M74.4 100 L190 88.8" stroke="#3B3B3B" stroke-width="1.2" stroke-dasharray="1.5 3" fill="none"/><g transform="translate(194 76.8)" fill="none" stroke="#3B3B3B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M1.5 19 H22.5"/></g><text x="224" y="87.8" font-size="19" font-weight="900" fill="#3B3B3B">中間</text><text x="224" y="103.8" font-size="13" fill="#666">パソコン</text><circle cx="74.4" cy="124" r="2.6" fill="#3B3B3B"/><path d="M74.4 124 L190 133.6" stroke="#3B3B3B" stroke-width="1.2" stroke-dasharray="1.5 3" fill="none"/><g transform="translate(194 121.6)" fill="none" stroke="#3B3B3B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18.5 H13"/></g><text x="224" y="132.6" font-size="19" font-weight="900" fill="#3B3B3B">手元</text><text x="224" y="148.6" font-size="13" fill="#666">スマホ・本</text></svg>
+          <svg class="lens-zone" viewBox="0 0 340 152" role="img" aria-label="レンズの見え方の図"><text x="74" y="13" text-anchor="middle" font-size="11" font-weight="700" fill="#555">メガネのレンズ</text><g transform="translate(-2.4 4) scale(0.8)"><clipPath id="lzc-enkin"><path d="M38 26 H154 Q184 26 184 56 V128 Q184 176 136 176 H56 Q8 176 8 128 V56 Q8 26 38 26 Z"/></clipPath><g clip-path="url(#lzc-enkin)"><rect width="200" height="200" fill="#fff"/><path d="M0 0 H200 V84 Q96 106 0 84 Z" fill="#D6E8F7"/><ellipse cx="96" cy="120" rx="18" ry="7" fill="#F7E39A"/><ellipse cx="96" cy="150" rx="32" ry="12" fill="#F6C9D6"/><g fill="none" stroke="#E0892E" stroke-width="2.2" stroke-dasharray="5 4"><path d="M40 96 Q72 102 74 126 Q76 152 68 176"/><path d="M152 96 Q120 102 118 126 Q116 152 124 176"/></g></g><path d="M38 26 H154 Q184 26 184 56 V128 Q184 176 136 176 H56 Q8 176 8 128 V56 Q8 26 38 26 Z" fill="none" stroke="#3B3B3B" stroke-width="5"/></g><circle cx="74.4" cy="52" r="2.6" fill="#3B3B3B"/><path d="M74.4 52 L190 42.4" stroke="#3B3B3B" stroke-width="1.2" stroke-dasharray="1.5 3" fill="none"/><g transform="translate(194 30.4)" fill="none" stroke="#3B3B3B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20 L9 9 L13 15 L16 11 L22 20 Z"/><circle cx="18" cy="5" r="2"/></g><text x="224" y="41.4" font-size="19" font-weight="900" fill="#3B3B3B">遠く</text><text x="224" y="57.4" font-size="13" fill="#666">ゴルフ・運転</text><circle cx="74.4" cy="100" r="2.6" fill="#3B3B3B"/><path d="M74.4 100 L190 88.8" stroke="#3B3B3B" stroke-width="1.2" stroke-dasharray="1.5 3" fill="none"/><g transform="translate(194 76.8)" fill="none" stroke="#3B3B3B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M1.5 19 H22.5"/></g><text x="224" y="87.8" font-size="19" font-weight="900" fill="#3B3B3B">中間</text><text x="224" y="103.8" font-size="13" fill="#666">パソコン</text><circle cx="74.4" cy="124" r="2.6" fill="#3B3B3B"/><path d="M74.4 124 L190 133.6" stroke="#3B3B3B" stroke-width="1.2" stroke-dasharray="1.5 3" fill="none"/><g transform="translate(194 121.6)" fill="none" stroke="#3B3B3B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18.5 H13"/></g><text x="224" y="132.6" font-size="19" font-weight="900" fill="#3B3B3B">手元</text><text x="224" y="148.6" font-size="13" fill="#666">スマホ・本</text></svg>
           <ul class="lens-zone-legend"><li><span class="lzl-dot" aria-hidden="true"></span>色の部分：よく見える範囲</li><li><span class="lzl-dash" aria-hidden="true"></span>点線の外側：ゆがみ・ぼやけが出やすい部分</li></ul>
         </div>
         <p class="lens-detail-h">こんなときに</p>
-        <ul class="lens-scene"><li>車の運転や外出</li><li>スマホや本を読む</li><li>メガネのかけ外しを減らしたい</li></ul>
+        <ul class="lens-scene"><li>ゴルフや車の運転</li><li>スマホや本を読む</li><li>メガネのかけ外しを減らしたい</li></ul>
         <p class="lens-detail-h">どんなレンズ？</p>
         <p class="lens-detail-text">レンズの上のほうで遠く、下のほうで手元を見ます。目線を動かすだけで、見たい距離にピントが合います。</p>
         <p class="lens-detail-price">標準レンズなら追加料金 <b>0円</b></p>
@@ -1588,7 +1589,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
       </div>
       <div class="lens-detail" data-lens="chukin" hidden>
         <div class="lens-detail-head">
-          <span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19 L17 8 L30 19"/><path d="M8 16 V32 H26 V16"/><path d="M14.5 32 V25 H19.5 V32"/><path d="M34.5 32 V28"/><path d="M34.5 19 L31 28 H38 Z" fill="#002C7B"/></svg></span>
+          <img class="lens-detail-illust" src="<?php echo $lp_assets; ?>/soudan_lens-chukin_800_480.webp?v=a34034f9" width="800" height="480" alt="">
           <h3 class="lens-detail-name">中近両用レンズ</h3>
           <p class="lens-detail-catch">お部屋の中が見やすい</p>
         </div>
@@ -1605,7 +1606,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
       </div>
       <div class="lens-detail" data-lens="kinkin" hidden>
         <div class="lens-detail-head">
-          <span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="9" width="24" height="17" rx="2"/><path d="M3.5 30 H36.5 L34.5 33 H5.5 Z"/></svg></span>
+          <img class="lens-detail-illust" src="<?php echo $lp_assets; ?>/soudan_lens-kinkin_800_480.webp?v=a43a9283" width="800" height="480" alt="">
           <h3 class="lens-detail-name">近々両用レンズ</h3>
           <p class="lens-detail-catch">手元とパソコンが楽に</p>
         </div>
@@ -1622,7 +1623,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
       </div>
       <div class="lens-detail" data-lens="assist" hidden>
         <div class="lens-detail-head">
-          <span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="4.5" width="14" height="31" rx="3"/><path d="M18 31 H22"/></svg></span>
+          <img class="lens-detail-illust" src="<?php echo $lp_assets; ?>/soudan_lens-assist_800_480.webp?v=aa0ad208" width="800" height="480" alt="">
           <h3 class="lens-detail-name">アシストレンズ</h3>
           <p class="lens-detail-catch">手元を少し楽に</p>
         </div>
