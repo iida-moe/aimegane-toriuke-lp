@@ -1,7 +1,7 @@
 <?php
-/* page-lp-shitadori2026.php : アイメガネ メガネの無料相談＆下取りキャンペーン LP
+/* page-lp-soudan.php : アイメガネ メガネの無料相談 LP
    ※ このファイルは build_wp.py で index.html から自動生成。直接編集せず index.html を直して再生成すること */
-$lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
+$lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -1258,18 +1258,12 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
       </a>
     </div>
 
-    <!-- 11/12 下取り終了のため非表示
-    <div class="side-promo">
-      <a href="#sec-tokuten" data-track="side_banner" data-cta-location="side_banner"><img src="<?php echo $lp_assets; ?>/promo-badge.webp?v=8642c4ca" width="1000" height="267" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
-    </div>
-    -->
   </div>
 
   <!-- PC版：右側固定ナビ＋CTA（各セクション未作成のため仮リンク） -->
   <nav class="side-nav">
     <a href="#sec-fv">TOP</a>
     <a href="#sec-nayami">こんなこと、ありませんか？</a>
-    <!-- <a href="#sec-tokuten">今だけ特典</a> 11/12 下取り終了 -->
     <a href="#sec-trade">ご来店の流れ</a>
     <a href="#sec-store">お近くの店舗</a>
     <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="side-cta side-cta-secondary" data-track="side_shop_list" data-cta-location="side_shop_list">
@@ -1286,7 +1280,6 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
       <div class="sp-menu-links">
         <a href="#sec-fv">TOP</a>
         <a href="#sec-nayami">こんなこと、ありませんか？</a>
-        <!-- <a href="#sec-tokuten">今だけ特典</a> 11/12 下取り終了 -->
         <a href="#sec-trade">ご来店の流れ</a>
         <a href="#sec-store">お近くの店舗</a>
       </div>
@@ -1319,9 +1312,6 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
         </div>
       </div>
 
-      <!-- 11/12 下取り終了のため非表示
-      <a href="#sec-tokuten" class="fv-promo" data-track="fv_banner" data-cta-location="fv_banner"><img src="<?php echo $lp_assets; ?>/promo-badge.webp?v=8642c4ca" width="1000" height="267" alt="メガネの下取りキャンペーン実施中 11/12(木)まで(今だけ特典へ移動)"></a>
-      -->
       <a href="#sec-store" class="fv-cta-placeholder" data-track="fv" data-cta-location="fv">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
     </section>
 
@@ -1410,12 +1400,6 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
       </div>
     </section>
 
-    <!-- 11/12 下取り終了のため非表示
-    <section class="tokuten-section" id="sec-tokuten">
-      <h2 class="sr-only">今だけ特典 メガネの下取りキャンペーン 最大2,200円OFF</h2>
-      <img loading="lazy" decoding="async" class="tokuten-section-img reveal" src="<?php echo $lp_assets; ?>/tokuten-section.webp?v=b693ea58" width="1206" height="3000" alt="今だけ特典 下取りキャンペーン ご自宅に眠っているメガネ下取ります 下取り1本につき1,100円OFF ＋ LINEお友だち登録で1,100円OFF 最大2,200円OFF 期間:10/13(火)〜11/12(木) 対象:メガネ11,000円以上ご購入につき、1本下取りいたします。他店のメガネでも可 ※本庄南大通り店は対象外">
-    </section>
-    -->
 
     <section class="trade-section" id="sec-trade">
       <div class="trade-head reveal">

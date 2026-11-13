@@ -1,8 +1,9 @@
 # index.html(社内レビュー用) から WordPress 用テンプレートを作るスクリプト。
 # ザ・セールLP(page-lp-sale2026.php)と同じ構成にする。
 #   使い方: python build_wp.py
-#   出力:   wp-deploy/page-lp-shitadori2026.php
-#           wp-deploy/lp/assets/shitadori2026/img/ (使っている画像だけコピー)
+#   出力:   wp-deploy/page-lp-soudan.php
+#           wp-deploy/lp/assets/soudan/img/ (使っている画像だけコピー)
+# 11/13 下取り終了後もずっと使うため、URLを lp-shitadori2026 → lp-soudan に変更
 # index.html を直したら、このスクリプトを実行し直せば WordPress 版にも反映される。
 import hashlib
 import re
@@ -10,7 +11,7 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).parent
-SLUG = 'shitadori2026'
+SLUG = 'soudan'
 OUT_PHP = ROOT / 'wp-deploy' / f'page-lp-{SLUG}.php'
 OUT_IMG = ROOT / 'wp-deploy' / 'lp' / 'assets' / SLUG / 'img'
 
@@ -67,7 +68,7 @@ if 'src="img/' in s or 'gtag(' in s or 'preview-gate"' in s:
     raise SystemExit('変換漏れがある')
 
 header = ("<?php\n"
-          f"/* page-lp-{SLUG}.php : アイメガネ メガネの無料相談＆下取りキャンペーン LP\n"
+          f"/* page-lp-{SLUG}.php : アイメガネ メガネの無料相談 LP\n"
           "   ※ このファイルは build_wp.py で index.html から自動生成。直接編集せず index.html を直して再生成すること */\n"
           f"$lp_assets = get_stylesheet_directory_uri() . '/lp/assets/{SLUG}/img';\n"
           "?>\n")
