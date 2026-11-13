@@ -549,7 +549,6 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     -webkit-mask-image: linear-gradient(#000 78%, transparent);
             mask-image: linear-gradient(#000 78%, transparent);
   }
-  .lens-hero-spark { position: absolute; right: -10%; top: 40%; width: 26%; height: auto; }
   .lens-hero-text { text-align: center; }
   .lens-hero-title {
     font-size: clamp(15.5px, 4.95vw, 21px); /* 2行に収まる大きさ(320px幅でも) */
@@ -567,8 +566,16 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     gap: 12px;
     margin-top: 18px;
   }
+  .lens-grid li { display: flex; }
+  /* カードは押すとくわしい説明(モーダル)が開くボタン */
   .lens-item {
-    padding: 16px 6px 14px;
+    position: relative;
+    width: 100%;
+    font: inherit;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .2s ease, box-shadow .2s ease;
+    padding: 16px 6px 22px;
     border: 1px solid #E1EAF5;
     border-radius: 16px;
     background: linear-gradient(180deg, #fff 0%, #F3F8FD 100%);
@@ -586,17 +593,162 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
   }
   .lens-icon svg { width: 62%; height: 62%; }
   .lens-name {
-    font-size: clamp(15px, 4.6vw, 18px);
+    display: block;
+    font-size: clamp(14px, 4.4vw, 17px);
     font-weight: 900;
     color: var(--main);
     line-height: 1.3;
   }
   .lens-desc {
+    display: block;
     margin-top: 6px;
     font-size: clamp(11.5px, 3.5vw, 13px);
     color: #555;
     line-height: 1.6;
   }
+
+  /* 右下の＞(押せる合図) */
+  .lens-more {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--main);
+  }
+  .lens-more::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: translate(-65%, -50%) rotate(45deg);
+  }
+  @media (hover: hover) {
+    .lens-item:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0, 44, 123, .12); }
+  }
+
+  /* レンズのくわしい説明(モーダル) */
+  .lens-modal {
+    width: min(92vw, 400px);
+    max-height: 88vh;
+    margin: auto;
+    padding: 0;
+    border: none;
+    border-radius: 20px;
+    background: #fff;
+    color: var(--text);
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  .lens-modal::backdrop { background: rgba(0, 20, 60, .55); }
+  .lens-modal[open] { animation: lensModalIn .25s ease; }
+  @keyframes lensModalIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .lens-modal[open] { animation: none; } }
+  .lens-modal-close {
+    position: sticky;
+    top: 10px;
+    float: right;
+    margin: 10px 10px 0 0;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: #EEF5FC;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .lens-modal-close::before,
+  .lens-modal-close::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 2px;
+    background: var(--main);
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .lens-modal-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
+  .lens-detail { padding: 28px 22px 24px; word-break: auto-phrase; }
+  .lens-detail[hidden] { display: none; }
+  .lens-detail-head { text-align: center; }
+  .lens-detail-head .lens-icon { margin-bottom: 10px; }
+  .lens-detail-name { font-size: 22px; font-weight: 900; color: var(--main); line-height: 1.3; }
+  .lens-detail-catch {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--main);
+    background: linear-gradient(transparent 62%, var(--marker) 62%);
+  }
+  /* 見え方の図(レンズのどこで何を見るか) */
+  .lens-zone-wrap { margin-top: 20px; text-align: center; }
+  .lens-zone {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 132px;
+    margin: 0 auto;
+    border: 2px solid #A9C3E2;
+    border-radius: 50% / 46%;
+    overflow: hidden;
+  }
+  .lens-zone span {
+    display: grid;
+    place-items: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--main);
+    line-height: 1.3;
+  }
+  .lens-zone span + span { border-top: 1px dashed #A9C3E2; }
+  .lz-far { background: #EEF5FC; }
+  .lz-mid { background: #DCEAF8; }
+  .lz-near { background: #C6DCF3; }
+  .lz-assist { background: linear-gradient(#EEF5FC, #D6E6F7); font-size: 12px !important; }
+  .lens-zone-cap { margin-top: 6px; font-size: 11px; color: #777; }
+  .lens-detail-h { margin-top: 22px; font-size: 15px; font-weight: 900; color: var(--main); }
+  .lens-scene { list-style: none; margin-top: 8px; display: grid; gap: 6px; }
+  .lens-scene li {
+    position: relative;
+    padding: 9px 12px 9px 34px;
+    border-radius: 10px;
+    background: #F3F8FD;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .lens-scene li::before {
+    content: '';
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    width: 10px;
+    height: 5px;
+    border-left: 2px solid var(--main);
+    border-bottom: 2px solid var(--main);
+    transform: translateY(-70%) rotate(-45deg);
+  }
+  .lens-detail-text { margin-top: 8px; font-size: 14px; line-height: 1.8; }
+  .lens-detail-price {
+    margin-top: 20px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: linear-gradient(100deg, #EEF5FC 0%, #DCEAF8 100%);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--main);
+  }
+  .lens-detail-price b { font-size: 22px; font-weight: 900; }
+  .lens-modal-cta { margin: 16px 0 0; }
+  .lens-modal-cta .finalcta-btn { margin: 0; }
+  body.is-modal-open { overflow: hidden; }
 
   /* 追加料金0円の帯(左にレンズのイラスト) */
   .lens-price {
@@ -1402,7 +1554,6 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
       <div class="lens-hero reveal">
         <div class="lens-hero-staff">
           <img loading="lazy" decoding="async" src="<?php echo $lp_assets; ?>/lens-staff.webp?v=95029748" width="600" height="440" alt="ご案内するスタッフ">
-          <svg class="lens-hero-spark" viewBox="0 0 30 30" fill="none" stroke="#7FB3E6" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 18 L2 21"/><path d="M10 10 L8 4"/><path d="M17 12 L22 7"/></svg>
         </div>
         <div class="lens-hero-text">
           <h2 class="lens-hero-title"><span class="nw">暮らしに合うレンズを、</span><span class="nw">一緒に選べます</span></h2>
@@ -1411,10 +1562,10 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
       </div>
 
       <ul class="lens-grid reveal">
-        <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 28 V22 Q5 19.5 7.5 19 L11 12.5 Q12 10.5 14.5 10.5 H25.5 Q28 10.5 29 12.5 L32.5 19 Q35 19.5 35 22 V28 Z"/><path d="M12.5 18.5 L14.8 13.5 H25.2 L27.5 18.5 Z"/><path d="M9 23.5 H11.5 M28.5 23.5 H31"/><circle cx="12" cy="28.5" r="3.2" fill="#fff"/><circle cx="28" cy="28.5" r="3.2" fill="#fff"/></svg></span><p class="lens-name">遠近両用</p><p class="lens-desc">遠くも手元も<br>自然に見える</p></li>
-        <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19 L17 8 L30 19"/><path d="M8 16 V32 H26 V16"/><path d="M14.5 32 V25 H19.5 V32"/><path d="M34.5 32 V28"/><path d="M34.5 19 L31 28 H38 Z" fill="#002C7B"/></svg></span><p class="lens-name">中近両用</p><p class="lens-desc">お部屋の中で<br>快適に見える</p></li>
-        <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="9" width="24" height="17" rx="2"/><path d="M3.5 30 H36.5 L34.5 33 H5.5 Z"/></svg></span><p class="lens-name">近々両用</p><p class="lens-desc">手元とパソコンが<br>快適に見える</p></li>
-        <li class="lens-item"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="4.5" width="14" height="31" rx="3"/><path d="M18 31 H22"/></svg></span><p class="lens-name">アシストレンズ</p><p class="lens-desc">手元を<br>少し楽に</p></li>
+        <li><button type="button" class="lens-item" data-lens="enkin" data-track="lens_enkin" aria-haspopup="dialog"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 28 V22 Q5 19.5 7.5 19 L11 12.5 Q12 10.5 14.5 10.5 H25.5 Q28 10.5 29 12.5 L32.5 19 Q35 19.5 35 22 V28 Z"/><path d="M12.5 18.5 L14.8 13.5 H25.2 L27.5 18.5 Z"/><path d="M9 23.5 H11.5 M28.5 23.5 H31"/><circle cx="12" cy="28.5" r="3.2" fill="#fff"/><circle cx="28" cy="28.5" r="3.2" fill="#fff"/></svg></span><span class="lens-name">遠近両用レンズ</span><span class="lens-desc">遠くも手元も<br>自然に見える</span><span class="lens-more" aria-hidden="true"></span></button></li>
+        <li><button type="button" class="lens-item" data-lens="chukin" data-track="lens_chukin" aria-haspopup="dialog"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19 L17 8 L30 19"/><path d="M8 16 V32 H26 V16"/><path d="M14.5 32 V25 H19.5 V32"/><path d="M34.5 32 V28"/><path d="M34.5 19 L31 28 H38 Z" fill="#002C7B"/></svg></span><span class="lens-name">中近両用レンズ</span><span class="lens-desc">お部屋の中で<br>快適に見える</span><span class="lens-more" aria-hidden="true"></span></button></li>
+        <li><button type="button" class="lens-item" data-lens="kinkin" data-track="lens_kinkin" aria-haspopup="dialog"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="9" width="24" height="17" rx="2"/><path d="M3.5 30 H36.5 L34.5 33 H5.5 Z"/></svg></span><span class="lens-name">近々両用レンズ</span><span class="lens-desc">手元とパソコンが<br>快適に見える</span><span class="lens-more" aria-hidden="true"></span></button></li>
+        <li><button type="button" class="lens-item" data-lens="assist" data-track="lens_assist" aria-haspopup="dialog"><span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="4.5" width="14" height="31" rx="3"/><path d="M18 31 H22"/></svg></span><span class="lens-name">アシストレンズ</span><span class="lens-desc">手元を<br>少し楽に</span><span class="lens-more" aria-hidden="true"></span></button></li>
       </ul>
 
       <div class="lens-price reveal">
@@ -1426,6 +1577,79 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
       </div>
       <p class="lens-note">※コーティングの追加やレンズのグレードアップは、別途料金がかかります。</p>
     </section>
+
+    <!-- レンズのくわしい説明(カードを押すと開く・11/13) -->
+    <dialog class="lens-modal" id="lens-modal" aria-label="レンズのくわしい説明">
+      <button type="button" class="lens-modal-close" aria-label="閉じる"></button>
+      <div class="lens-detail" data-lens="enkin" hidden>
+        <div class="lens-detail-head">
+          <span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 28 V22 Q5 19.5 7.5 19 L11 12.5 Q12 10.5 14.5 10.5 H25.5 Q28 10.5 29 12.5 L32.5 19 Q35 19.5 35 22 V28 Z"/><path d="M12.5 18.5 L14.8 13.5 H25.2 L27.5 18.5 Z"/><path d="M9 23.5 H11.5 M28.5 23.5 H31"/><circle cx="12" cy="28.5" r="3.2" fill="#fff"/><circle cx="28" cy="28.5" r="3.2" fill="#fff"/></svg></span>
+          <h3 class="lens-detail-name">遠近両用レンズ</h3>
+          <p class="lens-detail-catch">遠くも手元も、これ1本で</p>
+        </div>
+        <div class="lens-zone-wrap">
+          <div class="lens-zone" aria-hidden="true"><span class="lz-far" style="flex:5">遠く</span><span class="lz-mid" style="flex:2">中間</span><span class="lz-near" style="flex:3">手元</span></div>
+          <p class="lens-zone-cap">レンズの見え方（イメージ）</p>
+        </div>
+        <p class="lens-detail-h">こんなときに</p>
+        <ul class="lens-scene"><li>車の運転や外出</li><li>スマホや本を読む</li><li>メガネのかけ外しを減らしたい</li></ul>
+        <p class="lens-detail-h">どんなレンズ？</p>
+        <p class="lens-detail-text">レンズの上のほうで遠く、下のほうで手元を見ます。目線を動かすだけで、見たい距離にピントが合います。</p>
+        <p class="lens-detail-price">標準レンズなら追加料金 <b>0円</b></p>
+        <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_enkin" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
+      </div>
+      <div class="lens-detail" data-lens="chukin" hidden>
+        <div class="lens-detail-head">
+          <span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19 L17 8 L30 19"/><path d="M8 16 V32 H26 V16"/><path d="M14.5 32 V25 H19.5 V32"/><path d="M34.5 32 V28"/><path d="M34.5 19 L31 28 H38 Z" fill="#002C7B"/></svg></span>
+          <h3 class="lens-detail-name">中近両用レンズ</h3>
+          <p class="lens-detail-catch">お部屋の中が見やすい</p>
+        </div>
+        <div class="lens-zone-wrap">
+          <div class="lens-zone" aria-hidden="true"><span class="lz-mid" style="flex:6">中間<br>（お部屋の中）</span><span class="lz-near" style="flex:4">手元</span></div>
+          <p class="lens-zone-cap">レンズの見え方（イメージ）</p>
+        </div>
+        <p class="lens-detail-h">こんなときに</p>
+        <ul class="lens-scene"><li>料理やそうじなどの家事</li><li>テレビを見ながら手元も見る</li><li>家族や友人との会話</li></ul>
+        <p class="lens-detail-h">どんなレンズ？</p>
+        <p class="lens-detail-text">遠近両用より、お部屋の中くらいの距離と手元を広く見られます。おうちで過ごす時間が長い方に。</p>
+        <p class="lens-detail-price">標準レンズなら追加料金 <b>0円</b></p>
+        <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_chukin" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
+      </div>
+      <div class="lens-detail" data-lens="kinkin" hidden>
+        <div class="lens-detail-head">
+          <span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="9" width="24" height="17" rx="2"/><path d="M3.5 30 H36.5 L34.5 33 H5.5 Z"/></svg></span>
+          <h3 class="lens-detail-name">近々両用レンズ</h3>
+          <p class="lens-detail-catch">手元とパソコンが楽に</p>
+        </div>
+        <div class="lens-zone-wrap">
+          <div class="lens-zone" aria-hidden="true"><span class="lz-mid" style="flex:5">パソコン</span><span class="lz-near" style="flex:5">手元</span></div>
+          <p class="lens-zone-cap">レンズの見え方（イメージ）</p>
+        </div>
+        <p class="lens-detail-h">こんなときに</p>
+        <ul class="lens-scene"><li>パソコンでのデスクワーク</li><li>書類やスマホを見る</li><li>読書や手芸</li></ul>
+        <p class="lens-detail-h">どんなレンズ？</p>
+        <p class="lens-detail-text">手元からパソコンくらいの距離までを、広く見られます。デスクワークの目の疲れを軽くしたい方に。</p>
+        <p class="lens-detail-price">標準レンズなら追加料金 <b>0円</b></p>
+        <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_kinkin" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
+      </div>
+      <div class="lens-detail" data-lens="assist" hidden>
+        <div class="lens-detail-head">
+          <span class="lens-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="#002C7B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="4.5" width="14" height="31" rx="3"/><path d="M18 31 H22"/></svg></span>
+          <h3 class="lens-detail-name">アシストレンズ</h3>
+          <p class="lens-detail-catch">手元を少し楽に</p>
+        </div>
+        <div class="lens-zone-wrap">
+          <div class="lens-zone" aria-hidden="true"><span class="lz-far" style="flex:7">ふだんの見え方</span><span class="lz-assist" style="flex:3">手元を少しサポート</span></div>
+          <p class="lens-zone-cap">レンズの見え方（イメージ）</p>
+        </div>
+        <p class="lens-detail-h">こんなときに</p>
+        <ul class="lens-scene"><li>スマホを見ると目が疲れる</li><li>夕方になると手元が見えにくい</li><li>遠近両用はまだ早いかなと思う</li></ul>
+        <p class="lens-detail-h">どんなレンズ？</p>
+        <p class="lens-detail-text">ふだん使いのレンズの下のほうに、手元を見るときのピント合わせを少し助ける度数が入っています。見え方のちがいが少なく、はじめての方も使いやすいレンズです。</p>
+        <p class="lens-detail-price">標準レンズなら追加料金 <b>0円</b></p>
+        <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_assist" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
+      </div>
+    </dialog>
 
     <section class="trade-section" id="sec-trade">
       <div class="trade-head reveal">
@@ -2042,6 +2266,30 @@ function setupSpFloatCta(){
     if (e.target.closest('.shop-geo-btn')) { track('shop_search', { method: 'geo' }); return; }
     if (e.target.closest('.shop-search-btn')) { track('shop_search', { method: 'zip' }); }
   });
+})();
+</script>
+<script>
+// レンズのカードを押すと、そのレンズのくわしい説明をモーダルで開く
+(function(){
+  var modal = document.getElementById('lens-modal');
+  if (!modal || typeof modal.showModal !== 'function') return;
+  var details = modal.querySelectorAll('.lens-detail');
+  function close(){ modal.close(); }
+  modal.addEventListener('close', function(){ document.body.classList.remove('is-modal-open'); });
+  document.querySelectorAll('.lens-item[data-lens]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var key = btn.getAttribute('data-lens');
+      details.forEach(function(d){ d.hidden = d.getAttribute('data-lens') !== key; });
+      document.body.classList.add('is-modal-open');
+      modal.showModal();
+      modal.scrollTop = 0;
+    });
+  });
+  modal.querySelector('.lens-modal-close').addEventListener('click', close);
+  // 外側(暗いところ)を押したら閉じる
+  modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+  // 「お近くの店舗で相談する」は閉じてから店舗検索へ
+  modal.querySelectorAll('a[href^="#"]').forEach(function(a){ a.addEventListener('click', close); });
 })();
 </script>
 </body>
