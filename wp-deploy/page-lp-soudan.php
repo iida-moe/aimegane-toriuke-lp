@@ -695,9 +695,9 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     z-index: 1;
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-    background: rgba(255, 255, 255, .97);
+    gap: 6px;
+    padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
+    background: #fff;
     box-shadow: 0 -4px 12px rgba(0, 44, 123, .08);
   }
   .lens-pager-btn {
@@ -705,15 +705,15 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     min-width: 0;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     height: 42px;
-    padding: 0 14px;
+    padding: 0 12px;
     border: 1.5px solid #CFDDF0;
     border-radius: 999px;
     background: #fff;
     color: var(--main);
     font: inherit;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     white-space: nowrap;
     cursor: pointer;
@@ -725,8 +725,10 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
   .lens-pager-prev::before { content: ''; transform: rotate(-135deg); margin-left: 2px; }
   .lens-pager-next::after { content: ''; transform: rotate(45deg); margin-right: 2px; }
   .lens-pager-btn span { overflow: hidden; text-overflow: ellipsis; }
-  .lens-pager-dots { flex: none; display: flex; gap: 6px; }
-  .lens-pager-dots i { width: 7px; height: 7px; border-radius: 50%; background: #CFDDF0; }
+  .lens-pager { flex-wrap: wrap; row-gap: 8px; padding-top: 10px; }
+  @media (max-width: 340px) { .lens-pager-btn { padding: 0 9px; gap: 4px; font-size: 12px; } }
+  .lens-pager-dots { order: -1; flex: 0 0 100%; display: flex; justify-content: center; gap: 6px; }
+  .lens-pager-dots i { width: 6px; height: 6px; border-radius: 50%; background: #CFDDF0; }
   .lens-pager-dots i.is-current { background: var(--main); }
   @media (hover: hover) { .lens-pager-btn:hover { background: #F2F7FD; } }
   .lens-pager-btn:active { background: #E6EFFA; }
@@ -2344,7 +2346,7 @@ function setupSpFloatCta(){
   if (!modal || typeof modal.showModal !== 'function') return;
   var details = Array.prototype.slice.call(modal.querySelectorAll('.lens-detail'));
   var scroller = modal.querySelector('.lens-modal-scroll');
-  var NAMES = { enkin: '遠近両用', chukin: '中近両用', kinkin: '近々両用', assist: 'アシスト' };
+  var NAMES = { enkin: '遠近両用レンズ', chukin: '中近両用レンズ', kinkin: '近々両用レンズ', assist: 'アシストレンズ' };
   var current = 0;
   function close(){ modal.close(); }
   modal.addEventListener('close', function(){ document.body.classList.remove('is-modal-open'); });
