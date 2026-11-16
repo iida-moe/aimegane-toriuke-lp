@@ -3,7 +3,7 @@
    ※ このファイルは build_wp.py で index.html から自動生成。直接編集せず index.html を直して再生成すること */
 $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
 ?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -775,11 +775,10 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
   }
   .lzl-dash { flex-shrink: 0; width: 18px; border-top: 2px dashed #E0892E; }
   .lens-detail-h { margin-top: 32px; font-size: 15px; font-weight: 900; color: var(--main); }
-  /* こんなときに：水色の箱にまとめ、見出しの右にメガネのイラスト */
+  /* こんなときに：水色の箱にまとめる(メガネのイラストは11/16に削除) */
   .lens-scene-box { margin-top: 32px; padding: 16px 14px 16px; border-radius: 16px; background: #EEF5FC; }
   .lens-scene-head { display: flex; align-items: flex-end; justify-content: space-between; }
   .lens-scene-box .lens-detail-h { margin-top: 0; }
-  .lens-scene-glasses { width: 72px; height: auto; margin: -6px 2px 0 0; }
   .lens-scene-box .lens-scene li { background: #fff; }
   .lens-scene { list-style: none; margin-top: 10px; display: grid; gap: 6px; }
   .lens-scene li {
@@ -1662,7 +1661,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
         <p class="lens-detail-h">どんなレンズ？</p>
         <p class="lens-detail-text">上のほうで遠く、下のほうで手元を見ます。<br>目線を動かすだけで、ピントが合います。</p>
         <div class="lens-scene-box">
-          <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p><svg class="lens-scene-glasses" viewBox="0 0 96 44" fill="none" aria-hidden="true"><g stroke="#002C7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="32" height="24" rx="10"/><rect x="52" y="16" width="32" height="24" rx="10"/><path d="M40 24 Q46 20 52 24"/><path d="M8 22 L2 20"/><path d="M84 22 L90 20"/></g><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M74 9 L77 3"/><path d="M82 11 L88 6"/><path d="M86 17 L93 16"/></g></svg></div>
+          <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p></div>
           <ul class="lens-scene"><li>旅行やお出かけ</li><li>スマホや本を読む</li><li>メガネのかけ外しを減らしたい</li></ul>
         </div>
         <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
@@ -1681,7 +1680,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
         <p class="lens-detail-h">どんなレンズ？</p>
         <p class="lens-detail-text">室内の少し先から手元までが広く見えます。<br>会議や家で過ごす時間が長い方に。<br>車の運転には、遠近両用がおすすめです。</p>
         <div class="lens-scene-box">
-          <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p><svg class="lens-scene-glasses" viewBox="0 0 96 44" fill="none" aria-hidden="true"><g stroke="#002C7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="32" height="24" rx="10"/><rect x="52" y="16" width="32" height="24" rx="10"/><path d="M40 24 Q46 20 52 24"/><path d="M8 22 L2 20"/><path d="M84 22 L90 20"/></g><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M74 9 L77 3"/><path d="M82 11 L88 6"/><path d="M86 17 L93 16"/></g></svg></div>
+          <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p></div>
           <ul class="lens-scene"><li>料理やそうじなどの家事</li><li>テレビを見ながら手元も見る</li><li>会議で資料とホワイトボードを見る</li></ul>
         </div>
         <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
@@ -1700,7 +1699,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
         <p class="lens-detail-h">どんなレンズ？</p>
         <p class="lens-detail-text">手元からパソコンまでが広く見えます。<br>デスクワークの目の疲れを軽くしたい方に。</p>
         <div class="lens-scene-box">
-          <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p><svg class="lens-scene-glasses" viewBox="0 0 96 44" fill="none" aria-hidden="true"><g stroke="#002C7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="32" height="24" rx="10"/><rect x="52" y="16" width="32" height="24" rx="10"/><path d="M40 24 Q46 20 52 24"/><path d="M8 22 L2 20"/><path d="M84 22 L90 20"/></g><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M74 9 L77 3"/><path d="M82 11 L88 6"/><path d="M86 17 L93 16"/></g></svg></div>
+          <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p></div>
           <ul class="lens-scene"><li>パソコンでのデスクワーク</li><li>書類やスマホを見る</li><li>読書や手芸</li></ul>
         </div>
         <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
@@ -1719,7 +1718,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
         <p class="lens-detail-h">どんなレンズ？</p>
         <p class="lens-detail-text">下のほうで、手元のピント合わせを助けます。<br>ふだんと見え方が近く、はじめてでも安心です。</p>
         <div class="lens-scene-box">
-          <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p><svg class="lens-scene-glasses" viewBox="0 0 96 44" fill="none" aria-hidden="true"><g stroke="#002C7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="32" height="24" rx="10"/><rect x="52" y="16" width="32" height="24" rx="10"/><path d="M40 24 Q46 20 52 24"/><path d="M8 22 L2 20"/><path d="M84 22 L90 20"/></g><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M74 9 L77 3"/><path d="M82 11 L88 6"/><path d="M86 17 L93 16"/></g></svg></div>
+          <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p></div>
           <ul class="lens-scene"><li>スマホを見ると目が疲れる</li><li>夕方になると手元が見えにくい</li><li>遠近両用はまだ早いかなと思う</li></ul>
         </div>
         <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
