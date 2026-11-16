@@ -920,18 +920,19 @@
     padding: 14px clamp(12px, 3.6vw, 16px);
     background: #fff;
   }
-  /* ステップ間の▼。悩みカードの矢印と同じようにゆっくり上下に揺れる */
+  /* ステップ間の矢印。細い線の∨・動きなし(11/16 Iさん) */
   .trade-step + .trade-step { margin-top: 28px; }
   .trade-step + .trade-step::before {
     content: '';
     position: absolute;
-    top: -24px;
+    top: -22px;
     left: 50%;
-    margin-left: -11px;
-    border-left: 11px solid transparent;
-    border-right: 11px solid transparent;
-    border-top: 13px solid #002C7B;
-    animation: arrow-bob 1.8s ease-in-out infinite;
+    width: 10px;
+    height: 10px;
+    margin-left: -5px;
+    border-right: 2.5px solid #002C7B;
+    border-bottom: 2.5px solid #002C7B;
+    transform: rotate(45deg);
   }
   .trade-step-num {
     flex-shrink: 0;
