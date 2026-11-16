@@ -1,7 +1,7 @@
 <?php
-/* page-lp-soudan.php : アイメガネ メガネの無料相談 LP
+/* page-lp-shitadori2026.php : アイメガネ メガネの無料相談 LP
    ※ このファイルは build_wp.py で index.html から自動生成。直接編集せず index.html を直して再生成すること */
-$lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
+$lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
 ?>
 <!DOCTYPE html>
 <html lang="ja">

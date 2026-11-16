@@ -1,9 +1,9 @@
 # index.html(社内レビュー用) から WordPress 用テンプレートを作るスクリプト。
 # ザ・セールLP(page-lp-sale2026.php)と同じ構成にする。
 #   使い方: python build_wp.py
-#   出力:   wp-deploy/page-lp-soudan.php
-#           wp-deploy/lp/assets/soudan/img/ (使っている画像だけコピー)
-# 11/13 下取り終了後もずっと使うため、URLを lp-shitadori2026 → lp-soudan に変更
+#   出力:   wp-deploy/page-lp-shitadori2026.php
+#           wp-deploy/lp/assets/shitadori2026/img/ (使っている画像だけコピー)
+# 11/13 URLを lp-soudan に変える予定だったが、11/16 広告・GA4への影響を避けるため lp-shitadori2026 のままに(Iさん)
 # index.html を直したら、このスクリプトを実行し直せば WordPress 版にも反映される。
 import hashlib
 import re
@@ -11,7 +11,7 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).parent
-SLUG = 'soudan'
+SLUG = 'shitadori2026'
 OUT_PHP = ROOT / 'wp-deploy' / f'page-lp-{SLUG}.php'
 OUT_IMG = ROOT / 'wp-deploy' / 'lp' / 'assets' / SLUG / 'img'
 
