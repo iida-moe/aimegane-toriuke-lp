@@ -824,19 +824,17 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     justify-content: center; /* イラストと文字をひとかたまりで真ん中に */
     gap: clamp(6px, 3vw, 20px);
     margin-top: 18px;
-    padding: 14px 12px 14px 8px;
-    border-radius: 16px;
-    background: linear-gradient(100deg, #EEF5FC 0%, #DCEAF8 100%);
+    padding: 6px 0; /* 帯(背景)はなし */
   }
   .lens-price-illust { flex-shrink: 0; width: 33%; max-width: 118px; height: auto; }
-  .lens-price-text { flex: 0 1 auto; min-width: 0; text-align: center; color: var(--main); }
+  .lens-price-text { flex: 0 1 auto; min-width: 0; text-align: center; color: var(--main); line-height: 1.3; }
   .lens-price-pre { font-size: clamp(11px, 3.4vw, 13px); font-weight: 700; white-space: nowrap; }
   .lens-price-row {
     display: inline-flex; /* 下線を「追加料金0円」の幅だけに引くため */
     align-items: baseline;
     justify-content: center;
     gap: 6px;
-    margin-top: 6px;
+    margin-top: 2px;
     padding: 0 6px 4px;
     font-weight: 900;
     background: linear-gradient(var(--marker), var(--marker)) left bottom / 100% 7px no-repeat; /* 黄色の下線 */
