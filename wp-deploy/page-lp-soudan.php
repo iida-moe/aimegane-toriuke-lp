@@ -812,6 +812,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     color: var(--main);
   }
   .lens-detail-price b { font-size: 22px; font-weight: 900; }
+  .lens-price-modal { margin-top: 28px; }
   .lens-modal-cta { margin: 18px 0 4px; }
   .lens-modal-cta .finalcta-btn { margin: 0; }
   body.is-modal-open { overflow: hidden; }
@@ -1665,7 +1666,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p><svg class="lens-scene-glasses" viewBox="0 0 96 44" fill="none" aria-hidden="true"><g stroke="#002C7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="32" height="24" rx="10"/><rect x="52" y="16" width="32" height="24" rx="10"/><path d="M40 24 Q46 20 52 24"/><path d="M8 22 L2 20"/><path d="M84 22 L90 20"/></g><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M74 9 L77 3"/><path d="M82 11 L88 6"/><path d="M86 17 L93 16"/></g></svg></div>
           <ul class="lens-scene"><li>旅行やお出かけ</li><li>スマホや本を読む</li><li>メガネのかけ外しを減らしたい</li></ul>
         </div>
-        <p class="lens-detail-price">標準レンズなら追加料金 <b>0円</b></p>
+        <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
         <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_enkin" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
       </div>
       <div class="lens-detail" data-lens="chukin" hidden>
@@ -1684,7 +1685,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p><svg class="lens-scene-glasses" viewBox="0 0 96 44" fill="none" aria-hidden="true"><g stroke="#002C7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="32" height="24" rx="10"/><rect x="52" y="16" width="32" height="24" rx="10"/><path d="M40 24 Q46 20 52 24"/><path d="M8 22 L2 20"/><path d="M84 22 L90 20"/></g><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M74 9 L77 3"/><path d="M82 11 L88 6"/><path d="M86 17 L93 16"/></g></svg></div>
           <ul class="lens-scene"><li>料理やそうじなどの家事</li><li>テレビを見ながら手元も見る</li><li>会議で資料とホワイトボードを見る</li></ul>
         </div>
-        <p class="lens-detail-price">標準レンズなら追加料金 <b>0円</b></p>
+        <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
         <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_chukin" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
       </div>
       <div class="lens-detail" data-lens="kinkin" hidden>
@@ -1703,7 +1704,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p><svg class="lens-scene-glasses" viewBox="0 0 96 44" fill="none" aria-hidden="true"><g stroke="#002C7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="32" height="24" rx="10"/><rect x="52" y="16" width="32" height="24" rx="10"/><path d="M40 24 Q46 20 52 24"/><path d="M8 22 L2 20"/><path d="M84 22 L90 20"/></g><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M74 9 L77 3"/><path d="M82 11 L88 6"/><path d="M86 17 L93 16"/></g></svg></div>
           <ul class="lens-scene"><li>パソコンでのデスクワーク</li><li>書類やスマホを見る</li><li>読書や手芸</li></ul>
         </div>
-        <p class="lens-detail-price">標準レンズなら追加料金 <b>0円</b></p>
+        <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
         <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_kinkin" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
       </div>
       <div class="lens-detail" data-lens="assist" hidden>
@@ -1722,7 +1723,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p><svg class="lens-scene-glasses" viewBox="0 0 96 44" fill="none" aria-hidden="true"><g stroke="#002C7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="32" height="24" rx="10"/><rect x="52" y="16" width="32" height="24" rx="10"/><path d="M40 24 Q46 20 52 24"/><path d="M8 22 L2 20"/><path d="M84 22 L90 20"/></g><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M74 9 L77 3"/><path d="M82 11 L88 6"/><path d="M86 17 L93 16"/></g></svg></div>
           <ul class="lens-scene"><li>スマホを見ると目が疲れる</li><li>夕方になると手元が見えにくい</li><li>遠近両用はまだ早いかなと思う</li></ul>
         </div>
-        <p class="lens-detail-price">標準レンズなら追加料金 <b>0円</b></p>
+        <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
         <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_assist" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
       </div>
       </div>
