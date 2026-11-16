@@ -540,23 +540,35 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     gap: 4px;
     margin-top: 14px;
   }
+  /* スタッフは淡い水色の丸の上に(背景は透明にした画像) */
   .lens-hero-staff { position: relative; }
+  .lens-hero-staff::before {
+    content: '';
+    position: absolute;
+    left: 2%;
+    bottom: 0;
+    width: 84%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #EAF3FC;
+  }
   .lens-hero-staff img {
+    position: relative;
     display: block;
     width: 100%;
     height: auto;
-    /* 下を白にぼかして、切れ目を目立たせない */
-    -webkit-mask-image: linear-gradient(#000 78%, transparent);
-            mask-image: linear-gradient(#000 78%, transparent);
   }
-  .lens-hero-text { text-align: center; }
+  /* 見出しは左そろえ・波線は見出しの幅に合わせる */
+  .lens-hero-text { justify-self: start; width: fit-content; max-width: 100%; padding-left: 6px; }
   .lens-hero-title {
-    font-size: clamp(15.5px, 4.95vw, 21px); /* 2行に収まる大きさ(320px幅でも) */
+    font-size: clamp(15px, 4.7vw, 20px); /* 2行に収まる大きさ(320px幅でも) */
     font-weight: 900;
     color: var(--main);
-    line-height: 1.55;
+    line-height: 1.5;
+    text-align: left;
   }
-  .lens-hero-swoosh { display: block; width: 86%; height: auto; margin: 4px auto 0; }
+  .lens-hero-title .nw { display: block; }
+  .lens-hero-swoosh { display: block; width: 100%; height: auto; margin: 6px 0 0; }
 
   /* 4つのレンズ(2×2)。どれか1つを推さないよう同じ大きさで並べる */
   .lens-grid {
@@ -1619,7 +1631,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
 
       <div class="lens-hero reveal">
         <div class="lens-hero-staff">
-          <img loading="lazy" decoding="async" src="<?php echo $lp_assets; ?>/lens-staff.webp?v=95029748" width="600" height="440" alt="ご案内するスタッフ">
+          <img loading="lazy" decoding="async" src="<?php echo $lp_assets; ?>/lens-staff.webp?v=f425f554" width="600" height="440" alt="ご案内するスタッフ">
         </div>
         <div class="lens-hero-text">
           <h2 class="lens-hero-title"><span class="nw">暮らしに合うレンズを、</span><span class="nw">相談しながら選べます</span></h2>
