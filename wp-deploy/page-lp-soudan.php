@@ -1660,7 +1660,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
           <ul class="lens-zone-legend"><li><span class="lzl-dot" aria-hidden="true"></span>色の部分：よく見える範囲</li><li><span class="lzl-dash" aria-hidden="true"></span>点線の外側：ゆがみ・ぼやけが出やすい部分</li></ul>
         </div>
         <p class="lens-detail-h">どんなレンズ？</p>
-        <p class="lens-detail-text">レンズの上のほうで遠く、下のほうで手元を見ます。目線を動かすだけで、見たい距離にピントが合います。</p>
+        <p class="lens-detail-text">上のほうで遠く、下のほうで手元を見ます。<br>目線を動かすだけで、ピントが合います。</p>
         <div class="lens-scene-box">
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p><svg class="lens-scene-glasses" viewBox="0 0 96 44" fill="none" aria-hidden="true"><g stroke="#002C7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="32" height="24" rx="10"/><rect x="52" y="16" width="32" height="24" rx="10"/><path d="M40 24 Q46 20 52 24"/><path d="M8 22 L2 20"/><path d="M84 22 L90 20"/></g><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M74 9 L77 3"/><path d="M82 11 L88 6"/><path d="M86 17 L93 16"/></g></svg></div>
           <ul class="lens-scene"><li>旅行やお出かけ</li><li>スマホや本を読む</li><li>メガネのかけ外しを減らしたい</li></ul>
@@ -1679,7 +1679,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
           <ul class="lens-zone-legend"><li><span class="lzl-dot" aria-hidden="true"></span>色の部分：よく見える範囲</li><li><span class="lzl-dash" aria-hidden="true"></span>点線の外側：ゆがみ・ぼやけが出やすい部分</li></ul>
         </div>
         <p class="lens-detail-h">どんなレンズ？</p>
-        <p class="lens-detail-text">遠近両用より、室内の少し先から手元までを広く見られます。会議やデスクまわり、家で過ごす時間が長い方に。車の運転には、遠近両用がおすすめです。</p>
+        <p class="lens-detail-text">室内の少し先から手元までが広く見えます。<br>会議や家で過ごす時間が長い方に。<br>車の運転には、遠近両用がおすすめです。</p>
         <div class="lens-scene-box">
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p><svg class="lens-scene-glasses" viewBox="0 0 96 44" fill="none" aria-hidden="true"><g stroke="#002C7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="32" height="24" rx="10"/><rect x="52" y="16" width="32" height="24" rx="10"/><path d="M40 24 Q46 20 52 24"/><path d="M8 22 L2 20"/><path d="M84 22 L90 20"/></g><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M74 9 L77 3"/><path d="M82 11 L88 6"/><path d="M86 17 L93 16"/></g></svg></div>
           <ul class="lens-scene"><li>料理やそうじなどの家事</li><li>テレビを見ながら手元も見る</li><li>会議で資料とホワイトボードを見る</li></ul>
@@ -1698,7 +1698,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
           <ul class="lens-zone-legend"><li><span class="lzl-dot" aria-hidden="true"></span>色の部分：よく見える範囲</li><li><span class="lzl-dash" aria-hidden="true"></span>点線の外側：ゆがみ・ぼやけが出やすい部分</li></ul>
         </div>
         <p class="lens-detail-h">どんなレンズ？</p>
-        <p class="lens-detail-text">手元からパソコンくらいの距離までを、広く見られます。デスクワークの目の疲れを軽くしたい方に。</p>
+        <p class="lens-detail-text">手元からパソコンまでが広く見えます。<br>デスクワークの目の疲れを軽くしたい方に。</p>
         <div class="lens-scene-box">
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p><svg class="lens-scene-glasses" viewBox="0 0 96 44" fill="none" aria-hidden="true"><g stroke="#002C7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="32" height="24" rx="10"/><rect x="52" y="16" width="32" height="24" rx="10"/><path d="M40 24 Q46 20 52 24"/><path d="M8 22 L2 20"/><path d="M84 22 L90 20"/></g><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M74 9 L77 3"/><path d="M82 11 L88 6"/><path d="M86 17 L93 16"/></g></svg></div>
           <ul class="lens-scene"><li>パソコンでのデスクワーク</li><li>書類やスマホを見る</li><li>読書や手芸</li></ul>
@@ -1717,7 +1717,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
           <ul class="lens-zone-legend"><li><span class="lzl-dot" aria-hidden="true"></span>色の部分：よく見える範囲</li><li><span class="lzl-dash" aria-hidden="true"></span>点線の外側：ゆがみ・ぼやけが出やすい部分</li></ul>
         </div>
         <p class="lens-detail-h">どんなレンズ？</p>
-        <p class="lens-detail-text">ふだん使いのレンズの下のほうに、手元を見るときのピント合わせを少し助ける度数が入っています。見え方のちがいが少なく、はじめての方も使いやすいレンズです。</p>
+        <p class="lens-detail-text">下のほうで、手元のピント合わせを助けます。<br>ふだんと見え方が近く、はじめてでも安心です。</p>
         <div class="lens-scene-box">
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p><svg class="lens-scene-glasses" viewBox="0 0 96 44" fill="none" aria-hidden="true"><g stroke="#002C7B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="32" height="24" rx="10"/><rect x="52" y="16" width="32" height="24" rx="10"/><path d="M40 24 Q46 20 52 24"/><path d="M8 22 L2 20"/><path d="M84 22 L90 20"/></g><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M74 9 L77 3"/><path d="M82 11 L88 6"/><path d="M86 17 L93 16"/></g></svg></div>
           <ul class="lens-scene"><li>スマホを見ると目が疲れる</li><li>夕方になると手元が見えにくい</li><li>遠近両用はまだ早いかなと思う</li></ul>
