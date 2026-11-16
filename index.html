@@ -713,14 +713,19 @@
     cursor: pointer;
     transition: background-color .2s;
   }
-  .lens-pager-next { justify-content: flex-end; }
+  /* 文字はボタンの真ん中、矢印は端に */
+  .lens-pager-btn { position: relative; justify-content: center; padding: 0 26px; }
   .lens-pager-btn::before,
-  .lens-pager-btn::after { flex: none; width: 8px; height: 8px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; }
-  .lens-pager-prev::before { content: ''; transform: rotate(-135deg); margin-left: 2px; }
-  .lens-pager-next::after { content: ''; transform: rotate(45deg); margin-right: 2px; }
+  .lens-pager-btn::after { position: absolute; top: 50%; width: 8px; height: 8px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; }
+  .lens-pager-prev::before { content: ''; left: 14px; transform: translateY(-50%) rotate(-135deg); }
+  .lens-pager-next::after { content: ''; right: 14px; transform: translateY(-50%) rotate(45deg); }
   .lens-pager-btn span { overflow: hidden; text-overflow: ellipsis; }
   .lens-pager { flex-wrap: wrap; row-gap: 8px; padding-top: 10px; }
-  @media (max-width: 340px) { .lens-pager-btn { padding: 0 9px; gap: 4px; font-size: 12px; } }
+  @media (max-width: 340px) {
+    .lens-pager-btn { padding: 0 20px; font-size: 12px; }
+    .lens-pager-prev::before { left: 10px; }
+    .lens-pager-next::after { right: 10px; }
+  }
   .lens-pager-dots { order: -1; flex: 0 0 100%; display: flex; justify-content: center; gap: 6px; }
   .lens-pager-dots i { width: 6px; height: 6px; border-radius: 50%; background: #CFDDF0; }
   .lens-pager-dots i.is-current { background: var(--main); }
