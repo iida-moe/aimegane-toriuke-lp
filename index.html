@@ -677,6 +677,53 @@
   .lens-modal-close:focus:not(:focus-visible) { outline: none; } /* 開いたときに×に枠が出ないように */
   .lens-detail { padding: 56px 22px 24px; word-break: auto-phrase; }
   .lens-detail[hidden] { display: none; }
+  /* 前後のレンズへ(下に固定・スワイプでも切りかえ) */
+  .lens-detail.is-from-next { animation: lensSlideNext .28s ease; }
+  .lens-detail.is-from-prev { animation: lensSlidePrev .28s ease; }
+  @keyframes lensSlideNext { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+  @keyframes lensSlidePrev { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .lens-detail.is-from-next, .lens-detail.is-from-prev { animation: none; } }
+  .lens-pager {
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, .97);
+    box-shadow: 0 -4px 12px rgba(0, 44, 123, .08);
+  }
+  .lens-pager-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 14px;
+    border: 1.5px solid #CFDDF0;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--main);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color .2s;
+  }
+  .lens-pager-next { justify-content: flex-end; }
+  .lens-pager-btn::before,
+  .lens-pager-btn::after { flex: none; width: 8px; height: 8px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; }
+  .lens-pager-prev::before { content: ''; transform: rotate(-135deg); margin-left: 2px; }
+  .lens-pager-next::after { content: ''; transform: rotate(45deg); margin-right: 2px; }
+  .lens-pager-btn span { overflow: hidden; text-overflow: ellipsis; }
+  .lens-pager-dots { flex: none; display: flex; gap: 6px; }
+  .lens-pager-dots i { width: 7px; height: 7px; border-radius: 50%; background: #CFDDF0; }
+  .lens-pager-dots i.is-current { background: var(--main); }
+  @media (hover: hover) { .lens-pager-btn:hover { background: #F2F7FD; } }
+  .lens-pager-btn:active { background: #E6EFFA; }
   .lens-detail-head { text-align: center; }
   /* 説明の画面の一番上：暮らしの場面のイラスト(800×400・Geminiで作成予定、今は仮) */
   .lens-detail-illust { display: block; width: 100%; height: auto; margin-bottom: 20px; border-radius: 16px; }
@@ -2341,16 +2388,70 @@ function setupSpFloatCta(){
 (function(){
   var modal = document.getElementById('lens-modal');
   if (!modal || typeof modal.showModal !== 'function') return;
-  var details = modal.querySelectorAll('.lens-detail');
+  var details = Array.prototype.slice.call(modal.querySelectorAll('.lens-detail'));
+  var scroller = modal.querySelector('.lens-modal-scroll');
+  var NAMES = { enkin: '遠近両用', chukin: '中近両用', kinkin: '近々両用', assist: 'アシスト' };
+  var current = 0;
   function close(){ modal.close(); }
   modal.addEventListener('close', function(){ document.body.classList.remove('is-modal-open'); });
+
+  // 下の「‹ 前のレンズ ●●●● 次のレンズ ›」
+  var pager = document.createElement('div');
+  pager.className = 'lens-pager';
+  pager.innerHTML = '<button type="button" class="lens-pager-btn lens-pager-prev" data-cta-location="lens_modal_prev"><span></span></button>'
+    + '<div class="lens-pager-dots" aria-hidden="true">' + details.map(function(){ return '<i></i>'; }).join('') + '</div>'
+    + '<button type="button" class="lens-pager-btn lens-pager-next" data-cta-location="lens_modal_next"><span></span></button>';
+  scroller.appendChild(pager);
+  var prevBtn = pager.querySelector('.lens-pager-prev');
+  var nextBtn = pager.querySelector('.lens-pager-next');
+  var dots = pager.querySelectorAll('.lens-pager-dots i');
+
+  function show(i, dir){
+    current = (i + details.length) % details.length;
+    details.forEach(function(d, n){
+      d.hidden = n !== current;
+      d.classList.remove('is-from-next', 'is-from-prev');
+    });
+    if (dir) {
+      void details[current].offsetWidth; // アニメをもう一度動かすため
+      details[current].classList.add(dir > 0 ? 'is-from-next' : 'is-from-prev');
+    }
+    var p = details[(current - 1 + details.length) % details.length].getAttribute('data-lens');
+    var n = details[(current + 1) % details.length].getAttribute('data-lens');
+    prevBtn.querySelector('span').textContent = NAMES[p];
+    nextBtn.querySelector('span').textContent = NAMES[n];
+    prevBtn.setAttribute('aria-label', '前のレンズ：' + NAMES[p]);
+    nextBtn.setAttribute('aria-label', '次のレンズ：' + NAMES[n]);
+    dots.forEach(function(dot, k){ dot.classList.toggle('is-current', k === current); });
+    scroller.scrollTop = 0;
+  }
+  function go(dir){
+    show(current + dir, dir);
+    if (window.dataLayer) window.dataLayer.push({ event: 'lens_modal_change', lens: details[current].getAttribute('data-lens') });
+  }
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+  modal.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight') go(1);
+    if (e.key === 'ArrowLeft') go(-1);
+  });
+  // 横にスワイプしても切りかえ(縦スクロールのじゃまはしない)
+  var sx = null, sy = 0;
+  scroller.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+  scroller.addEventListener('touchend', function(e){
+    if (sx === null) return;
+    var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    sx = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) go(dx < 0 ? 1 : -1);
+  }, { passive: true });
+
   document.querySelectorAll('.lens-item[data-lens]').forEach(function(btn){
     btn.addEventListener('click', function(){
       var key = btn.getAttribute('data-lens');
-      details.forEach(function(d){ d.hidden = d.getAttribute('data-lens') !== key; });
+      var i = details.findIndex(function(d){ return d.getAttribute('data-lens') === key; });
       document.body.classList.add('is-modal-open');
       modal.showModal();
-      modal.querySelector('.lens-modal-scroll').scrollTop = 0;
+      show(i < 0 ? 0 : i, 0);
     });
   });
   modal.querySelector('.lens-modal-close').addEventListener('click', close);
