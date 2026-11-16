@@ -925,17 +925,18 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     position: relative;
     word-break: auto-phrase;
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* 丸は見出しの行にそろえる(説明が長くても下にずれない) */
     gap: 14px;
   }
   .trade-step + .trade-step { margin-top: 22px; }
-  /* 番号どうしをつなぐ点線 */
+  .trade-step-body { padding-top: 4px; }
+  /* 番号どうしをつなぐ点線(丸の下から次の丸の上まで) */
   .trade-step:not(:last-child)::after {
     content: '';
     position: absolute;
     left: 17px;
-    top: 42px;
-    height: calc(100% - 42px + 22px - 4px);
+    top: 40px;
+    height: calc(100% - 40px + 22px - 4px);
     border-left: 2px dotted #9DB7DA;
   }
   .trade-step-n {
@@ -965,7 +966,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
   .trade-step-line { color: #06A13A; font-size: clamp(11px, 3.4vw, 12.5px); white-space: nowrap; }
   .trade-step-line .trade-step-note-em { color: #06A13A; font-size: 1em; }
   /* 来店前の不安を消す補足(LINE登録はお店で・下取り後の処分) */
-  .trade-step-small { font-size: clamp(10.5px, 3.2vw, 11.5px); color: #666; }
+  .trade-step-small { display: block; margin-top: 2px; font-size: clamp(10.5px, 3.2vw, 11.5px); color: #666; line-height: 1.5; }
   .trade-head-note { margin-top: 6px; font-size: 12px; color: var(--main); }
   @media (prefers-reduced-motion: reduce) {
     .trade-step + .trade-step::before { animation: none; }
@@ -1721,13 +1722,15 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
 
     <section class="trade-section" id="sec-trade">
       <div class="trade-head reveal">
-        <span class="flow-label">かんたん3ステップ</span>
+        <span class="flow-label">ご来店からお受け取りまで</span>
         <h2 class="flow-title">ご来店の流れ</h2>
       </div>
       <ol class="trade-steps reveal">
         <li class="trade-step"><span class="trade-step-n" aria-hidden="true">1</span><div class="trade-step-body"><p class="trade-step-title">お近くのお店へ</p><p class="trade-step-note">相談だけでもOK<span class="trade-step-note-em">（無料）</span></p></div></li>
-        <li class="trade-step"><span class="trade-step-n" aria-hidden="true">2</span><div class="trade-step-body"><p class="trade-step-title">目の状態をチェック</p><p class="trade-step-note">15項目の測定</p></div></li>
-        <li class="trade-step"><span class="trade-step-n" aria-hidden="true">3</span><div class="trade-step-body"><p class="trade-step-title">ぴったりの1本をご提案</p><p class="trade-step-note">かけ心地まで調整</p></div></li>
+        <li class="trade-step"><span class="trade-step-n" aria-hidden="true">2</span><div class="trade-step-body"><p class="trade-step-title">見え方の測定</p><p class="trade-step-note">15項目の細かい測定</p></div></li>
+        <li class="trade-step"><span class="trade-step-n" aria-hidden="true">3</span><div class="trade-step-body"><p class="trade-step-title">フレーム選び</p><p class="trade-step-note">似合う1本をスタッフと一緒に</p></div></li>
+        <li class="trade-step"><span class="trade-step-n" aria-hidden="true">4</span><div class="trade-step-body"><p class="trade-step-title">レンズ選び</p><p class="trade-step-note">暮らしに合うレンズをご提案</p></div></li>
+        <li class="trade-step"><span class="trade-step-n" aria-hidden="true">5</span><div class="trade-step-body"><p class="trade-step-title">お受け取り</p><p class="trade-step-note">かけ心地を調整してお渡し<span class="trade-step-small">※お渡し日は度数や在庫で変わります</span></p></div></li>
       </ol>
     </section>
 
