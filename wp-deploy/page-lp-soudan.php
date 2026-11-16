@@ -1688,7 +1688,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
       </div>
       <div class="lens-detail" data-lens="kinkin" hidden>
         <div class="lens-detail-head">
-          <img class="lens-detail-illust" src="<?php echo $lp_assets; ?>/soudan_lens-kinkin_800_400.webp?v=ae1040ae" width="800" height="400" alt="">
+          <img class="lens-detail-illust" src="<?php echo $lp_assets; ?>/soudan_lens-kinkin_800_400.webp?v=bc9ef3f7" width="800" height="400" alt="">
           <p class="lens-detail-catch">手元とパソコンが楽に</p>
           <h3 class="lens-detail-name">近々両用レンズ</h3>
         </div>
