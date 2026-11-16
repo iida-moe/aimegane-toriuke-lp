@@ -1708,7 +1708,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
       </div>
       <div class="lens-detail" data-lens="assist" hidden>
         <div class="lens-detail-head">
-          <img class="lens-detail-illust" src="<?php echo $lp_assets; ?>/soudan_lens-assist_800_400.webp?v=cf3e8386" width="800" height="400" alt="">
+          <img class="lens-detail-illust" src="<?php echo $lp_assets; ?>/soudan_lens-assist_800_400.webp?v=cdd645e0" width="800" height="400" alt="">
           <p class="lens-detail-catch">手元を少し楽に</p>
           <h3 class="lens-detail-name">アシストレンズ</h3>
         </div>
