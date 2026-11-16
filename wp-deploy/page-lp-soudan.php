@@ -3,7 +3,7 @@
    ※ このファイルは build_wp.py で index.html から自動生成。直接編集せず index.html を直して再生成すること */
 $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
 ?>
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
