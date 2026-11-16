@@ -540,14 +540,12 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     gap: 4px;
     margin-top: 14px;
   }
-  /* 後ろの丸はなし(11/16 Iさん)。下は白にぼかして切れ目を目立たせない */
+  /* 後ろの丸・下のぼかしはなし(11/16 Iさん) */
   .lens-hero-staff { position: relative; }
   .lens-hero-staff img {
     display: block;
     width: 100%;
     height: auto;
-    -webkit-mask-image: linear-gradient(#000 78%, transparent);
-            mask-image: linear-gradient(#000 78%, transparent);
   }
   /* 見出しは左そろえ・波線は見出しの幅に合わせる */
   .lens-hero-text { justify-self: start; width: fit-content; max-width: 100%; padding-left: 6px; }
