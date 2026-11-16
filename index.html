@@ -908,44 +908,35 @@
   }
   
   .trade-head { text-align: center; margin-bottom: 28px; }
-  /* ご来店の流れ：白いカード1枚に、紺の丸番号を点線でつないだ縦のタイムライン(11/16 A案) */
-  .trade-steps {
-    list-style: none;
-    background: #fff;
-    border-radius: 16px;
-    padding: 22px clamp(16px, 5vw, 22px);
+  /* ご来店の流れ：白いカード1枚に「相談・測定 › メガネ選び › お受け取り」の1行(11/16 E案) */
+  .trade-card { background: #fff; border-radius: 16px; padding: 24px 12px 20px; text-align: center; word-break: auto-phrase; }
+  .trade-flow { list-style: none; display: flex; align-items: center; justify-content: center; --ar: clamp(14px, 4.4vw, 20px); }
+  .trade-flow li {
+    white-space: nowrap;
+    padding: 7px clamp(6px, 2.4vw, 10px);
+    border-radius: 999px;
+    background: #EEF5FC;
+    color: var(--main);
+    font-size: clamp(12px, 3.75vw, 15px);
+    font-weight: 700;
+    line-height: 1.3;
   }
-  .trade-step {
-    position: relative;
-    word-break: auto-phrase;
-    display: flex;
-    align-items: flex-start; /* 丸は見出しの行にそろえる(説明が長くても下にずれない) */
-    gap: 14px;
-  }
-  .trade-step + .trade-step { margin-top: 22px; }
-  .trade-step-body { padding-top: 4px; }
-  /* 番号どうしをつなぐ点線(丸の下から次の丸の上まで) */
-  .trade-step:not(:last-child)::after {
+  /* あいだの › */
+  .trade-flow li + li { position: relative; margin-left: var(--ar); }
+  .trade-flow li + li::before {
     content: '';
     position: absolute;
-    left: 17px;
-    top: 40px;
-    height: calc(100% - 40px + 22px - 4px);
-    border-left: 2px dotted #9DB7DA;
+    left: calc(var(--ar) / -2 - 5px);
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    margin-top: -4px;
+    border-top: 2px solid var(--main);
+    border-right: 2px solid var(--main);
+    transform: rotate(45deg);
   }
-  .trade-step-n {
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: var(--main);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 900;
-    line-height: 1;
-  }
+  .trade-lead { margin-top: 18px; font-size: clamp(14px, 4.2vw, 16px); font-weight: 700; color: var(--text); }
+  .trade-small { margin-top: 6px; font-size: clamp(10.5px, 3.2vw, 11.5px); color: #666; }
   .trade-step-body { flex: 1; min-width: 0; }
   .trade-step-title {
     font-size: clamp(15px, 4.6vw, 17px);
@@ -1776,13 +1767,11 @@
         <span class="flow-label">ご来店からお受け取りまで</span>
         <h2 class="flow-title">ご来店の流れ</h2>
       </div>
-      <ol class="trade-steps reveal">
-        <li class="trade-step"><span class="trade-step-n" aria-hidden="true">1</span><div class="trade-step-body"><p class="trade-step-title">お近くのお店へ</p><p class="trade-step-note">相談だけでもOK<span class="trade-step-note-em">（無料）</span></p></div></li>
-        <li class="trade-step"><span class="trade-step-n" aria-hidden="true">2</span><div class="trade-step-body"><p class="trade-step-title">見え方の測定</p><p class="trade-step-note">15項目の細かい測定</p></div></li>
-        <li class="trade-step"><span class="trade-step-n" aria-hidden="true">3</span><div class="trade-step-body"><p class="trade-step-title">フレーム選び</p><p class="trade-step-note">似合う1本をスタッフと一緒に</p></div></li>
-        <li class="trade-step"><span class="trade-step-n" aria-hidden="true">4</span><div class="trade-step-body"><p class="trade-step-title">レンズ選び</p><p class="trade-step-note">暮らしに合うレンズをご提案</p></div></li>
-        <li class="trade-step"><span class="trade-step-n" aria-hidden="true">5</span><div class="trade-step-body"><p class="trade-step-title">お受け取り</p><p class="trade-step-note">かけ心地を調整してお渡し<span class="trade-step-small">※お渡し日は度数や在庫で変わります</span></p></div></li>
-      </ol>
+      <div class="trade-card reveal">
+        <ol class="trade-flow"><li>相談・測定</li><li>メガネ選び</li><li>お受け取り</li></ol>
+        <p class="trade-lead">相談だけでもOK<span class="trade-step-note-em">（無料）</span></p>
+        <p class="trade-small">※お渡し日は度数や在庫で変わります</p>
+      </div>
     </section>
 
     <section class="store-section" id="sec-store">
