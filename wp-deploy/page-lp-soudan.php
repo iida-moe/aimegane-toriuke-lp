@@ -540,23 +540,14 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
     gap: 4px;
     margin-top: 14px;
   }
-  /* スタッフは淡い水色の丸の上に(背景は透明にした画像) */
+  /* 後ろの丸はなし(11/16 Iさん)。下は白にぼかして切れ目を目立たせない */
   .lens-hero-staff { position: relative; }
-  .lens-hero-staff::before {
-    content: '';
-    position: absolute;
-    left: 2%;
-    bottom: 0;
-    width: 84%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: #EAF3FC;
-  }
   .lens-hero-staff img {
-    position: relative;
     display: block;
     width: 100%;
     height: auto;
+    -webkit-mask-image: linear-gradient(#000 78%, transparent);
+            mask-image: linear-gradient(#000 78%, transparent);
   }
   /* 見出しは左そろえ・波線は見出しの幅に合わせる */
   .lens-hero-text { justify-self: start; width: fit-content; max-width: 100%; padding-left: 6px; }
