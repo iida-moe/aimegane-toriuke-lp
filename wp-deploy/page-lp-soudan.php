@@ -820,14 +820,15 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
   .lens-price {
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center; /* イラストと文字をひとかたまりで真ん中に */
+    gap: clamp(6px, 3vw, 20px);
     margin-top: 18px;
     padding: 14px 12px 14px 8px;
     border-radius: 16px;
     background: linear-gradient(100deg, #EEF5FC 0%, #DCEAF8 100%);
   }
   .lens-price-illust { flex-shrink: 0; width: 30%; max-width: 104px; height: auto; }
-  .lens-price-text { flex: 1; min-width: 0; text-align: center; color: var(--main); }
+  .lens-price-text { flex: 0 1 auto; min-width: 0; text-align: center; color: var(--main); }
   .lens-price-pre { font-size: clamp(11px, 3.4vw, 13px); font-weight: 700; white-space: nowrap; }
   .lens-price-row {
     display: flex;
@@ -847,10 +848,10 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
   .lens-price-num small { font-size: .5em; }
   .lens-note {
     margin-top: 10px;
-    font-size: 12px;
+    font-size: clamp(11px, 3.2vw, 12px);
     color: #555;
     line-height: 1.7;
-    text-align: center;
+    text-align: center; /* 1行に収まる長さにしてある */
   }
 
   /* FV画像下端(色がバラバラ)と悩みカード画像上端(単色の青)の境目を隠すための波形仕切り。
@@ -1641,7 +1642,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
           <p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p>
         </div>
       </div>
-      <p class="lens-note">※コーティングの追加やレンズのグレードアップは、別途料金がかかります。</p>
+      <p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
     </section>
 
     <!-- レンズのくわしい説明(カードを押すと開く・11/13) -->
