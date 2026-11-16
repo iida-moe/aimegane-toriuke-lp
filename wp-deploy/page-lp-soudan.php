@@ -1651,7 +1651,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
       <div class="lens-modal-scroll">
       <div class="lens-detail" data-lens="enkin" hidden>
         <div class="lens-detail-head">
-          <img class="lens-detail-illust" src="<?php echo $lp_assets; ?>/soudan_lens-enkin_800_400.webp?v=7f8f9d44" width="800" height="400" alt="">
+          <img class="lens-detail-illust" src="<?php echo $lp_assets; ?>/soudan_lens-enkin_800_400.webp?v=9e3486a1" width="800" height="400" alt="">
           <p class="lens-detail-catch">遠くも手元も、これ1本で</p>
           <h3 class="lens-detail-name">遠近両用レンズ</h3>
         </div>
