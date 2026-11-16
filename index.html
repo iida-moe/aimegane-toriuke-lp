@@ -822,23 +822,23 @@
     border-radius: 16px;
     background: linear-gradient(100deg, #EEF5FC 0%, #DCEAF8 100%);
   }
-  .lens-price-illust { flex-shrink: 0; width: 30%; max-width: 104px; height: auto; }
+  .lens-price-illust { flex-shrink: 0; width: 33%; max-width: 118px; height: auto; }
   .lens-price-text { flex: 0 1 auto; min-width: 0; text-align: center; color: var(--main); }
   .lens-price-pre { font-size: clamp(11px, 3.4vw, 13px); font-weight: 700; white-space: nowrap; }
   .lens-price-row {
-    display: flex;
+    display: inline-flex; /* 下線を「追加料金0円」の幅だけに引くため */
     align-items: baseline;
     justify-content: center;
     gap: 6px;
-    margin-top: 2px;
+    margin-top: 6px;
+    padding: 0 6px 4px;
     font-weight: 900;
+    background: linear-gradient(var(--marker), var(--marker)) left bottom / 100% 7px no-repeat; /* 黄色の下線 */
   }
   .lens-price-label { font-size: clamp(17px, 5.4vw, 21px); }
   .lens-price-num {
     font-size: clamp(40px, 13vw, 50px);
     line-height: 1;
-    padding: 0 4px;
-    background: linear-gradient(transparent 62%, var(--marker) 62%);
   }
   .lens-price-num small { font-size: .5em; }
   .lens-note {
