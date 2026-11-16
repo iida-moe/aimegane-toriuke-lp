@@ -910,7 +910,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
      悩みカードと同じ「水色の背景に白いカード」にそろえ、見出しと矢印も悩みカード画像の紺(#002C7B)に合わせる */
   .trade-section {
     background: #A3C0E0;
-    padding: 52px 20px 56px;
+    padding: 52px 20px; /* 上(ラベルまで)と下(STEP3まで)の余白を同じに */
   }
   
   .trade-head { text-align: center; margin-bottom: 28px; }
@@ -968,7 +968,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
   }
   .trade-step-em { color: var(--main); font-size: 1.2em; white-space: nowrap; }
   .trade-step-note { margin-top: 1px; font-size: clamp(11.5px, 3.5vw, 12.5px); color: #555; line-height: 1.6; }
-  .trade-step-note-em { color: var(--main); font-size: 1.1em; }
+  .trade-step-note-em { color: var(--main); } /* 文字の大きさ・太さはほかのSTEPとそろえ、色だけで強調 */
   /* LINEの緑。1行に収めるため、320px幅では少しだけ小さくする */
   .trade-step-line { color: #06A13A; font-size: clamp(11px, 3.4vw, 12.5px); white-space: nowrap; }
   .trade-step-line .trade-step-note-em { color: #06A13A; font-size: 1em; }
@@ -1737,7 +1737,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/soudan/img';
           <p class="trade-step-num">STEP1</p>
           <div class="trade-step-body">
             <p class="trade-step-title">お近くのお店へ</p>
-            <p class="trade-step-note"><span class="trade-step-note-em">相談だけでもOK（無料）</span></p>
+            <p class="trade-step-note">相談だけでもOK<span class="trade-step-note-em">（無料）</span></p>
           </div>
           <span class="trade-step-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="#002C7B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 L6.5 5 H25.5 L28 12 Z"/><path d="M6 12 V27 H26 V12"/><path d="M13 27 V19 H19 V27"/></svg></span>
         </li>
