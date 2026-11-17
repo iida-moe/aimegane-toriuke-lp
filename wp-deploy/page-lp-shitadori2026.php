@@ -1646,7 +1646,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
         <p class="lens-detail-text">上のほうで遠く、下のほうで手元を見ます。<br>目線を動かすだけで、ピントが合います。</p>
         <div class="lens-scene-box">
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p></div>
-          <ul class="lens-scene"><li>運転中に、ナビやメーターも見る</li><li>買い物で、売り場の案内と値札を見る</li><li>手元を見るたびに、メガネを外している</li></ul>
+          <ul class="lens-scene"><li>運転中、ナビの文字がぼやける</li><li>買い物で、値札の小さな文字が読みにくい</li><li>手元を見るたびに、メガネを外している</li></ul>
         </div>
         <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
         <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_enkin" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
