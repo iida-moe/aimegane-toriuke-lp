@@ -1643,7 +1643,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
           <ul class="lens-zone-legend"><li><span class="lzl-dot" aria-hidden="true"></span>色の部分：よく見える範囲</li><li><span class="lzl-dash" aria-hidden="true"></span>点線の外側：ゆがみ・ぼやけが出やすい部分</li></ul>
         </div>
         <p class="lens-detail-h">どんなレンズ？</p>
-        <p class="lens-detail-text">上のほうで遠く、下のほうで手元を見ます。<br>目線を動かすだけで、ピントが合います。</p>
+        <p class="lens-detail-text">1本で、遠くから手元まで見えるレンズです。<br>かけかえなしで、境目も目立ちません。</p>
         <div class="lens-scene-box">
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p></div>
           <ul class="lens-scene"><li>運転中、ナビの文字がぼやける</li><li>買い物で、値札の小さな文字が読みにくい</li><li>手元を見るたびに、メガネを外している</li></ul>
