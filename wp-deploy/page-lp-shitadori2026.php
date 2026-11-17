@@ -682,7 +682,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
   }
   .lens-modal-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
   .lens-modal-close:focus:not(:focus-visible) { outline: none; } /* 開いたときに×に枠が出ないように */
-  .lens-detail { padding: 56px 22px 24px; word-break: auto-phrase; }
+  .lens-detail { padding: 56px 18px 24px; word-break: auto-phrase; }
   .lens-detail[hidden] { display: none; }
   /* 前後のレンズへ(下に固定・スワイプでも切りかえ) */
   .lens-detail.is-from-next { animation: lensSlideNext .28s ease; }
@@ -776,23 +776,23 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
   .lzl-dash { flex-shrink: 0; width: 18px; border-top: 2px dashed #E0892E; }
   .lens-detail-h { margin-top: 32px; font-size: 15px; font-weight: 900; color: var(--main); }
   /* こんなときに：水色の箱にまとめる(メガネのイラストは11/16に削除) */
-  .lens-scene-box { margin-top: 32px; padding: 16px 14px 16px; border-radius: 16px; background: #EEF5FC; }
+  .lens-scene-box { margin-top: 32px; padding: 16px 10px 14px; border-radius: 16px; background: #EEF5FC; }
   .lens-scene-head { display: flex; align-items: flex-end; justify-content: space-between; }
   .lens-scene-box .lens-detail-h { margin-top: 0; }
   .lens-scene-box .lens-scene li { background: #fff; }
   .lens-scene { list-style: none; margin-top: 10px; display: grid; gap: 6px; }
   .lens-scene li {
     position: relative;
-    padding: 9px 12px 9px 34px;
+    padding: 9px 6px 9px 28px;
     border-radius: 10px;
     background: #F3F8FD;
-    font-size: 14px;
+    font-size: clamp(13px, 3.6vw, 14px); /* 375px幅で18字まで1行に */
     line-height: 1.5;
   }
   .lens-scene li::before {
     content: '';
     position: absolute;
-    left: 13px;
+    left: 10px;
     top: 50%;
     width: 10px;
     height: 5px;
@@ -1646,7 +1646,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
         <p class="lens-detail-text">1本で、遠くから手元まで見えるレンズです。<br>かけかえなしで、境目も目立ちません。</p>
         <div class="lens-scene-box">
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p></div>
-          <ul class="lens-scene"><li>運転中、ナビの文字がぼやける</li><li>買い物で、値札の小さな文字が読みにくい</li><li>手元を見るたびに、メガネを外している</li></ul>
+          <ul class="lens-scene"><li>運転中、ナビの文字がぼやける</li><li>買い物で、値札の文字が読みにくい</li><li>手元を見るとき、メガネを外している</li></ul>
         </div>
         <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
         <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_enkin" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
@@ -1662,10 +1662,10 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
           <ul class="lens-zone-legend"><li><span class="lzl-dot" aria-hidden="true"></span>色の部分：よく見える範囲</li><li><span class="lzl-dash" aria-hidden="true"></span>点線の外側：ゆがみ・ぼやけが出やすい部分</li></ul>
         </div>
         <p class="lens-detail-h">どんなレンズ？</p>
-        <p class="lens-detail-text">室内の少し先から手元までが広く見えます。<br>会議や家で過ごす時間が長い方に。<br>車の運転には、遠近両用がおすすめです。</p>
+        <p class="lens-detail-text">室内で、少し先から手元まで広く見えます。<br>遠近両用より、手元が広く見えます。<br>※車の運転には、遠近両用がおすすめです。</p>
         <div class="lens-scene-box">
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p></div>
-          <ul class="lens-scene"><li>料理中に、レシピと鍋を見る</li><li>テレビを見ながら、手元のスマホも見る</li><li>会議で資料とホワイトボードを見る</li></ul>
+          <ul class="lens-scene"><li>料理中に、レシピと鍋を見る</li><li>テレビを見ながら、スマホも見る</li><li>会議で資料とホワイトボードを見る</li></ul>
         </div>
         <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
         <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_chukin" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
@@ -1681,7 +1681,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
           <ul class="lens-zone-legend"><li><span class="lzl-dot" aria-hidden="true"></span>色の部分：よく見える範囲</li><li><span class="lzl-dash" aria-hidden="true"></span>点線の外側：ゆがみ・ぼやけが出やすい部分</li></ul>
         </div>
         <p class="lens-detail-h">どんなレンズ？</p>
-        <p class="lens-detail-text">手元からパソコンまでが広く見えます。<br>デスクワークの目の疲れを軽くしたい方に。</p>
+        <p class="lens-detail-text">手元からパソコンまで、広く見えます。<br>デスクワークを、楽な姿勢で続けられます。</p>
         <div class="lens-scene-box">
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p></div>
           <ul class="lens-scene"><li>パソコンと手元の書類を見比べる</li><li>長時間のデスクワークで目が疲れる</li><li>読書や手芸に集中したい</li></ul>
@@ -1700,10 +1700,10 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
           <ul class="lens-zone-legend"><li><span class="lzl-dot" aria-hidden="true"></span>色の部分：よく見える範囲</li><li><span class="lzl-dash" aria-hidden="true"></span>点線の外側：ゆがみ・ぼやけが出やすい部分</li></ul>
         </div>
         <p class="lens-detail-h">どんなレンズ？</p>
-        <p class="lens-detail-text">下のほうで、手元のピント合わせを助けます。<br>ふだんと見え方が近く、はじめてでも安心です。</p>
+        <p class="lens-detail-text">手元のピント合わせを、そっと助けます。<br>度の変化がなめらかで、自然に使えます。<br>年齢を問わず、スマホをよく見る方に。</p>
         <div class="lens-scene-box">
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p></div>
-          <ul class="lens-scene"><li>スマホを見ると目が疲れる</li><li>夕方になると手元が見えにくい</li><li>遠近両用はまだ早いかなと思う</li></ul>
+          <ul class="lens-scene"><li>勉強や読書で、手元を見る時間が長い</li><li>スマホを見るとき、メガネを外したい</li><li>遠近両用はまだ早いかなと思う</li></ul>
         </div>
         <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
         <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_assist" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
