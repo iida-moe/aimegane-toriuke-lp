@@ -840,6 +840,7 @@ $lp_assets = get_stylesheet_directory_uri() . '/lp/assets/shitadori2026/img';
     background: linear-gradient(var(--marker), var(--marker)) left bottom / 100% 7px no-repeat; /* 黄色の下線 */
   }
   .lens-price-label { font-size: clamp(26px, 8.4vw, 32px); } /* 上の「標準レンズなら〜」と横幅がそろう大きさ */
+  .lens-price-modal .lens-price-label { font-size: clamp(18px, 5.4vw, 21px); } /* モーダルの中は上の行が短いので小さめ */
   .lens-price-num {
     font-size: clamp(40px, 13vw, 50px);
     line-height: 1;
