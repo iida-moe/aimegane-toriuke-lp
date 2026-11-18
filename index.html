@@ -977,6 +977,7 @@
     font-size: clamp(28px, 7.8vw, 34px); font-weight: 900; color: var(--main);
     text-align: center; margin: 0 0 14px;
   }
+  .store-lead { margin: -4px 0 12px; font-size: clamp(15px, 4.4vw, 17px); font-weight: 700; color: var(--text); } /* 11/18 ご来店の流れから移動 */
   .shop-intro {
     font-size: 14px; color: #555; line-height: 1.8; margin-bottom: 6px;
   }
@@ -1569,7 +1570,7 @@
     <a href="#sec-fv">TOP</a>
     <a href="#sec-nayami">こんなこと、ありませんか？</a>
     <a href="#sec-lens">レンズ選び</a>
-    <a href="#sec-trade">ご来店の流れ</a>
+    <!-- 11/18 ご来店の流れは削除 <a href="#sec-trade">ご来店の流れ</a> -->
     <a href="#sec-store">お近くの店舗</a>
     <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="side-cta side-cta-secondary" data-track="side_shop_list" data-cta-location="side_shop_list">
       店舗一覧へ<span class="cta-arrow" aria-hidden="true"></span>
@@ -1586,7 +1587,7 @@
         <a href="#sec-fv">TOP</a>
         <a href="#sec-nayami">こんなこと、ありませんか？</a>
         <a href="#sec-lens">レンズ選び</a>
-        <a href="#sec-trade">ご来店の流れ</a>
+        <!-- 11/18 ご来店の流れは削除 <a href="#sec-trade">ご来店の流れ</a> -->
         <a href="#sec-store">お近くの店舗</a>
       </div>
       <a href="#sec-store" class="sp-menu-cta sp-menu-cta-primary" data-track="sp_menu" data-cta-location="sp_menu">無料相談はこちら<span class="cta-arrow" aria-hidden="true"></span></a>
@@ -1765,6 +1766,7 @@
       </div>
     </dialog>
 
+    <!-- 11/18 ご来店の流れは削除（Iさん：流れはだれでも知っている）。「相談だけでもOK（無料）」は店舗検索の見出し下へ移動
     <section class="trade-section" id="sec-trade">
       <div class="trade-head reveal">
         <span class="flow-label">ご来店からお受け取りまで</span>
@@ -1776,9 +1778,11 @@
         <p class="trade-small">※お渡し日は度数や在庫で変わります</p>
       </div>
     </section>
+    -->
 
     <section class="store-section" id="sec-store">
       <h2 class="store-title reveal">お近くの店舗を探す</h2>
+      <p class="store-lead">相談だけでもOK<span class="trade-step-note-em">（無料）</span></p>
       <p class="shop-intro">現在地、または郵便番号(上3桁)で<br>お近くの店舗を探せます</p>
       <p class="shop-intro-note">※WEB予約は、本日から3日後以降の日程でお取りいただけます。お急ぎの場合はお電話にてお問い合わせください。</p>
 
