@@ -840,6 +840,8 @@
     line-height: 1;
   }
   .lens-price-num small { font-size: .5em; }
+  /* 数字は漢字より下にはみ出さないので、そのままだと「0」だけ浮いて見える→漢字の下端にそろえる */
+  .lens-price-zero { display: inline-block; transform: translateY(.08em); }
   .lens-note {
     margin-top: 10px;
     font-size: clamp(11px, 3.2vw, 12px);
@@ -1674,7 +1676,7 @@
         <svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><defs><linearGradient id="lpg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#C9DDF2"/></linearGradient></defs><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg>
         <div class="lens-price-text">
           <p class="lens-price-pre">標準レンズなら、どれを選んでも</p>
-          <p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p>
+          <p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num"><span class="lens-price-zero">0</span><small>円</small></span></p>
         </div>
       </div>
       <p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
@@ -1698,9 +1700,9 @@
         <p class="lens-detail-text">1本で、遠くから手元まで見えるレンズです。<br>かけかえなしで、境目も目立ちません。</p>
         <div class="lens-scene-box">
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p></div>
-          <ul class="lens-scene"><li>運転中、ナビの文字がぼやける</li><li>買い物で、値札の文字が読みにくい</li><li>手元を見るとき、メガネを外している</li></ul>
+          <ul class="lens-scene"><li>車を運転するとき</li><li>電車でスマホと案内表示を見るとき</li><li>外出先で、遠くも手元も見たいとき</li></ul>
         </div>
-        <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
+        <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num"><span class="lens-price-zero">0</span><small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
         <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_enkin" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
       </div>
       <div class="lens-detail" data-lens="chukin" hidden>
@@ -1717,9 +1719,9 @@
         <p class="lens-detail-text">室内で、少し先から手元まで広く見えます。<br>遠近両用より、手元が広く見えます。<br>※車の運転には、遠近両用がおすすめです。</p>
         <div class="lens-scene-box">
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p></div>
-          <ul class="lens-scene"><li>料理中に、レシピと鍋を見る</li><li>テレビを見ながら、スマホも見る</li><li>会議で資料とホワイトボードを見る</li></ul>
+          <ul class="lens-scene"><li>家事をしながら、家族と話すとき</li><li>ソファで、スマホとテレビを見るとき</li><li>会議で資料と相手の顔を見るとき</li></ul>
         </div>
-        <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
+        <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num"><span class="lens-price-zero">0</span><small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
         <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_chukin" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
       </div>
       <div class="lens-detail" data-lens="kinkin" hidden>
@@ -1736,9 +1738,9 @@
         <p class="lens-detail-text">手元からパソコンまで、広く見えます。<br>デスクワークを、楽な姿勢で続けられます。</p>
         <div class="lens-scene-box">
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p></div>
-          <ul class="lens-scene"><li>パソコンと手元の書類を見比べる</li><li>長時間のデスクワークで目が疲れる</li><li>読書や手芸に集中したい</li></ul>
+          <ul class="lens-scene"><li>パソコンと書類で仕事をするとき</li><li>読書や手芸に集中するとき</li><li>長時間、手元の作業をするとき</li></ul>
         </div>
-        <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
+        <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num"><span class="lens-price-zero">0</span><small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
         <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_kinkin" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
       </div>
       <div class="lens-detail" data-lens="assist" hidden>
@@ -1755,9 +1757,9 @@
         <p class="lens-detail-text">手元のピント合わせを、そっと助けます。<br>度の変化がなめらかで、自然に使えます。<br>年齢を問わず、スマホをよく見る方に。</p>
         <div class="lens-scene-box">
           <div class="lens-scene-head"><p class="lens-detail-h">こんなときに</p></div>
-          <ul class="lens-scene"><li>勉強や読書で、手元を見る時間が長い</li><li>スマホを見るとき、メガネを外したい</li><li>遠近両用はまだ早いかなと思う</li></ul>
+          <ul class="lens-scene"><li>勉強や読書を長く続けるとき</li><li>スマホの文字が前より見にくいとき</li><li>遠近両用はまだ早いと感じるとき</li></ul>
         </div>
-        <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num">0<small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
+        <div class="lens-price lens-price-modal"><svg class="lens-price-illust" viewBox="0 0 100 74" aria-hidden="true"><ellipse cx="58" cy="44" rx="30" ry="22" fill="url(#lpg)" stroke="#B4CBE6" stroke-width="1.5" transform="rotate(-18 58 44)"/><ellipse cx="40" cy="48" rx="30" ry="22" fill="url(#lpg)" stroke="#A9C3E2" stroke-width="1.5" transform="rotate(-18 40 48)"/><path d="M22 46 Q26 34 40 30" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/><g stroke="#F5C928" stroke-width="2.6" stroke-linecap="round"><path d="M10 14 L14 20"/><path d="M20 6 L21 13"/><path d="M4 26 L10 27"/></g></svg><div class="lens-price-text"><p class="lens-price-pre">標準レンズなら</p><p class="lens-price-row"><span class="lens-price-label">追加料金</span><span class="lens-price-num"><span class="lens-price-zero">0</span><small>円</small></span></p></div></div><p class="lens-note">※コーティングの追加やグレードアップは別途料金です。</p>
         <div class="lens-modal-cta"><a href="#sec-store" class="finalcta-btn finalcta-btn-primary" data-track="lens_modal_assist" data-cta-location="lens_modal">お近くの店舗で相談する<span class="cta-arrow" aria-hidden="true"></span></a></div>
       </div>
       </div>
